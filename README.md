@@ -1,2 +1,2 @@
 # Clear-BnB
-## An Air BnB Clone
+## An Air-BnB Clone
