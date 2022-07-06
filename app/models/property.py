@@ -17,10 +17,10 @@ class Property(db.Model):
     city = db.Column(db.String(255), nullable=False)
     state = db.Column(db.String(255), nullable=False)
     zipcode = db.Column(db.String(255), nullable=False)
-    lat = db.Column(db.Numeric, nullable=False)
-    lng = db.Column(db.Numeric, nullable=False)
-    price = db.Column(db.Numeric(10,2), nullable=False)
-    service_fee = db.Column(db.Numeric(10,2), nullable=False)
+    lat = db.Column(db.Float, nullable=False)
+    lng = db.Column(db.Float, nullable=False)
+    price = db.Column(db.Float, nullable=False)
+    service_fee = db.Column(db.Float, nullable=False)
     bedrooms = db.Column(db.Integer, nullable=False)
     bathrooms = db.Column(db.Integer, nullable=False)
     guests = db.Column(db.Integer, nullable=False)
@@ -57,7 +57,7 @@ class Property(db.Model):
             'state': self.state,
             'zipcode': self.zipcode,
             'lat': self.lat,
-            'lng': self.lat,
+            'lng': self.lng,
             'price': self.price,
             'service_fee': self.service_fee,
             'bedrooms': self.bedrooms,
