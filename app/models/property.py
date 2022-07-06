@@ -66,5 +66,8 @@ class Property(db.Model):
             'photo1_url': self.photo1_url,
             'photo2_url': self.photo2_url,
             'photo3_url': self.photo3_url,
-            'user_id': self.user_id
+            'user_id': self.user_id,
+            'types': [prop_type.to_dict() for prop_type in self.property_types],
+            'amenities': [amenity.to_dict() for amenity in self.property_amenities]
+
         }
