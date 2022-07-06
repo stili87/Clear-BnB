@@ -1,3 +1,4 @@
+from turtle import back
 from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
@@ -16,6 +17,9 @@ class User(db.Model, UserMixin):
     location = db.Column(db.String(255), nullable=False)
 
     properties = db.relationship("Property", back_populates='user')
+    bookings = db.relationship("Booking", back_populates='user')
+    reviews = db.relationship("Review", back_populates='user')
+    likes = db.relationship("Like", back_populates='user')
 
     @property
     def password(self):

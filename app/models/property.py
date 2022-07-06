@@ -1,6 +1,11 @@
 from pydoc import describe
 from turtle import title
 from .db import db
+from .propertytypes import property_types
+from .propertyamenities import property_amenities
+
+
+
 
 class Property(db.Model):
     __tablename__ = 'properties'
@@ -25,7 +30,21 @@ class Property(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
     user = db.relationship("User", back_populates='properties')
+    bookings = db.relationship("Booking", back_populates='property')
+    reviews = db.relationship("Review", back_populates='property')
+    likes = db.relationship("Like", back_populates='property')
 
+    property_types = db.relationship(
+        "Type",
+        secondary=property_types,
+        back_populates='types_property'
+    )
+
+    property_amenities = db.relationship(
+        "Amenity",
+        secondary=property_amenities,
+        back_populates='amenities_property'
+    )
 
 
     def to_dict(self):
