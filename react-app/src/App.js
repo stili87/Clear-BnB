@@ -12,6 +12,8 @@ import { getPropertiesThunk } from './store/properties';
 import NewProperty from './components/properties/NewProperty/newproperty';
 import { getAmenitiesThunk } from './store/amenities';
 import { getTypesThunk } from './store/types';
+import SinglePropertyDisplay from './components/properties/SinglePropertyDisplay/singlePropertyView';
+import EditProperty from './components/properties/EditProperty/editProperty';
 
 
 function App() {
@@ -45,6 +47,9 @@ function App() {
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
+        <ProtectedRoute path='/properties/:id' exact={true}>
+          <SinglePropertyDisplay />
+        </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
@@ -53,6 +58,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/properties/new' exact={true} >
           <NewProperty />
+        </ProtectedRoute>
+        <ProtectedRoute path='/properties/:id/edit' exact={true} >
+          <EditProperty />
         </ProtectedRoute>
         <Route>
           <h1>Page Not found</h1>
