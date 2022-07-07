@@ -30,20 +30,22 @@ class Property(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
     user = db.relationship("User", back_populates='properties')
-    bookings = db.relationship("Booking", back_populates='property')
-    reviews = db.relationship("Review", back_populates='property')
-    likes = db.relationship("Like", back_populates='property')
+    bookings = db.relationship("Booking", back_populates='property', cascade="delete, all")
+    reviews = db.relationship("Review", back_populates='property', cascade="delete, all")
+    likes = db.relationship("Like", back_populates='property', cascade="delete, all")
 
     property_types = db.relationship(
         "Type",
         secondary=property_types,
-        back_populates='types_property'
+        back_populates='types_property',
+        lazy="joined"
     )
 
     property_amenities = db.relationship(
         "Amenity",
         secondary=property_amenities,
-        back_populates='amenities_property'
+        back_populates='amenities_property',
+        lazy="joined"
     )
 
 

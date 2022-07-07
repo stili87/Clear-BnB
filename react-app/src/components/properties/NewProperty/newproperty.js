@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { Redirect, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import Multiselect from "multiselect-react-dropdown";
 import './new-property.css'
+import { addPropertyThunk } from '../../../store/properties';
 
 const NewProperty = () => {
     const types = Object.values(useSelector(state => state.types))
     const amenities = Object.values(useSelector(state => state.amenities))
+    const sessionUser = useSelector(state => state.session.user)
     const [errors, setErrors] = useState([])
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
@@ -25,12 +27,51 @@ const NewProperty = () => {
     const [property_types, setProerty_types] = useState([])
     const [property_amenities, setProerty_amenities] = useState([])
     const history = useHistory()
+    const dispatch = useDispatch()
 
 
-    const handleOnSubmit = e => {
+    const handleOnSubmit = async e => {
         e.preventDefault()
-        // FIGURE OUT HOW TO DO LONG AND LAT
 
+        //Generating Lat and Lng based on address
+        const longLat = await fetch(`https://api.opencagedata.com/geocode/v1/json?q=${address} ${city} ${state} ${zipcode}&key=f76162da63df4d15a25fcdc22b5b35a4&language=en&pretty=1&abbrv=1&limit=1`)
+        const res = await longLat.json()
+        let lat = 0
+        let lng = 0
+        if (res.results && res.results[0] && res.results[0].geometry){
+            lat = res.results[0].geometry.lat
+            lng = res.results[0].geometry.lng
+        }
+        const user_id = sessionUser.id
+        
+        const newProperty = {
+            title,
+            description,
+            address,
+            city,
+            state,
+            zipcode,
+            lat,
+            lng,
+            price,
+            service_fee,
+            bedrooms,
+            bathrooms,
+            guests,
+            user_id,
+            property_types,
+            property_amenities,
+            photo1_url,
+            photo2_url,
+            photo3_url
+        }
+
+        const data = await dispatch(addPropertyThunk(newProperty))
+        if (data) {
+            setErrors(data)
+        }else {
+            history.push('/home')
+        }
     }
 
 
