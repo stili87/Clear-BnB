@@ -2,10 +2,15 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import session from './session'
 import propertyReducer from './properties';
+import amenityReducer from './amenities';
+import typesReducer from './types';
+
 
 const rootReducer = combineReducers({
   session,
-  properties: propertyReducer
+  properties: propertyReducer,
+  amenities: amenityReducer,
+  types: typesReducer
 });
 
 

@@ -9,6 +9,9 @@ import User from './components/User';
 import { authenticate } from './store/session';
 import HomePage from './components/homePage/homePage';
 import { getPropertiesThunk } from './store/properties';
+import NewProperty from './components/properties/NewProperty/newproperty';
+import { getAmenitiesThunk } from './store/amenities';
+import { getTypesThunk } from './store/types';
 
 
 function App() {
@@ -19,6 +22,8 @@ function App() {
     (async() => {
       await dispatch(authenticate());
       await dispatch(getPropertiesThunk())
+      await dispatch(getAmenitiesThunk())
+      await dispatch(getTypesThunk())
       setLoaded(true);
     })();
   }, [dispatch]);
@@ -46,7 +51,14 @@ function App() {
         <ProtectedRoute path='/home' exact={true} >
           <HomePage />
         </ProtectedRoute>
+        <ProtectedRoute path='/properties/new' exact={true} >
+          <NewProperty />
+        </ProtectedRoute>
+        <Route>
+          <h1>Page Not found</h1>
+        </Route>
       </Switch>
+
     </BrowserRouter>
   );
 }

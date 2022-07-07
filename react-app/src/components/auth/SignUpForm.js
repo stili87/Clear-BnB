@@ -20,7 +20,7 @@ const SignUpForm = () => {
   const onSignUp = async (e) => {
     e.preventDefault();
 
-    if (picture_url && !picture_url.name.endsWith("pdf") &&
+    if (picture_url &&
       !picture_url.name.endsWith("png") &&
       !picture_url.name.endsWith("jpg") &&
       !picture_url.name.endsWith("pdf") &&
