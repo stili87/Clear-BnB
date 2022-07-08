@@ -19,8 +19,8 @@ class Booking(db.Model):
             'id': self.id,
             'user_id': self.user_id,
             'property_id': self.property_id,
-            'start_date': self.start_date,
-            'end_date': self.end_date,
+            'start_date': self.start_date.strftime("%Y-%m-%d"),
+            'end_date': self.end_date.strftime("%Y-%m-%d"),
             'cost': self.cost,
             'guests': self.guests
         }

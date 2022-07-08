@@ -1,19 +1,23 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { useHistory } from 'react-router-dom'
-import { addBookingThunk } from '../../store/bookings'
+import { useHistory, useParams } from 'react-router-dom'
+import { editBookingThunk } from '../../store/bookings'
 import './bookings.css'
 
-function BookingsMain({thisProperty}) {
+function BookingsEdit() {
+    const bookingId = Number(useParams().id)
+    const thisBooking = useSelector(state => state.bookings)[bookingId]
+    const thisProperty = useSelector(state => state.properties)[thisBooking.property_id]
+
     const today = new Date()
     const day = 60 * 60 * 24 * 1000
     const tommorrow = new Date(today.getTime() + day)
-    const nextDay = new Date(tommorrow.getTime() + day)
+    const nextDay = new Date(tommorrow.getTime() +day)
     
     const sessionUser = useSelector(state => state.session.user)
     const [errors, setErrors] = useState([])
-    const [start_date, setStart_date] = useState(tommorrow)
-    const [end_date, setEnd_date] = useState(nextDay)
+    const [start_date, setStart_date] = useState(new Date(thisBooking?.start_date) || tommorrow)
+    const [end_date, setEnd_date] = useState(new Date(thisBooking?.end_date) || nextDay)
     const [guests, setGuests]  = useState(0)
     const [cost, setCost] = useState(thisProperty?.price * 2 || 0)
     const [disabled, setDisabled] = useState(false)
@@ -49,7 +53,6 @@ function BookingsMain({thisProperty}) {
             setCost(thisProperty?.price + thisProperty?.service_fee)
         }else {
             const diffTime = Math.abs(new Date(start_date) - new Date(end_date))
-            console.log(diffTime)
             // Need to add one to account for arrival day. 
             const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24) + 1);
             setCost((diffDays * thisProperty?.price) + thisProperty?.service_fee)
@@ -61,7 +64,8 @@ function BookingsMain({thisProperty}) {
     const handleBookingSubmit = async e => {
         e.preventDefault()
 
-        const newBooking = {
+        const editBooking = {
+            bookingId,
             user_id: sessionUser?.id,
             property_id: thisProperty.id,
             start_date: start_date.toISOString().split('T')[0],
@@ -70,7 +74,7 @@ function BookingsMain({thisProperty}) {
             guests
         }
 
-        const data = await dispatch(addBookingThunk(newBooking))
+        const data = await dispatch(editBookingThunk(editBooking))
         if (data) {
             setErrors(data)
         }else {
@@ -107,4 +111,4 @@ function BookingsMain({thisProperty}) {
     )
 }
 
-export default BookingsMain
+export default BookingsEdit

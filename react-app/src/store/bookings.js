@@ -26,6 +26,45 @@ export const getBookingsThunk = () => async dispatch => {
     }
 }
 
+export const editBookingThunk = editBooking => async dispatch => {
+
+    const {
+        bookingId,
+        user_id,
+        property_id,
+        start_date,
+        end_date,
+        cost,
+        guests
+    } = editBooking
+
+    const formData = new FormData()
+    formData.append('user_id', user_id)
+    formData.append('property_id', property_id)
+    formData.append('start_date', start_date)
+    formData.append('end_date', end_date)
+    formData.append('cost', cost)
+    formData.append('guests', guests)
+
+    const response = await fetch(`/api/bookings/${bookingId}`,{
+        method: 'PUT',
+        body: formData
+    })
+    const data = await response.json()
+
+    if(response.ok) {
+        dispatch(addBookingAction(data))
+        return null
+    }else if (response.status < 500) {
+        if (data.errors) {
+            return data.errors
+        }
+    } else {
+        return ['An error occurred. Please try again']
+    }
+
+}
+
 export const addBookingThunk = newBooking => async dispatch => {
     const {
         user_id,
