@@ -1,5 +1,6 @@
 const GET_PROPERTIES = 'properties/all'
 const ADD_PROPERTY = 'properties/add'
+const DELETE_PROPERTY = 'properties/delete'
 
 const getPropertiesAction = properties => ({
     type: GET_PROPERTIES,
@@ -9,6 +10,11 @@ const getPropertiesAction = properties => ({
 const addPropertyAction = property => ({
     type: ADD_PROPERTY,
     property
+})
+
+const deletePropertyAction = propertyId => ({
+    type: DELETE_PROPERTY,
+    propertyId
 })
 
 export const getPropertiesThunk = () => async dispatch => {
@@ -149,6 +155,16 @@ export const addPropertyThunk = newProperty => async dispatch => {
     }
 }
 
+export const deletePropertyThunk = propertyId => async dispatch => {
+    const response = await fetch(`/api/properties/${propertyId}`, {
+        method: 'DELETE'
+    })
+
+    if (response.ok){
+        dispatch(deletePropertyAction(propertyId))
+    }
+}
+
 
 const propertyReducer = (state = {}, action) => {
     switch (action.type) {
@@ -160,6 +176,10 @@ const propertyReducer = (state = {}, action) => {
             let newAddState = { ...state }
             newAddState = { ...state, [action.property.id]: action.property }
             return newAddState
+        case DELETE_PROPERTY:
+            let newDeleteState = {...state}
+            delete newDeleteState[action.propertyId]
+            return newDeleteState
         default:
             return state
     }

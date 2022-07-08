@@ -212,3 +212,11 @@ def edit_property(id):
         db.session.commit()
         return edit_property.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+@property_routes.route('/<int:id>', methods=["DELETE"])
+@login_required
+def delete_book(id):
+    property = Property.query.get(id)
+    db.session.delete(property)
+    db.session.commit()
+    return {'Successful': 'Successful'}

@@ -47,6 +47,9 @@ function App() {
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
+        <ProtectedRoute path='/properties/new' exact={true} >
+          <NewProperty />
+        </ProtectedRoute>
         <ProtectedRoute path='/properties/:id' exact={true}>
           <SinglePropertyDisplay />
         </ProtectedRoute>
@@ -55,9 +58,6 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/home' exact={true} >
           <HomePage />
-        </ProtectedRoute>
-        <ProtectedRoute path='/properties/new' exact={true} >
-          <NewProperty />
         </ProtectedRoute>
         <ProtectedRoute path='/properties/:id/edit' exact={true} >
           <EditProperty />

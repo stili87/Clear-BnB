@@ -16,7 +16,7 @@ function SinglePropertyDisplay() {
     }
 
     const handleEdit = () => {
-        history.push(`/properties/1/edit`)
+        history.push(`/properties/${propertyId}/edit`)
     }
 
     return (

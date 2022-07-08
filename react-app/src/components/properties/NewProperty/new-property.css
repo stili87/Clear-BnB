@@ -13,8 +13,26 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
+    margin-bottom: 100px;
 }
 
 #property-new-form > textarea{
     resize: none;
+}
+
+#new-property-form-button-container {
+    display: flex;
+    gap: 15px;
+}
+
+#new-property-delete-confirm-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px
+}
+
+#new-property-delete-buttons-container {
+    display: flex;
+    justify-content: space-around;
 }

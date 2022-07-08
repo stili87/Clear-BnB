@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom';
 import Multiselect from "multiselect-react-dropdown";
-import { editPropertyThunk } from '../../../store/properties';
+import { deletePropertyThunk, editPropertyThunk } from '../../../store/properties';
 
 const EditProperty = () => {
     const propertyId = useParams().id
@@ -29,6 +29,7 @@ const EditProperty = () => {
     const [property_types, setProerty_types] = useState(thisProperty?.types.map(type => type.id) || [])
     const [property_amenities, setProerty_amenities] = useState(thisProperty?.amenities.map(amenity => amenity.id) || [])
     const history = useHistory()
+    const [deleteOpen, setDeleteOpen] = useState(false)
     const dispatch = useDispatch()
 
 
@@ -104,6 +105,22 @@ const EditProperty = () => {
     const onSelectTypes = (selectedList, selectedItem) => {
         const idList = selectedList.map(item => item.id)
         setProerty_types(idList)
+    }
+
+    const handleDeleteOpen = (e) => {
+        e.preventDefault()
+        setDeleteOpen(!deleteOpen)
+    }
+
+    const handleDeleteCancel = (e) => {
+        e.preventDefault()
+        setDeleteOpen(!deleteOpen)
+    }
+
+    const handleDelete = async e => {
+        e.preventDefault()
+        await dispatch(deletePropertyThunk(propertyId))
+        history.push('/')
     }
 
     return (
@@ -258,11 +275,21 @@ const EditProperty = () => {
                     showCheckbox={true}
                     placeholder={'Click Here to Select Property Amenities'}
                 />
+                <div id='new-property-form-button-container'>
                 <button id="new-property-form-submit" type="submit">Submit</button>
                 <button id="new-property-form-submit" type="cancel" onClick={(e)=> {
                     e.preventDefault()
                     history.push('/home')
                     }}>Cancel</button>
+                <button id="new-property-form-submit" onClick={(e)=>handleDeleteOpen(e)}>Delete Property</button>
+                </div>
+                {deleteOpen && <div id='new-property-delete-confirm-container'>
+                    <p>Are you sure you want to delete this property?</p>
+                    <div id='new-property-delete-buttons-container'>
+                    <button onClick={(e)=>handleDelete(e)} id="new-property-form-submit">Delete Property</button>
+                    <button onClick={e=> handleDeleteCancel(e)} id="new-property-form-submit">Cancel</button>
+                    </div>
+                    </div>}
             </form>
         </div>
     )
