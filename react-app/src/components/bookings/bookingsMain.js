@@ -36,14 +36,23 @@ function BookingsMain({thisProperty}) {
         if(end_date < start_date) {
             setErrors(['End Date Cannot be prior to start date'])
             setDisabled(true)
+        }else if(start_date < today) {
+            setErrors(['Start Date Cannot be today or prior'])
+            setDisabled(true)
         }else {
             setErrors([])
             setDisabled(false)
         }
-        const diffTime = Math.abs(new Date(start_date) - new Date(end_date))
-        // Need to add one to account for arrival day. 
-        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24) + 1);
-        setCost((diffDays * thisProperty?.price) + thisProperty?.service_fee)
+
+        if(end_date === start_date){
+            setCost(thisProperty?.price + thisProperty?.service_fee)
+        }else {
+            const diffTime = Math.abs(new Date(start_date) - new Date(end_date))
+            console.log(diffTime)
+            // Need to add one to account for arrival day. 
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24) + 1);
+            setCost((diffDays * thisProperty?.price) + thisProperty?.service_fee)
+        }
         
     }, [start_date, end_date, cost, setCost, thisProperty?.price, thisProperty?.service_fee])
 
