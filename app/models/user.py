@@ -16,7 +16,7 @@ class User(db.Model, UserMixin):
     location = db.Column(db.String(255), nullable=False)
 
     properties = db.relationship("Property", back_populates='user')
-    bookings = db.relationship("Booking", back_populates='user')
+    bookings = db.relationship("Booking", back_populates='user', lazy='joined')
     reviews = db.relationship("Review", back_populates='user')
     likes = db.relationship("Like", back_populates='user')
 
@@ -39,5 +39,6 @@ class User(db.Model, UserMixin):
             'name': self.name,
             'bio': self.bio,
             'picture_url': self.picture_url,
-            'location': self.location
+            'location': self.location,
+            'bookings': [booking.to_dict() for booking in self.bookings]
         }

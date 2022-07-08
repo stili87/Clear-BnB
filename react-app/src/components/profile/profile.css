@@ -1,0 +1,19 @@
+
+#profile-bookings-container {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+#profile-confirm-delete {
+    display: flex;
+    gap:25px;
+}
+
+#profile-single-booking-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 600px;
+    gap: 10px;
+}

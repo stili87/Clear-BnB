@@ -15,6 +15,7 @@ import { getTypesThunk } from './store/types';
 import SinglePropertyDisplay from './components/properties/SinglePropertyDisplay/singlePropertyView';
 import EditProperty from './components/properties/EditProperty/editProperty';
 import { getBookingsThunk } from './store/bookings';
+import Profile from './components/profile/profile';
 
 
 function App() {
@@ -63,6 +64,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/properties/:id/edit' exact={true} >
           <EditProperty />
+        </ProtectedRoute>
+        <ProtectedRoute path='/profile' exact={true} >
+          <Profile />
         </ProtectedRoute>
         <Route>
           <h1>Page Not found</h1>

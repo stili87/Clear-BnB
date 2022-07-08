@@ -59,7 +59,7 @@ const NewProperty = () => {
             bathrooms,
             guests,
             user_id,
-            property_types,
+            property_types, //array of type ids
             property_amenities,
             photo1_url,
             photo2_url,
@@ -97,6 +97,7 @@ const NewProperty = () => {
     }
 
     const onSelectTypes = (selectedList, selectedItem) => {
+
         const idList = selectedList.map(item => item.id)
         setProerty_types(idList)
     }
@@ -234,6 +235,7 @@ const NewProperty = () => {
                 <label>Select Property Types</label>
                 <Multiselect
                     id="property-creation-multi"
+
                     options={types}
                     onSelect={onSelectTypes}
                     onRemove={onSelectTypes}

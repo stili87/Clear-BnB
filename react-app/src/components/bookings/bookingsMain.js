@@ -6,7 +6,9 @@ import './bookings.css'
 
 function BookingsMain({thisProperty}) {
     const today = new Date()
-    const tommorrow = new Date(today +1 )
+    const day = 60 * 60 * 24 * 1000
+    const tommorrow = new Date(today.getTime() + day)
+    
     const sessionUser = useSelector(state => state.session.user)
     const [errors, setErrors] = useState([])
     const [start_date, setStart_date] = useState(today)
@@ -41,9 +43,9 @@ function BookingsMain({thisProperty}) {
         const diffTime = Math.abs(new Date(start_date) - new Date(end_date))
         // Need to add one to account for arrival day. 
         const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24) + 1);
-        setCost(diffDays * thisProperty?.price)
+        setCost((diffDays * thisProperty?.price) + thisProperty?.service_fee)
         
-    }, [start_date, end_date, cost, setCost, thisProperty?.price])
+    }, [start_date, end_date, cost, setCost, thisProperty?.price, thisProperty?.service_fee])
 
 
     const handleBookingSubmit = async e => {
@@ -52,8 +54,8 @@ function BookingsMain({thisProperty}) {
         const newBooking = {
             user_id: sessionUser?.id,
             property_id: thisProperty.id,
-            start_date,
-            end_date,
+            start_date: start_date.toISOString().split('T')[0],
+            end_date: end_date.toISOString().split('T')[0],
             cost,
             guests
         }
@@ -77,9 +79,9 @@ function BookingsMain({thisProperty}) {
             <label>Pick Dates</label>
             <div id='bookings-dates-selection'>
                 <label>Start Date</label>
-                <input value={start_date} onChange={e => setStart_date(e.target.value)} type='date'></input>
+                <input value={start_date.toISOString().split('T')[0]} onChange={e => setStart_date(new Date(e.target.value))} type='date'></input>
                 <label>End Date</label>
-                <input value={end_date} onChange={e => setEnd_date(e.target.value)} type='date'></input>
+                <input value={end_date.toISOString().split('T')[0]} onChange={e => setEnd_date(new Date(e.target.value))} type='date'></input>
             </div>
             <label>Number of Guests (maximum = {thisProperty?.guests})</label>
             <div id='bookings-guests-selection'>

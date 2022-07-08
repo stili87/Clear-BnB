@@ -36,3 +36,11 @@ def post_booking():
         db.session.commit()
         return new_booking.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+@booking_routes.route('/<int:id>', methods=['DELETE'])
+@login_required
+def delete_booking(id):
+    booking = Booking.query.get(id)
+    db.session.delete(booking)
+    db.session.commit()
+    return {'Successful': 'Successful'}

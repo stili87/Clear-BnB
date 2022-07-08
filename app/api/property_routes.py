@@ -81,8 +81,10 @@ def post_property():
     if form.validate_on_submit():
         form_types_array1 = form.data['property_types'][0].split(',')
         form_types_array = [int(x) for x in form_types_array1]
+        # [1, 2, 3]
         types = Type.query.all()
         property_types = [type for type in types if type.id in form_types_array]
+        #list of objects
 
         form_amenity_array1 = form.data['property_amenities'][0].split(',')
         form_amenity_array = [int(x) for x in form_amenity_array1]

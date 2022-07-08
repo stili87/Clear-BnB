@@ -2,7 +2,9 @@ import React from "react";
 import './home-page.css'
 import { Link } from "react-router-dom";
 
+
 const HomeSingleProperty = ({property}) => {
+
 
     const formatter = new Intl.NumberFormat('en-US', {
         style: 'currency',
