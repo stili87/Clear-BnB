@@ -279,7 +279,7 @@ const EditProperty = () => {
                 <button id="new-property-form-submit" type="submit">Submit</button>
                 <button id="new-property-form-submit" type="cancel" onClick={(e)=> {
                     e.preventDefault()
-                    history.push('/home')
+                    history.push(`/properties/${propertyId}`)
                     }}>Cancel</button>
                 <button id="new-property-form-submit" onClick={(e)=>handleDeleteOpen(e)}>Delete Property</button>
                 </div>

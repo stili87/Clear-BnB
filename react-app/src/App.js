@@ -14,6 +14,7 @@ import { getAmenitiesThunk } from './store/amenities';
 import { getTypesThunk } from './store/types';
 import SinglePropertyDisplay from './components/properties/SinglePropertyDisplay/singlePropertyView';
 import EditProperty from './components/properties/EditProperty/editProperty';
+import { getBookingsThunk } from './store/bookings';
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
       await dispatch(getPropertiesThunk())
       await dispatch(getAmenitiesThunk())
       await dispatch(getTypesThunk())
+      await dispatch(getBookingsThunk())
       setLoaded(true);
     })();
   }, [dispatch]);

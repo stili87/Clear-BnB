@@ -4,13 +4,15 @@ import session from './session'
 import propertyReducer from './properties';
 import amenityReducer from './amenities';
 import typesReducer from './types';
+import bookingReducer from './bookings';
 
 
 const rootReducer = combineReducers({
   session,
   properties: propertyReducer,
   amenities: amenityReducer,
-  types: typesReducer
+  types: typesReducer,
+  bookings: bookingReducer
 });
 
 

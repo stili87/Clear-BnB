@@ -1,5 +1,3 @@
-from pydoc import describe
-from turtle import title
 from .db import db
 from .propertytypes import property_types
 from .propertyamenities import property_amenities

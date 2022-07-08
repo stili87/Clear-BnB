@@ -173,8 +173,7 @@ const propertyReducer = (state = {}, action) => {
             action.properties.forEach(property => newAllState[property.id] = property)
             return newAllState
         case ADD_PROPERTY:
-            let newAddState = { ...state }
-            newAddState = { ...state, [action.property.id]: action.property }
+            let newAddState = { ...state, [action.property.id]: action.property }
             return newAddState
         case DELETE_PROPERTY:
             let newDeleteState = {...state}

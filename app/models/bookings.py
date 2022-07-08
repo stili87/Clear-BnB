@@ -8,7 +8,7 @@ class Booking(db.Model):
     property_id = db.Column(db.Integer, db.ForeignKey('properties.id'), nullable=False)
     start_date = db.Column(db.Date, nullable=False)
     end_date = db.Column(db.Date, nullable=False)
-    cost = db.Column(db.Numeric(10,2), nullable=False)
+    cost = db.Column(db.Float, nullable=False)
     guests = db.Column(db.Integer, nullable=False)
 
     user = db.relationship("User", back_populates='bookings')

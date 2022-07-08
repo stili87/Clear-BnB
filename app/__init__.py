@@ -11,6 +11,7 @@ from .api.auth_routes import auth_routes
 from .api.property_routes import property_routes
 from .api.amenities_routes import amenity_routes
 from .api.types_routes import types_routes
+from .api.booking_routes import booking_routes
 
 from .seeds import seed_commands
 
@@ -37,6 +38,7 @@ app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(property_routes, url_prefix='/api/properties')
 app.register_blueprint(amenity_routes, url_prefix='/api/amenities')
 app.register_blueprint(types_routes, url_prefix='/api/types')
+app.register_blueprint(booking_routes, url_prefix='/api/bookings')
 
 
 db.init_app(app)

@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
 import { useHistory, useParams} from 'react-router-dom';
+import BookingsMain from '../../bookings/bookingsMain';
 import './single-property-display.css'
 
 function SinglePropertyDisplay() {
@@ -22,6 +23,7 @@ function SinglePropertyDisplay() {
     return (
         <div id='single-property-display-full'>{thisProperty?.title}
             {sessionUser?.id === thisProperty?.user_id && <button onClick={()=> handleEdit()}>Edit Button</button>}
+            <BookingsMain thisProperty={thisProperty}/> 
         </div>
     )
 }
