@@ -30,13 +30,19 @@ body {
       line-height: 1;
       font-family: 'Ubuntu', sans-serif;
       background-color: #fff;
+
   }
   
   #root {
+      background-color: #fff;
       min-height: 100vh;
       min-width: 100vw;
       line-height: 1;
+      font-family: 'Ubuntu', sans-serif;
+      display: flex;
+      flex-direction: column;
   }
+
   
   ol,  ul {
     list-style: none;
