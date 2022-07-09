@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { Redirect} from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
 
 const SignUpForm = () => {
@@ -76,90 +76,95 @@ const SignUpForm = () => {
   }
 
   return (
-        <form id='signup-form' onSubmit={onSignUp} className='actualform'>
-          <div>
-            {errors.map((error, ind) => (
-              <div key={ind}>{error}</div>
-            ))}
-          </div>
-          <div id='signup-form-entry'>
-          <label>User Name:</label>
+    <form id='signup-form' onSubmit={onSignUp} className='actualform'>
+      <div id='signup-errors'>
+        {errors.map((error, ind) => (
+          <div key={ind}>{error}</div>
+        ))}
+      </div>
+      <div id='signup-form-entry'>
+        <label>User Name:</label>
+        <input
+          required
+          type="text"
+          name="username"
+          onChange={updateUsername}
+          value={username}
+        ></input>
+      </div>
+      <div id='signup-form-entry'>
+        <label>Email:</label>
+        <input
+          required
+          type="text"
+          name="email"
+          onChange={updateEmail}
+          value={email}
+        ></input>
+      </div>
+      <div id='signup-form-entry'>
+        <label>Name:</label>
+        <input
+          required
+          type="text"
+          name="name"
+          onChange={e => setName(e.target.value)}
+          value={name}
+        >
+        </input>
+      </div>
+      <div id='signup-form-entry'>
+        <label>Location:</label>
+        <input
+          required
+          type="text"
+          name="location"
+          onChange={e => setLocation(e.target.value)}
+          value={location}
+        >
+        </input>
+      </div>
+      <div id='signup-form-entry'>
+        <label>Biography:</label>
+        <textarea
+          id='signup-text-area'
+          name="bio"
+          onChange={e => setBio(e.target.value)}
+          value={bio}
+        ></textarea>
+      </div>
+      <div id='signup-form-entry'>
+        <label>Password:</label>
+        <input
+          required
+          type="password"
+          name="password"
+          onChange={updatePassword}
+          value={password}
+        ></input>
+      </div>
+      <div id='signup-form-entry'>
+        <label>Repeat Password:</label>
+        <input
+          required
+          type="password"
+          name="repeat_password"
+          onChange={updateRepeatPassword}
+          value={repeatPassword}
+        ></input>
+      </div>
+      <div id='signup-form-entry' className="custom-file-upload">
+        <label >Profile Picture Upload
           <input
-            type="text"
-            name="username"
-            onChange={updateUsername}
-            value={username}
+            className="pfp"
+            accept="image/*"
+            onChange={updateImage}
+            type="file"
           ></input>
-          </div>
-          <div id='signup-form-entry'>
-          <label>Email:</label>
-          <input
-            type="text"
-            name="email"
-            onChange={updateEmail}
-            value={email}
-          ></input>
-          </div>
-          <div id='signup-form-entry'>
-          <label>Name:</label>
-          <input
-            type="text"
-            name="name"
-            onChange={e => setName(e.target.value)}
-            value={name}
-          >
-          </input>
-          </div>
-          <div id='signup-form-entry'>
-          <label>Password:</label>
-          <input
-            type="password"
-            name="password"
-            onChange={updatePassword}
-            value={password}
-          ></input>
-          </div>
-          <div id='signup-form-entry'>
-          <label>Repeat Password:</label>
-          <input
-            type="password"
-            name="repeat_password"
-            onChange={updateRepeatPassword}
-            value={repeatPassword}
-            required={true}
-          ></input>
-          </div>
-          <div id='signup-form-entry'>
-          <label>Location:</label>
-          <input
-            type="text"
-            name="location"
-            onChange={e => setLocation(e.target.value)}
-            value={location}
-          >
-          </input>
-          </div>
-          <div id='signup-form-entry'>
-          <label>Biography:</label>
-          <textarea
-            id='signup-text-area'
-            name="bio"
-            onChange={e => setBio(e.target.value)}
-            value={bio}
-          ></textarea>
-          </div>
-          <div id='signup-form-entry' className="custom-file-upload">
-          <label >Profile Picture Upload
-            <input
-              className="pfp"
-              accept="image/*"
-              onChange={updateImage}
-              type="file"
-            ></input>
-            </label>
-          </div>
-          <button id='login-form-button' type="submit">Sign Up</button>
-        </form>
+        </label>
+      </div>
+      <button id='login-form-button' type="submit">Sign Up</button>
+    </form>
 
   );
 };

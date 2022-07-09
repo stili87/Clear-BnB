@@ -1,0 +1,42 @@
+#footer-container {
+    display: flex;
+    justify-content: space-around;
+    height: 100%;
+    overflow: hidden;
+    background-color: bisque;
+    padding-bottom: 15px;
+}
+
+#footer-info-container {
+    margin-top: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    align-items: center;
+}
+
+#footer-info-header {
+    font-weight: 600;
+}
+
+#footer-info-item {
+    color: black;
+    text-decoration: none;
+}
+
+#footer-info-item:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+#footer-info-contact {
+    color: black;
+}
+
+#footer-tech-container {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    width: 175px;
+    justify-content: center;
+}

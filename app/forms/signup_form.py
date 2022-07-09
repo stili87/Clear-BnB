@@ -26,7 +26,7 @@ def username_exists(form, field):
 def check_length(form, field):
     checking = field.data
     if len(checking) > 255:
-        raise ValidationError(f'{field.name} is too long. (Maximum length is 255).')
+        raise ValidationError(f'{field.name.capitalize()} is too long. (Maximum length is 255).')
 
 def check_password(form, field):
     checking = field.data

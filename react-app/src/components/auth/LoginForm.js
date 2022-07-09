@@ -39,37 +39,39 @@ const LoginForm = () => {
 
   return (
     <>
-    <form id='login-form' onSubmit={e => e.preventDefault()}>
-      <div id='login-errors-div'>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
-      </div>
-      <div id='login-form-entry'>
-        <label htmlFor='email'>Email:</label>
-        <input
-          name='email'
-          type='text'
-          placeholder='Email'
-          value={email}
-          onChange={updateEmail}
-        />
-      </div>
-      <div id='login-form-entry'>
-        <label htmlFor='password'>Password:</label>
-        <input
-          name='password'
-          type='password'
-          placeholder='Password'
-          value={password}
-          onChange={updatePassword}
-        />
-      </div>
-        <button onClick={onLogin} id='login-form-button' type='submit'>Login</button>
+      <form id='login-form' onSubmit={onLogin}>
+        <div id='signup-errors'>
+          {errors.map((error, ind) => (
+            <div key={ind}>{error}</div>
+          ))}
+        </div>
+        <div id='login-form-entry'>
+          <label htmlFor='email'>Email:</label>
+          <input
+            required
+            name='email'
+            type='text'
+            placeholder='Email'
+            value={email}
+            onChange={updateEmail}
+          />
+        </div>
+        <div id='login-form-entry'>
+          <label htmlFor='password'>Password:</label>
+          <input
+            required
+            name='password'
+            type='password'
+            placeholder='Password'
+            value={password}
+            onChange={updatePassword}
+          />
+        </div>
+        <button id='login-form-button' type='submit'>Login</button>
         <p id='login-form-demo-header'>Try without signup?</p>
-    </form>
-        <button id='login-form-button-demo' onClick={(e)=> handleDemoClick(e)} >Demo User</button>
-      </>
+      </form>
+      <button id='login-form-button-demo' onClick={(e) => handleDemoClick(e)} >Demo User</button>
+    </>
   );
 };
 
