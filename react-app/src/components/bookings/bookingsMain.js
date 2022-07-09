@@ -54,7 +54,7 @@ function BookingsMain({thisProperty}) {
             const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24) + 1);
             setCost((diffDays * thisProperty?.price) + thisProperty?.service_fee)
         }
-        
+        // eslint-disable-next-line
     }, [start_date, end_date, cost, setCost, thisProperty?.price, thisProperty?.service_fee])
 
 

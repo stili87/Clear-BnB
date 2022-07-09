@@ -1,0 +1,145 @@
+#splash-page-full-container {
+    background-image: url('https://wallpaperaccess.com/full/4207573.jpg') ;
+    background-size: cover;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px
+}
+
+#splash-page-header {
+    margin-top: 150px;
+    color: white;
+    font-size: 65px;
+    font-weight: 700;
+    -webkit-text-stroke-width: .5px;
+    -webkit-text-stroke-color: black;
+}
+
+#splash-page-sub-header {
+    color: white;
+    font-size: 30px;
+    font-weight: 600;
+    -webkit-text-stroke-width: .5px;
+    -webkit-text-stroke-color: black;
+}
+
+#splash-page-login-signup-div {
+    display: flex;
+    border: 1px white solid;
+    width: 700px;
+    height: 450px;
+    background-color: rgb(44, 44, 44);
+    opacity: .85;
+    border-radius: 25px;
+}
+
+#login-signup-div-left, #login-signup-div-right {
+    height: 100%;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    color: white;
+    -webkit-text-stroke-width: .5px;
+    -webkit-text-stroke-color: black;
+    font-size: 25px;
+    font-weight:900;
+
+
+}
+
+#login-signup-div-left {
+    border-right: 1px solid white;
+}
+
+#login-signup-header {
+    margin-top: 40px;
+}
+
+#login-form {
+    font-size: 22px;
+    padding-left: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+}
+
+#login-form-entry {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+#login-form-button {
+    align-self: center;
+    width: 150px;
+    padding: 6px;
+    border-radius: 15px;
+    background-color: rgb(245, 158, 52);
+}
+
+#login-form-button:hover {
+    text-decoration: underline;
+    cursor: pointer;
+    box-shadow: 2px 2px 2px black;
+}
+
+#login-form-demo-header {
+    align-self: center;
+    font-size: 18px;
+}
+
+#login-form-button-demo {
+    align-self: center;
+    width: 150px;
+    padding: 6px;
+    border-radius: 15px;
+    background-color: rgb(245, 158, 52);
+}
+
+#login-form-button-demo:hover {
+    text-decoration: underline;
+    cursor: pointer;
+    box-shadow: 2px 2px 2px black;
+}
+
+#signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#signup-form-entry {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: 15px;
+}
+
+.custom-file-upload {
+    border: 1px solid #ccc;
+    padding: 6px;
+    cursor: pointer;
+    border-radius: 10px;
+    align-self: center;
+    justify-self: center;
+    background-color: rgb(245, 158, 52);
+    color: black;
+    font-weight: 100;
+  }
+
+.pfp {
+    display: none;
+}
+
+#signup-text-area {
+    resize: none;
+    width: 178px;
+}

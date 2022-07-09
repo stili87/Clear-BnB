@@ -235,7 +235,6 @@ const NewProperty = () => {
                 <label>Select Property Types</label>
                 <Multiselect
                     id="property-creation-multi"
-
                     options={types}
                     onSelect={onSelectTypes}
                     onRemove={onSelectTypes}

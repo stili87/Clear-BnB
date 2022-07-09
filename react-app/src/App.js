@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar';
@@ -17,11 +17,13 @@ import EditProperty from './components/properties/EditProperty/editProperty';
 import { getBookingsThunk } from './store/bookings';
 import Profile from './components/profile/profile';
 import BookingsEdit from './components/bookings/bookingsEdit';
+import SplashPage from './components/splashPage/splashPage';
 
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
+  const sessionUser = useSelector(state => state.session.user)
 
   useEffect(() => {
     (async() => {
@@ -40,10 +42,10 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
+      {sessionUser && <NavBar />}
       <Switch>
         <Route exact={true} path='/'>
-          <h1>Splash page</h1>
+          <SplashPage />
         </Route>
         <Route path='/login' exact={true}>
           <LoginForm />

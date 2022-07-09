@@ -18,6 +18,13 @@ const LoginForm = () => {
     }
   };
 
+  const handleDemoClick = async e => {
+    e.preventDefault()
+    const demoLogin = 'demo@aa.io'
+    const demoPass = 'password'
+    dispatch(login(demoLogin, demoPass))
+  }
+
   const updateEmail = (e) => {
     setEmail(e.target.value);
   };
@@ -31,14 +38,15 @@ const LoginForm = () => {
   }
 
   return (
-    <form onSubmit={onLogin}>
-      <div>
+    <>
+    <form id='login-form' onSubmit={e => e.preventDefault()}>
+      <div id='login-errors-div'>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
       </div>
-      <div>
-        <label htmlFor='email'>Email</label>
+      <div id='login-form-entry'>
+        <label htmlFor='email'>Email:</label>
         <input
           name='email'
           type='text'
@@ -47,8 +55,8 @@ const LoginForm = () => {
           onChange={updateEmail}
         />
       </div>
-      <div>
-        <label htmlFor='password'>Password</label>
+      <div id='login-form-entry'>
+        <label htmlFor='password'>Password:</label>
         <input
           name='password'
           type='password'
@@ -56,9 +64,12 @@ const LoginForm = () => {
           value={password}
           onChange={updatePassword}
         />
-        <button type='submit'>Login</button>
       </div>
+        <button onClick={onLogin} id='login-form-button' type='submit'>Login</button>
+        <p id='login-form-demo-header'>Try without signup?</p>
     </form>
+        <button id='login-form-button-demo' onClick={(e)=> handleDemoClick(e)} >Demo User</button>
+      </>
   );
 };
 

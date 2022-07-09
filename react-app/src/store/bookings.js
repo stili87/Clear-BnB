@@ -30,8 +30,6 @@ export const editBookingThunk = editBooking => async dispatch => {
 
     const {
         bookingId,
-        user_id,
-        property_id,
         start_date,
         end_date,
         cost,
@@ -39,8 +37,6 @@ export const editBookingThunk = editBooking => async dispatch => {
     } = editBooking
 
     const formData = new FormData()
-    formData.append('user_id', user_id)
-    formData.append('property_id', property_id)
     formData.append('start_date', start_date)
     formData.append('end_date', end_date)
     formData.append('cost', cost)
