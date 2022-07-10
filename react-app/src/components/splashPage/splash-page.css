@@ -6,16 +6,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 25px
+    gap: 25px;
+    padding-bottom: 50px;
 }
 
 #splash-page-header {
-    margin-top: 150px;
+    margin-top: 75px;
     color: white;
-    font-size: 65px;
-    font-weight: 700;
-    -webkit-text-stroke-width: .5px;
-    -webkit-text-stroke-color: black;
+    height: 200px;
+
 }
 
 #splash-page-sub-header {
@@ -60,6 +59,10 @@
     margin-top: 40px;
 }
 
+.login-signup-header-rightaa {
+    margin-bottom: 45px;
+}
+
 #login-form {
     font-size: 22px;
     padding-left: 10px;
@@ -73,6 +76,10 @@
     display: flex;
     justify-content: space-between;
     gap: 10px;
+}
+
+.login-form-last-entry {
+    margin-bottom: 25px;
 }
 
 #login-form-button {
@@ -91,6 +98,7 @@
 
 #login-form-demo-header {
     align-self: center;
+
     font-size: 18px;
 }
 

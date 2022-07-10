@@ -56,7 +56,7 @@ const LoginForm = () => {
             onChange={updateEmail}
           />
         </div>
-        <div id='login-form-entry'>
+        <div id='login-form-entry' className='login-form-last-entry'>
           <label htmlFor='password'>Password:</label>
           <input
             required

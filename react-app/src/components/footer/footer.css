@@ -5,7 +5,7 @@
     width: 100vw;
     overflow: hidden;
     background-color: bisque;
-    position: absolute;
+    position: relative;
     bottom: 0;
 }
 

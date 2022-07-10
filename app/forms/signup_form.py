@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, TextAreaField
-from wtforms.validators import DataRequired, Email, ValidationError
+from wtforms.validators import DataRequired, ValidationError, Email
 from app.models import User
 
 def username_length(form, field):
@@ -36,7 +36,7 @@ def check_password(form, field):
 class SignUpForm(FlaskForm):
     username = StringField(
         'username', validators=[DataRequired(), username_exists, username_length])
-    email = StringField('email', validators=[DataRequired(), user_exists, check_length])
+    email = StringField('email', validators=[DataRequired(), Email("Please enter a proper email address."), user_exists, check_length, ])
     password = StringField('password', validators=[DataRequired(), check_length, check_password])
     name = StringField('name', validators=[DataRequired(), check_length])
     bio = TextAreaField('bio')
