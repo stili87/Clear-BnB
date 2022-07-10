@@ -42,7 +42,6 @@ const SignUpForm = () => {
       if (data) {
         setErrors(data);
       } else {
-        // await dispatch(getAllUsersThunk())
         <Redirect to='/home' />
       }
     } else {

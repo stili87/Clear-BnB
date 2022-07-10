@@ -43,7 +43,7 @@ function SinglePropertyDisplay() {
                 <div id='single-property-information'>
                     <div id='single-property-info-host'>
                         <div id='single-property-info-host-left'>
-                            <p id='single-property-owner-name'>Hosted by {owner.name}</p>
+                            <p id='single-property-owner-name'>Hosted by {owner?.name}</p>
                             <p id='single-property-info-details'>{thisProperty?.guests} guests - {thisProperty?.bedrooms} bedrooms - {thisProperty?.bathrooms} bathrooms</p>
 
                         </div>

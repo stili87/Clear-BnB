@@ -14,7 +14,7 @@ const HomeSingleProperty = ({property}) => {
     const cost = formatter.format(property?.price)
 
     return (
-        <Link to={`/properties/${property.id}`} id="home-single-property-container">
+        <Link to={`/properties/${property?.id}`} id="home-single-property-container">
             <img id="single-home-property-image" alt='property-front' src={property?.photo1_url} />
             <p id="single-home-property-location">{property?.city}, {property?.state}</p>
             <p id="single-home-property-title">{property?.title}</p>

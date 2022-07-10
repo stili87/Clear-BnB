@@ -106,10 +106,10 @@ const NewProperty = () => {
         <div id='property-creation-container'>
             <h1 id='property-creation-header'> Create A New Property </h1>
             <form id='property-new-form' onSubmit={e => handleOnSubmit(e)}>
-                {errors.length > 0 &&
+                {errors?.length > 0 &&
                     <ul>
                         <p id="property-creation-errors-header">Please fix the following errors:</p>
-                        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+                        {errors?.map((error, idx) => <li key={idx}>{error}</li>)}
                     </ul>
                 }
                 <label>Property Title</label>

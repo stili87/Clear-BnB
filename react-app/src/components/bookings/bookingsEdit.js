@@ -7,7 +7,7 @@ import './bookings.css'
 function BookingsEdit() {
     const bookingId = Number(useParams().id)
     const thisBooking = useSelector(state => state.bookings)[bookingId]
-    const thisProperty = useSelector(state => state.properties)[thisBooking.property_id]
+    const thisProperty = useSelector(state => state.properties)[thisBooking?.property_id]
 
     const today = new Date()
     const day = 60 * 60 * 24 * 1000
@@ -66,9 +66,9 @@ function BookingsEdit() {
         const editBooking = {
             bookingId,
             user_id: sessionUser?.id,
-            property_id: thisProperty.id,
-            start_date: start_date.toISOString().split('T')[0],
-            end_date: end_date.toISOString().split('T')[0],
+            property_id: thisProperty?.id,
+            start_date: start_date?.toISOString().split('T')[0],
+            end_date: end_date?.toISOString().split('T')[0],
             cost,
             guests
         }
@@ -83,18 +83,18 @@ function BookingsEdit() {
 
     return (
         <form onSubmit={e=> handleBookingSubmit(e)} id='bookings-form'>
-            {errors.length > 0 &&
+            {errors?.length > 0 &&
                     <ul>
                         <p id="property-creation-errors-header">Please fix the following errors:</p>
-                        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+                        {errors?.map((error, idx) => <li key={idx}>{error}</li>)}
                     </ul>
                 }
             <label>Pick Dates</label>
             <div id='bookings-dates-selection'>
                 <label>Start Date</label>
-                <input value={start_date.toISOString().split('T')[0]} onChange={e => setStart_date(new Date(e.target.value))} type='date'></input>
+                <input value={start_date?.toISOString().split('T')[0]} onChange={e => setStart_date(new Date(e.target.value))} type='date'></input>
                 <label>End Date</label>
-                <input value={end_date.toISOString().split('T')[0]} onChange={e => setEnd_date(new Date(e.target.value))} type='date'></input>
+                <input value={end_date?.toISOString().split('T')[0]} onChange={e => setEnd_date(new Date(e.target.value))} type='date'></input>
             </div>
             <label>Number of Guests (maximum = {thisProperty?.guests})</label>
             <div id='bookings-guests-selection'>

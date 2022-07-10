@@ -11,9 +11,9 @@ function Profile() {
 
 return (
     <div id='profile-full-container'>
-        <h1>Hello {sessionUser.name}</h1>
+        <h1>Hello {sessionUser?.name}</h1>
         <div id='profile-bookings-container'>
-            {bookings.length > 0 && bookings?.map(booking => <ProfileBooking key={booking.id} booking={booking} />)}
+            {bookings?.length > 0 && bookings?.map(booking => <ProfileBooking key={booking.id} booking={booking} />)}
         </div>
 
     </div>
