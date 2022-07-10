@@ -1,5 +1,141 @@
 #single-property-display-full {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    margin-top: 25px;
+    margin-left: 45px;
+    margin-right: 45px;
+    margin-bottom: 300px;
+    gap: 20px;
+}
+
+#single-property-display-header {
+    display: flex;
+    flex-direction: column;
+    margin-left: 200px;
+    gap: 8px;
+}
+
+
+#single-property-title {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+#single-property-2nd {
+    display: flex;
+}
+
+#single-property-location {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+#single-property-display-photos {
+    display: flex;
+    overflow: hidden;
+    border-radius: 20px;
+    gap: 10px;
+    justify-content: center;
+    width: 630px;
+    margin-left: 200px;
+}
+
+#single-property-main-img {
+    height: 415px;
+    width: 415px;
+    object-fit: cover;
+}
+
+#single-property-secondary-img {
+    height: 205px;
+    width: 205px;
+    object-fit: cover;
+}
+
+#single-property-extra-photos {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+#single-property-edit-button {
+    width: 150px;
+    padding: 6px;
+    align-self: center;
+    border-radius: 25px;
+    cursor: pointer;
+    background-color: bisque;
+    font-weight: 600;
+}
+
+#single-property-under-photos {
+    display: flex;
+    gap: 30px;
+    width: 78%;
+    align-self: center;
+}
+
+#single-property-information {
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+}
+
+#single-property-info-host {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 15px;
+    border-bottom: 1px solid lightgrey;
+}
+
+#single-property-owner-img {
+    height: 35px;
+    border-radius: 50%;
+}
+
+#single-property-owner-name {
+    font-weight: 600;
+    font-size: 15px;
+}
+
+#single-property-info-host-left {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+#single-property-info-details {
+    font-size: 15px;
+
+}
+
+#single-property-description {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid lightgrey;
+}
+
+#single-property-type-list {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 100px;
+    gap: 8px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid lightgrey;
+    width: 100%;
+}
+
+#single-property-types {
+    gap: 10px;
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+#single-property-description {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex-wrap: wrap;
 }

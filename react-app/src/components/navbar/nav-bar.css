@@ -9,13 +9,16 @@
 
 #nav-bar-logo {
     height: 50px;
+    margin-left: 200px;
 
 }
 
 #nav-bar-right-container {
     display: flex;
     align-items: center;
-    justify-content:center;
+    justify-content:space-between;
+    width: 200px;
+    margin-right: 200px;
 }
 
 #nav-bar-profile-button {
@@ -31,8 +34,8 @@
 
 #nav-bar-drop-down {
     position: absolute;
-    margin-top: 280px;
-    right: 25px;
+    margin-top: 300px;
+    right: 250px;
     width: 200px;
     display: flex;
     flex-direction: column;
@@ -62,7 +65,6 @@
     color: black;
     font-weight: bolder;
     font-size: 15px;
-    width: 180px;
     padding: 10px;
     cursor: pointer;
 }

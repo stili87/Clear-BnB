@@ -1,11 +1,11 @@
 #footer-container {
     display: flex;
     justify-content: space-around;
-    height: 176px;
+    height: 10.5rem;
     width: 100vw;
     overflow: hidden;
     background-color: bisque;
-    position: relative;
+    position: absolute;
     bottom: 0;
 }
 

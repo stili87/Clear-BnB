@@ -49,9 +49,7 @@ function BookingsMain({thisProperty}) {
             setCost(thisProperty?.price + thisProperty?.service_fee)
         }else {
             const diffTime = Math.abs(new Date(start_date) - new Date(end_date))
-            console.log(diffTime)
-            // Need to add one to account for arrival day. 
-            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24) + 1);
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
             setCost((diffDays * thisProperty?.price) + thisProperty?.service_fee)
         }
         // eslint-disable-next-line

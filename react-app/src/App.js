@@ -15,7 +15,8 @@ import { getBookingsThunk } from './store/bookings';
 import Profile from './components/profile/profile';
 import BookingsEdit from './components/bookings/bookingsEdit';
 import SplashPage from './components/splashPage/splashPage';
-import Footer from './components/footer/footer';
+import { getUsersThunk } from './store/users';
+
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
       await dispatch(getAmenitiesThunk())
       await dispatch(getTypesThunk())
       await dispatch(getBookingsThunk())
+      await dispatch(getUsersThunk())
       setLoaded(true);
     })();
   }, [dispatch]);
@@ -39,6 +41,7 @@ function App() {
   }
 
   return (
+    <div id='content-wrap'>
     <BrowserRouter>
       {sessionUser && <NavBar />}
       <Switch>
@@ -67,8 +70,8 @@ function App() {
           <h1>Page Not found</h1>
         </Route>
       </Switch>
-      <Footer />
     </BrowserRouter>
+      </div>
   );
 }
 
