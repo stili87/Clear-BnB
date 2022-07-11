@@ -33,7 +33,10 @@ export const editBookingThunk = editBooking => async dispatch => {
         start_date,
         end_date,
         cost,
-        guests
+        guests,
+        property_id,
+        user_id
+
     } = editBooking
 
     const formData = new FormData()
@@ -41,6 +44,8 @@ export const editBookingThunk = editBooking => async dispatch => {
     formData.append('end_date', end_date)
     formData.append('cost', cost)
     formData.append('guests', guests)
+    formData.append('property_id', property_id)
+    formData.append('user_id', user_id)
 
     const response = await fetch(`/api/bookings/${bookingId}`,{
         method: 'PUT',
@@ -111,7 +116,7 @@ export const deleteBookingThunk = bookingId => async dispatch => {
 const bookingReducer = (state={}, action) => {
     switch (action.type) {
         case GET_BOOKINGS:
-            let newAllState = {...state}
+            let newAllState = {}
             action.bookings.forEach(booking => newAllState[booking.id] = booking)
             return newAllState
         case ADD_BOOKING:

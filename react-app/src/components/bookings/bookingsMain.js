@@ -4,17 +4,17 @@ import { useHistory } from 'react-router-dom'
 import { addBookingThunk } from '../../store/bookings'
 import './bookings.css'
 
-function BookingsMain({thisProperty}) {
+function BookingsMain({ thisProperty }) {
     const today = new Date()
     const day = 60 * 60 * 24 * 1000
     const tommorrow = new Date(today.getTime() + day)
     const nextDay = new Date(tommorrow.getTime() + day)
-    
+
     const sessionUser = useSelector(state => state.session.user)
     const [errors, setErrors] = useState([])
     const [start_date, setStart_date] = useState(tommorrow)
     const [end_date, setEnd_date] = useState(nextDay)
-    const [guests, setGuests]  = useState(0)
+    const [guests, setGuests] = useState(1)
     const [cost, setCost] = useState(thisProperty?.price * 2 || 0)
     const [disabled, setDisabled] = useState(false)
     const [totalDays, setTotalDays] = useState(1)
@@ -26,30 +26,23 @@ function BookingsMain({thisProperty}) {
         currency: 'USD'
     })
 
-    useEffect(() => {
-        if (guests < 1) {
-            setGuests(1)
-        } else if (guests > thisProperty?.guests){
-            setGuests(thisProperty?.guests)
-        }
-    },[guests, setGuests, thisProperty, thisProperty?.guests])
 
     useEffect(() => {
-        if(end_date < start_date) {
+        if (end_date < start_date) {
             setErrors(['End Date Cannot be prior to start date'])
             setDisabled(true)
-        }else if(start_date < today) {
+        } else if (start_date < today) {
             setErrors(['Start Date Cannot be today or prior'])
             setDisabled(true)
-        }else {
+        } else {
             setErrors([])
             setDisabled(false)
         }
 
-        if(end_date === start_date){
+        if (end_date === start_date) {
             setCost(thisProperty?.price + thisProperty?.service_fee)
             setTotalDays(1)
-        }else {
+        } else {
             const diffTime = Math.abs(new Date(start_date) - new Date(end_date))
             const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
             setTotalDays(diffDays)
@@ -74,13 +67,13 @@ function BookingsMain({thisProperty}) {
         const data = await dispatch(addBookingThunk(newBooking))
         if (data) {
             setErrors(data)
-        }else {
+        } else {
             history.push('/home')
         }
     }
 
     const setAddGuest = () => {
-        if (guests >= thisProperty?.guests){
+        if (guests >= thisProperty?.guests) {
             return
         } else {
             setGuests(guests + 1)
@@ -88,7 +81,7 @@ function BookingsMain({thisProperty}) {
     }
 
     const setRemoveGuest = () => {
-        if (guests === 1){
+        if (guests === 1) {
             return
         } else {
             setGuests(guests - 1)
@@ -96,37 +89,37 @@ function BookingsMain({thisProperty}) {
     }
 
     return (
-        <form onSubmit={e=> handleBookingSubmit(e)} id='bookings-form'>
+        <form onSubmit={e => handleBookingSubmit(e)} id='bookings-form'>
             {errors?.length > 0 &&
-                    <ul>
-                        <p id="property-creation-errors-header">Please fix the following errors:</p>
-                        {errors?.map((error, idx) => <li key={idx}>{error}</li>)}
-                    </ul>
-                }
+                <div id='bookings-errors-container'>
+                    <p id="bookings-errors-header">Please fix the following errors:</p>
+                    {errors?.map((error, idx) => <p id='bookings-error' key={idx}>{error}</p>)}
+                </div>
+            }
             <div id='bookings-cost-div'>
                 <p><span id='bookings-cost-per-night'>{formatter.format(thisProperty?.price)}</span> night</p>
             </div>
             <div id='bookings-dates-selection'>
                 <div id='bookings-checkin-container'>
-                <label id='booking-checkinout-label'>CHECK-IN</label>
-                <input value={start_date?.toISOString().split('T')[0]} onChange={e => setStart_date(new Date(e.target.value))} type='date'></input>
+                    <label id='booking-checkinout-label'>CHECK-IN</label>
+                    <input value={start_date?.toISOString().split('T')[0]} onChange={e => setStart_date(new Date(e.target.value))} type='date'></input>
                 </div>
                 <div id='bookings-checkin-container'>
-                <label id='booking-checkinout-label'>CHECK-OUT </label>
-                <input value={end_date?.toISOString().split('T')[0]} onChange={e => setEnd_date(new Date(e.target.value))} type='date'></input>
+                    <label id='booking-checkinout-label'>CHECK-OUT </label>
+                    <input value={end_date?.toISOString().split('T')[0]} onChange={e => setEnd_date(new Date(e.target.value))} type='date'></input>
                 </div>
             </div>
             <div id='booking-guests-container'>
-            <label id='booking-checkinout-label'>GUESTS: ({thisProperty?.guests} MAX)</label>
-            <div id='bookings-guests-selection'>
-                <p id='bookings-guests-selection-selector' onClick={()=> setRemoveGuest()}>-</p>
-                <p id='bookings-guests-selection-number'>{guests}</p>
-                <p id='bookings-guests-selection-selector' onClick={()=> setAddGuest()}>+</p>
-            </div>
+                <label id='booking-checkinout-label'>GUESTS: ({thisProperty?.guests} MAX)</label>
+                <div id='bookings-guests-selection'>
+                    <p id='bookings-guests-selection-selector' onClick={() => setRemoveGuest()}>-</p>
+                    <p id='bookings-guests-selection-number'>{guests}</p>
+                    <p id='bookings-guests-selection-selector' onClick={() => setAddGuest()}>+</p>
+                </div>
 
             </div>
             <label id='booking-price-details-label'>Price Details</label>
-            <div id='booking-price-details-container'> 
+            <div id='booking-price-details-container'>
                 <div id='booking-price-details-containers'>
                     <p id='price-details-text'>{formatter.format(thisProperty?.price)} x {totalDays} nights</p>
                     <p id='price-details-text'>Service Fee</p>
@@ -141,9 +134,9 @@ function BookingsMain({thisProperty}) {
             </div>
             <div id='booking-total-cost-container'>
                 <p>Total Cost</p>
-            <p>{formatter.format(cost)}</p>
+                <p>{formatter.format(cost)}</p>
             </div>
-            <button id='booking-submit-button' disabled={disabled}>Reserve</button>
+            <button id='booking-submit-button' disabled={disabled}>{disabled ? 'Fix Dates before reserving' : 'Reserve'}</button>
         </form>
 
     )

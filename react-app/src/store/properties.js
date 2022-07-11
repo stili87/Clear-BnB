@@ -1,3 +1,5 @@
+import { getBookingsThunk } from "./bookings"
+
 const GET_PROPERTIES = 'properties/all'
 const ADD_PROPERTY = 'properties/add'
 const DELETE_PROPERTY = 'properties/delete'
@@ -161,7 +163,8 @@ export const deletePropertyThunk = propertyId => async dispatch => {
     })
 
     if (response.ok){
-        dispatch(deletePropertyAction(propertyId))
+        await dispatch(deletePropertyAction(propertyId))
+        await dispatch(getBookingsThunk())
     }
 }
 

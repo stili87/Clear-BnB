@@ -16,6 +16,7 @@
     display: flex;
     flex-direction: column;
     gap: 7px;
+    text-decoration: none;
 }
 
 #single-home-property-image {
@@ -28,20 +29,22 @@
 
 #single-home-property-location {
     color: #222222;
-    font-weight: 600;
+    font-weight: bolder;
     font-size: 14px;
 }
 
 #single-home-property-title {
     color: grey;
     font-size: 12px;
+    font-weight: 600;
 }
 
 #single-home-property-cost {
     color: #222222;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 600;
     letter-spacing: 0.50px;
+    font-weight:900;
 }
 
 #single-home-property-cost > span {

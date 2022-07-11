@@ -33,8 +33,8 @@ function SinglePropertyDisplay() {
             <div id='single-property-display-photos'>
                 <img alt='main' id='single-property-main-img' src={thisProperty?.photo1_url} />
                 <div id='single-property-extra-photos'>
-                    <img id='single-property-secondary-img' alt='extra' src={thisProperty?.photo2_url} />
-                    <img id='single-property-secondary-img' alt='extra' src={thisProperty?.photo3_url} />
+                    {thisProperty?.photo2_url && <img id='single-property-secondary-img' alt='extra' src={thisProperty?.photo2_url} />}
+                    {thisProperty?.photo3_url && <img id='single-property-secondary-img' alt='extra' src={thisProperty?.photo3_url} />}
                 </div>
 
             </div>

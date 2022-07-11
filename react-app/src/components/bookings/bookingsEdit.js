@@ -18,9 +18,10 @@ function BookingsEdit() {
     const [errors, setErrors] = useState([])
     const [start_date, setStart_date] = useState(new Date(thisBooking?.start_date) || tommorrow)
     const [end_date, setEnd_date] = useState(new Date(thisBooking?.end_date) || nextDay)
-    const [guests, setGuests]  = useState(0)
+    const [guests, setGuests]  = useState(thisBooking?.guests || 1)
     const [cost, setCost] = useState(thisProperty?.price * 2 || 0)
     const [disabled, setDisabled] = useState(false)
+    const [totalDays, setTotalDays] = useState(1)
     const dispatch = useDispatch()
     const history = useHistory()
 
@@ -29,20 +30,16 @@ function BookingsEdit() {
         currency: 'USD'
     })
 
-    useEffect(() => {
-        if (guests < 1) {
-            setGuests(1)
-        } else if (guests > thisProperty?.guests){
-            setGuests(thisProperty?.guests)
-        }
-    },[guests, setGuests, thisProperty, thisProperty?.guests])
+    if (sessionUser?.id != thisBooking?.user_id){
+        history.push('/')
+    }
 
     useEffect(() => {
         if(end_date < start_date) {
-            setErrors(['End Date Cannot be prior to start date'])
+            setErrors(['End Date cannot be prior to start date'])
             setDisabled(true)
         }else if(start_date < today) {
-            setErrors(['Start Date Cannot be today or prior'])
+            setErrors(['Start Date cannot be today or prior'])
             setDisabled(true)
         }else {
             setErrors([])
@@ -51,9 +48,11 @@ function BookingsEdit() {
 
         if(end_date === start_date){
             setCost(thisProperty?.price + thisProperty?.service_fee)
+            setTotalDays(1)
         }else {
             const diffTime = Math.abs(new Date(start_date) - new Date(end_date))
             const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            setTotalDays(diffDays)
             setCost((diffDays * thisProperty?.price) + thisProperty?.service_fee)
         }
         // eslint-disable-next-line
@@ -81,30 +80,71 @@ function BookingsEdit() {
         }
     }
 
+    const setAddGuest = () => {
+        if (guests >= thisProperty?.guests){
+            return
+        } else {
+            setGuests(guests + 1)
+        }
+    }
+
+    const setRemoveGuest = () => {
+        if (guests === 1){
+            return
+        } else {
+            setGuests(guests - 1)
+        }
+    }
+
     return (
         <form onSubmit={e=> handleBookingSubmit(e)} id='bookings-form'>
             {errors?.length > 0 &&
-                    <ul>
-                        <p id="property-creation-errors-header">Please fix the following errors:</p>
-                        {errors?.map((error, idx) => <li key={idx}>{error}</li>)}
-                    </ul>
+                    <div id='bookings-errors-container'>
+                        <p id="bookings-errors-header">Please fix the following errors:</p>
+                        {errors?.map((error, idx) => <p id='bookings-error' key={idx}>{error}</p>)}
+                    </div>
                 }
-            <label>Pick Dates</label>
+            <div id='bookings-cost-div'>
+                <p><span id='bookings-cost-per-night'>{formatter.format(thisProperty?.price)}</span> night</p>
+            </div>
             <div id='bookings-dates-selection'>
-                <label>Start Date</label>
+                <div id='bookings-checkin-container'>
+                <label id='booking-checkinout-label'>CHECK-IN</label>
                 <input value={start_date?.toISOString().split('T')[0]} onChange={e => setStart_date(new Date(e.target.value))} type='date'></input>
-                <label>End Date</label>
+                </div>
+                <div id='bookings-checkin-container'>
+                <label id='booking-checkinout-label'>CHECK-OUT </label>
                 <input value={end_date?.toISOString().split('T')[0]} onChange={e => setEnd_date(new Date(e.target.value))} type='date'></input>
+                </div>
             </div>
-            <label>Number of Guests (maximum = {thisProperty?.guests})</label>
+            <div id='booking-guests-container'>
+            <label id='booking-checkinout-label'>GUESTS: ({thisProperty?.guests} MAX)</label>
             <div id='bookings-guests-selection'>
-                <p id='bookings-guests-selection-selector' onClick={()=> setGuests(guests-1)}>-</p>
+                <p id='bookings-guests-selection-selector' onClick={()=> setRemoveGuest()}>-</p>
                 <p id='bookings-guests-selection-number'>{guests}</p>
-                <p id='bookings-guests-selection-selector' onClick={()=> setGuests(guests+1)}>+</p>
+                <p id='bookings-guests-selection-selector' onClick={()=> setAddGuest()}>+</p>
             </div>
-            <label>Total Cost</label>
+
+            </div>
+            <label id='booking-price-details-label'>Price Details</label>
+            <div id='booking-price-details-container'> 
+                <div id='booking-price-details-containers'>
+                    <p id='price-details-text'>{formatter.format(thisProperty?.price)} x {totalDays} nights</p>
+                    <p id='price-details-text'>Service Fee</p>
+
+                </div>
+                <div id='booking-price-details-containers'>
+                    <p id='price-details-text'>{formatter.format(thisProperty?.price * totalDays)}</p>
+                    <p id='price-details-text'>{formatter.format(thisProperty?.service_fee)}</p>
+
+                </div>
+
+            </div>
+            <div id='booking-total-cost-container'>
+                <p>Total Cost</p>
             <p>{formatter.format(cost)}</p>
-            <button disabled={disabled}>Submit Booking</button>
+            </div>
+            <button id='booking-submit-button' disabled={disabled}>{disabled ? 'Fix Dates before reserving' : 'Reserve'}</button>
         </form>
 
     )

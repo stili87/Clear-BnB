@@ -16,9 +16,6 @@
     margin-bottom: 100px;
 }
 
-#property-new-form > textarea{
-    resize: none;
-}
 
 #new-property-form-button-container {
     display: flex;
@@ -35,4 +32,31 @@
 #new-property-delete-buttons-container {
     display: flex;
     justify-content: space-around;
+}
+
+#property-creation-item-containter {
+    display: flex;
+    justify-content: space-between;
+    width: 500px;
+    gap: 25px;
+    
+}
+#property-new-form > div > textarea{
+    resize: none;
+    width: 303px;
+    height: 70px;
+}
+
+#property-new-form > div > input{
+    width: 300px;
+}
+
+#property-creation-button-container {
+    display: flex;
+    gap: 25px;
+}
+
+.property-creation-buttons {
+    justify-self: center;
+    margin-right: 85px;
 }

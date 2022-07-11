@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import ProfileBooking from './profileBookings';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import './profile.css'
+import { getBookingsThunk } from '../../store/bookings';
 
 
 function Profile() {
