@@ -1,19 +1,68 @@
+#profile-full-container {
+    margin-top: 75px;
+    display: flex;
+    flex-direction: column;
+}
 
-#profile-bookings-container {
+#profile-user-info-container {
+    display: flex;
+    gap: 50px;
+}
+
+#profile-img-container{
+    border: 1px solid lightgray;
+    border-radius: 20px;
+    padding: 20px 75px;
     display: flex;
     flex-direction: column;
     gap: 25px;
 }
 
-#profile-confirm-delete {
-    display: flex;
-    gap:25px;
+#profile-img {
+    height: 175px;
+    border-radius: 50%;
 }
 
-#profile-single-booking-container {
+#profile-user-info-right {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    width: 600px;
-    gap: 10px;
+    width: 900px;
+}
+
+#profile-page-name {
+    font-size: 45px;
+    font-weight: 500;
+    padding-bottom: 25px;
+    border-bottom: 1px solid lightgray;
+    width: 100%;
+}
+
+#profile-reviews-by-user {
+    margin-top: 25px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid lightgray;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 25px
+}
+
+
+#profile-reviews-header {
+    text-decoration: underline;
+}
+
+#profile-links-container {
+    display: flex;
+    gap: 15px;
+}
+
+#profile-link {
+    text-decoration: none;
+    font-weight: 600;
+    color: darkgreen;
+}
+
+#profile-link:hover {
+    text-decoration: underline;
 }

@@ -32,9 +32,9 @@ const NavBar = () => {
         {displayDropDown &&
           <div id='nav-bar-drop-down'>
             <Link onClick={() => setDisplayDropDown(false)} className='nav-bar-drop-down-link' to='/home'>Home</Link>
-            <Link onClick={() => setDisplayDropDown(false)} className='nav-bar-drop-down-link' to='/profile'>My Profile</Link>
-            <Link onClick={() => setDisplayDropDown(false)} className='nav-bar-drop-down-link' to='/bookings'>My Trips</Link>
-            <Link onClick={() => setDisplayDropDown(false)} className='nav-bar-drop-down-link' to='/listings'>My Listings</Link>
+            <Link onClick={() => setDisplayDropDown(false)} className='nav-bar-drop-down-link' to={`/profile/${sessionUser?.id}`}>My Profile</Link>
+            <Link onClick={() => setDisplayDropDown(false)} className='nav-bar-drop-down-link' to='/mytrips'>My Trips</Link>
+            <Link onClick={() => setDisplayDropDown(false)} className='nav-bar-drop-down-link' to='/myproperties'>My Properties</Link>
             <Link onClick={() => setDisplayDropDown(false)} className='nav-bar-drop-down-link' to='/properties/new'>Host Your Home</Link>
             <LogoutButton />
           </div>}

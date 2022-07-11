@@ -16,6 +16,7 @@ import Profile from './components/profile/profile';
 import BookingsEdit from './components/bookings/bookingsEdit';
 import SplashPage from './components/splashPage/splashPage';
 import { getUsersThunk } from './store/users';
+import { getReviewsThunk } from './store/reviews';
 
 
 
@@ -32,6 +33,7 @@ function App() {
       await dispatch(getTypesThunk())
       await dispatch(getBookingsThunk())
       await dispatch(getUsersThunk())
+      await dispatch(getReviewsThunk())
       setLoaded(true);
     })();
   }, [dispatch]);
@@ -60,7 +62,7 @@ function App() {
         <ProtectedRoute path='/properties/:id/edit' exact={true} >
           <EditProperty />
         </ProtectedRoute>
-        <ProtectedRoute path='/profile' exact={true} >
+        <ProtectedRoute path='/profile/:id' exact={true} >
           <Profile />
         </ProtectedRoute>
         <ProtectedRoute path='/bookings/:id/edit' exact={true} >

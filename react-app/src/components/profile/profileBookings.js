@@ -25,7 +25,7 @@ function ProfileBooking({booking}) {
     return (
         <div id='profile-single-booking-container'>
             <p id='profile-booking-header'>
-            Hello from booking at {property?.title}
+            You have booked a trip at {property?.title}
             </p>
             <p id='profile-booking-dates'>
                 You are booked from {startDayOfWeek}, {startMonth} {startDay} {startYear} to {endDayOfWeek}, {endMonth} {endDay} {endYear}

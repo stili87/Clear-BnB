@@ -172,7 +172,7 @@ export const deletePropertyThunk = propertyId => async dispatch => {
 const propertyReducer = (state = {}, action) => {
     switch (action.type) {
         case GET_PROPERTIES:
-            let newAllState = { ...state }
+            let newAllState = {}
             action.properties.forEach(property => newAllState[property.id] = property)
             return newAllState
         case ADD_PROPERTY:

@@ -6,6 +6,7 @@ import amenityReducer from './amenities';
 import typesReducer from './types';
 import bookingReducer from './bookings';
 import usersReducer from './users';
+import reviewsReducer from './reviews';
 
 
 const rootReducer = combineReducers({
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
   amenities: amenityReducer,
   types: typesReducer,
   bookings: bookingReducer,
-  users: usersReducer
+  users: usersReducer,
+  reviews: reviewsReducer
 });
 
 
