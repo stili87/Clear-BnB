@@ -17,6 +17,7 @@ function BookingsMain({thisProperty}) {
     const [guests, setGuests]  = useState(0)
     const [cost, setCost] = useState(thisProperty?.price * 2 || 0)
     const [disabled, setDisabled] = useState(false)
+    const [totalDays, setTotalDays] = useState(1)
     const dispatch = useDispatch()
     const history = useHistory()
 
@@ -47,9 +48,11 @@ function BookingsMain({thisProperty}) {
 
         if(end_date === start_date){
             setCost(thisProperty?.price + thisProperty?.service_fee)
+            setTotalDays(1)
         }else {
             const diffTime = Math.abs(new Date(start_date) - new Date(end_date))
             const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            setTotalDays(diffDays)
             setCost((diffDays * thisProperty?.price) + thisProperty?.service_fee)
         }
         // eslint-disable-next-line
@@ -76,6 +79,22 @@ function BookingsMain({thisProperty}) {
         }
     }
 
+    const setAddGuest = () => {
+        if (guests >= thisProperty?.guests){
+            return
+        } else {
+            setGuests(guests + 1)
+        }
+    }
+
+    const setRemoveGuest = () => {
+        if (guests === 1){
+            return
+        } else {
+            setGuests(guests - 1)
+        }
+    }
+
     return (
         <form onSubmit={e=> handleBookingSubmit(e)} id='bookings-form'>
             {errors?.length > 0 &&
@@ -84,22 +103,47 @@ function BookingsMain({thisProperty}) {
                         {errors?.map((error, idx) => <li key={idx}>{error}</li>)}
                     </ul>
                 }
-            <label>Pick Dates</label>
+            <div id='bookings-cost-div'>
+                <p><span id='bookings-cost-per-night'>{formatter.format(thisProperty?.price)}</span> night</p>
+            </div>
             <div id='bookings-dates-selection'>
-                <label>Start Date</label>
+                <div id='bookings-checkin-container'>
+                <label id='booking-checkinout-label'>CHECK-IN</label>
                 <input value={start_date?.toISOString().split('T')[0]} onChange={e => setStart_date(new Date(e.target.value))} type='date'></input>
-                <label>End Date</label>
+                </div>
+                <div id='bookings-checkin-container'>
+                <label id='booking-checkinout-label'>CHECK-OUT </label>
                 <input value={end_date?.toISOString().split('T')[0]} onChange={e => setEnd_date(new Date(e.target.value))} type='date'></input>
+                </div>
             </div>
-            <label>Number of Guests (maximum = {thisProperty?.guests})</label>
+            <div id='booking-guests-container'>
+            <label id='booking-checkinout-label'>GUESTS: ({thisProperty?.guests} MAX)</label>
             <div id='bookings-guests-selection'>
-                <p id='bookings-guests-selection-selector' onClick={()=> setGuests(guests-1)}>-</p>
+                <p id='bookings-guests-selection-selector' onClick={()=> setRemoveGuest()}>-</p>
                 <p id='bookings-guests-selection-number'>{guests}</p>
-                <p id='bookings-guests-selection-selector' onClick={()=> setGuests(guests+1)}>+</p>
+                <p id='bookings-guests-selection-selector' onClick={()=> setAddGuest()}>+</p>
             </div>
-            <label>Total Cost</label>
+
+            </div>
+            <label id='booking-price-details-label'>Price Details</label>
+            <div id='booking-price-details-container'> 
+                <div id='booking-price-details-containers'>
+                    <p id='price-details-text'>{formatter.format(thisProperty?.price)} x {totalDays} nights</p>
+                    <p id='price-details-text'>Service Fee</p>
+
+                </div>
+                <div id='booking-price-details-containers'>
+                    <p id='price-details-text'>{formatter.format(thisProperty?.price * totalDays)}</p>
+                    <p id='price-details-text'>{formatter.format(thisProperty?.service_fee)}</p>
+
+                </div>
+
+            </div>
+            <div id='booking-total-cost-container'>
+                <p>Total Cost</p>
             <p>{formatter.format(cost)}</p>
-            <button disabled={disabled}>Submit Booking</button>
+            </div>
+            <button id='booking-submit-button' disabled={disabled}>Reserve</button>
         </form>
 
     )

@@ -104,7 +104,6 @@ export const deleteBookingThunk = bookingId => async dispatch => {
     })
 
     if (response.ok){
-        console.log('thunk before action',)
         dispatch(deleteBookingAction(bookingId))
     }
 }
@@ -118,7 +117,6 @@ const bookingReducer = (state={}, action) => {
         case ADD_BOOKING:
             return {...state, [action.booking.id]: action.booking}
         case DELETE_BOOKING:
-            console.log('thunk after action',)
             let newDeleteState = {...state}
             delete newDeleteState[action.bookingId]
             return newDeleteState

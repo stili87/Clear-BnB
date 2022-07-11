@@ -70,8 +70,6 @@ const EditProperty = () => {
             photo3_url
         }
 
-        console.log(property_types)
-
         const data = await dispatch(editPropertyThunk(editProperty))
         if (data) {
             setErrors(data)

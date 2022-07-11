@@ -18,7 +18,6 @@ function ProfileBooking({booking}) {
 
 
     const handleBookingDelete = async () => {
-        console.log(booking?.id)
         await dispatch(deleteBookingThunk(booking?.id))
     }
 

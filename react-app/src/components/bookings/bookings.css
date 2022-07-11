@@ -4,6 +4,43 @@
     gap: 15px
 }
 
+#bookings-form {
+    border: 1px solid lightgrey;
+    padding: 25px;
+    border-radius: 25px;
+    width: 300px;
+}
+
+#bookings-dates-selection {
+    border: 1px solid lightgrey;
+    padding: 12px;
+    border-radius: 20px;
+}
+
+#bookings-cost-per-night {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+#booking-checkinout-label {
+    font-size: 12px;
+    font-weight: 600;
+}
+
+#bookings-checkin-container {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#booking-guests-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:10px;
+}
+
 #bookings-guests-selection {
     display: flex;
     align-items: center;
@@ -36,4 +73,52 @@
         -ms-user-select: none; /* Internet Explorer/Edge */
             user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */
+}
+
+#booking-checkinout-label {
+    align-self: center;
+}
+
+#booking-price-details-container {
+    display: flex;
+    border-bottom: 1px solid lightgray;
+    padding-bottom: 10px;
+    gap: 50px;
+    justify-content: space-between;
+}
+
+#booking-price-details-label {
+    align-self: center;
+    font-weight: bolder;
+    text-decoration: underline;
+    font-size: 20px;
+}
+
+#booking-price-details-containers {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#price-details-text {
+    font-size: 15px;
+}
+
+#booking-total-cost-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+#booking-total-cost-container > p {
+    font-weight: 600;
+}
+
+#booking-submit-button {
+    align-self: center;
+    background-color: rgb(227, 28, 95);
+    color: white;
+    border: none;
+    padding: 7px 80px;
+    border-radius: 10px;
+    font-weight: 900;
 }
