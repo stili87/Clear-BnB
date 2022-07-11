@@ -10,7 +10,7 @@ def validation_errors_to_error_messages(validation_errors):
     errorMessages = []
     for field in validation_errors:
         for error in validation_errors[field]:
-            errorMessages.append(f'{error}')
+            errorMessages.append(f'{field}: {error}')
     return errorMessages
 
 @property_routes.route('')
@@ -22,63 +22,63 @@ def all_properties():
 @login_required
 def post_property():
 
-    if len(request.files) < 1:
-        return {'errors': ['At least one picture must be uploaded']}, 401
-
-    if 'photo1_url' in request.files:
-        image = request.files["photo1_url"]
-        
-        if not allowed_file(image.filename):
-            return {"errors": "file type not permitted"}, 400
-        
-        image.filename = get_unique_filename(image.filename)
-
-        upload = upload_file_to_s3(image)
-
-        if "url" not in upload:
-            return upload, 400
-
-        photo1_url = upload['url']
-    else:
-        photo1_url=None
-
-    if 'photo2_url' in request.files:
-        image = request.files["photo2_url"]
-        
-        if not allowed_file(image.filename):
-            return {"errors": "file type not permitted"}, 401
-        
-        image.filename = get_unique_filename(image.filename)
-
-        upload = upload_file_to_s3(image)
-
-        if "url" not in upload:
-            return upload, 400
-
-        photo2_url = upload['url']
-    else:
-        photo2_url=None
-
-    if 'photo3_url' in request.files:
-        image = request.files["photo3_url"]
-        
-        if not allowed_file(image.filename):
-            return {"errors": "file type not permitted"}, 401
-        
-        image.filename = get_unique_filename(image.filename)
-
-        upload = upload_file_to_s3(image)
-
-        if "url" not in upload:
-            return upload, 400
-
-        photo3_url = upload['url']
-    else:
-        photo3_url=None
 
     form = PropertyForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
+        if len(request.files) < 1:
+            return {'errors': ['At least one picture must be uploaded']}, 401
+
+        if 'photo1_url' in request.files:
+            image = request.files["photo1_url"]
+            
+            if not allowed_file(image.filename):
+                return {"errors": "file type not permitted"}, 400
+            
+            image.filename = get_unique_filename(image.filename)
+
+            upload = upload_file_to_s3(image)
+
+            if "url" not in upload:
+                return upload, 400
+
+            photo1_url = upload['url']
+        else:
+            photo1_url=None
+
+        if 'photo2_url' in request.files:
+            image = request.files["photo2_url"]
+            
+            if not allowed_file(image.filename):
+                return {"errors": "file type not permitted"}, 401
+            
+            image.filename = get_unique_filename(image.filename)
+
+            upload = upload_file_to_s3(image)
+
+            if "url" not in upload:
+                return upload, 400
+
+            photo2_url = upload['url']
+        else:
+            photo2_url=None
+
+        if 'photo3_url' in request.files:
+            image = request.files["photo3_url"]
+            
+            if not allowed_file(image.filename):
+                return {"errors": "file type not permitted"}, 401
+            
+            image.filename = get_unique_filename(image.filename)
+
+            upload = upload_file_to_s3(image)
+
+            if "url" not in upload:
+                return upload, 400
+
+            photo3_url = upload['url']
+        else:
+            photo3_url=None
         form_types_array1 = form.data['property_types'][0].split(',')
         form_types_array = [int(x) for x in form_types_array1]
         # [1, 2, 3]
@@ -124,60 +124,60 @@ def post_property():
 def edit_property(id):
     edit_property = Property.query.get(id)
 
-    if 'photo1_url' in request.files:
-        image = request.files["photo1_url"]
-        
-        if not allowed_file(image.filename):
-            return {"errors": "file type not permitted"}, 400
-        
-        image.filename = get_unique_filename(image.filename)
-
-        upload = upload_file_to_s3(image)
-
-        if "url" not in upload:
-            return upload, 400
-
-        photo1_url = upload['url']
-    else:
-        photo1_url=edit_property.photo1_url
-
-    if 'photo2_url' in request.files:
-        image = request.files["photo2_url"]
-        
-        if not allowed_file(image.filename):
-            return {"errors": "file type not permitted"}, 401
-        
-        image.filename = get_unique_filename(image.filename)
-
-        upload = upload_file_to_s3(image)
-
-        if "url" not in upload:
-            return upload, 400
-
-        photo2_url = upload['url']
-    else:
-        photo2_url=edit_property.photo2_url
-
-    if 'photo3_url' in request.files:
-        image = request.files["photo3_url"]
-        
-        if not allowed_file(image.filename):
-            return {"errors": "file type not permitted"}, 401
-        
-        image.filename = get_unique_filename(image.filename)
-
-        upload = upload_file_to_s3(image)
-
-        if "url" not in upload:
-            return upload, 400
-
-        photo3_url = upload['url']
-    else:
-        photo3_url=edit_property.photo3_url
 
     form = PropertyForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
+        if 'photo1_url' in request.files:
+            image = request.files["photo1_url"]
+            
+            if not allowed_file(image.filename):
+                return {"errors": "file type not permitted"}, 400
+            
+            image.filename = get_unique_filename(image.filename)
+
+            upload = upload_file_to_s3(image)
+
+            if "url" not in upload:
+                return upload, 400
+
+            photo1_url = upload['url']
+        else:
+            photo1_url=edit_property.photo1_url
+
+        if 'photo2_url' in request.files:
+            image = request.files["photo2_url"]
+            
+            if not allowed_file(image.filename):
+                return {"errors": "file type not permitted"}, 401
+            
+            image.filename = get_unique_filename(image.filename)
+
+            upload = upload_file_to_s3(image)
+
+            if "url" not in upload:
+                return upload, 400
+
+            photo2_url = upload['url']
+        else:
+            photo2_url=edit_property.photo2_url
+
+        if 'photo3_url' in request.files:
+            image = request.files["photo3_url"]
+            
+            if not allowed_file(image.filename):
+                return {"errors": "file type not permitted"}, 401
+            
+            image.filename = get_unique_filename(image.filename)
+
+            upload = upload_file_to_s3(image)
+
+            if "url" not in upload:
+                return upload, 400
+
+            photo3_url = upload['url']
+        else:
+            photo3_url=edit_property.photo3_url
         form_types_array1 = form.data['property_types'][0].split(',')
         form_types_array = [int(x) for x in form_types_array1]
         types = Type.query.all()

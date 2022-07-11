@@ -36,6 +36,7 @@ const EditProperty = () => {
     const handleOnSubmit = async e => {
         e.preventDefault()
 
+
         //Generating Lat and Lng based on address using api
         const longLat = await fetch(`https://api.opencagedata.com/geocode/v1/json?q=${address} ${city} ${state} ${zipcode}&key=f76162da63df4d15a25fcdc22b5b35a4&language=en&pretty=1&abbrv=1&limit=1`)
         const res = await longLat.json()
@@ -121,6 +122,39 @@ const EditProperty = () => {
         history.push('/')
     }
 
+    const addBedRooms = () => {
+        setBedrooms(bedrooms + 1)
+    }
+
+    const removeBedRooms = () => {
+        if(bedrooms === 1 ){
+            return
+        }
+        setBedrooms(bedrooms - 1)
+    }
+
+    const addBathrooms = () => {
+        setBathrooms(bathrooms + 1)
+    }
+
+    const removeBathrooms = () => {
+        if(bathrooms === 1 ){
+            return
+        }
+        setBathrooms(bathrooms - 1)
+    }
+
+    const addGuests = () => {
+        setGuests(guests + 1)
+    }
+
+    const removeGuests = () => {
+        if(guests === 1 ){
+            return
+        }
+        setGuests(guests - 1)
+    }
+
     return (
         <div id='property-creation-container'>
             <h1 id='property-creation-header'> Edit Property {thisProperty?.title} </h1>
@@ -131,163 +165,199 @@ const EditProperty = () => {
                         {errors?.map((error, idx) => <li key={idx}>{error}</li>)}
                     </ul>
                 }
-                <label>Property Title</label>
+                <div id='property-creation-item-containter'>
+
+                    <label>Property Title:</label>
+                    <input
+                        name='title'
+                        value={title}
+                        onChange={e => setTitle(e.target.value)}
+                        type='text'
+                        placeholder='e.g. A cozy bungalo close to the stadium'
+                    />
+                </div>
+                <div id='property-creation-item-containter'>
+
+                    <label>Description:</label>
+                    <textarea
+                        resize='none'
+                        name='description'
+                        value={description}
+                        onChange={e => setDescription(e.target.value)}
+                        type='text'
+                        placeholder='Property Description'
+                    />
+                </div>
+                <div id='property-creation-item-containter'>
+
+                    <label>Address:</label>
+                    <input
+                        name='address'
+                        value={address}
+                        onChange={e => setAddress(e.target.value)}
+                        type='text'
+                        placeholder='e.g. 123 Main St.'
+                    />
+                </div>
+                <div id='property-creation-item-containter'>
+
+                    <label>City:</label>
+                    <input
+                        name='city'
+                        value={city}
+                        onChange={e => setCity(e.target.value)}
+                        type='text'
+                        placeholder='e.g. St. Louis'
+                    />
+                </div>
+                <div id='property-creation-item-containter'>
+
+                    <label>State:</label>
+                    <input
+                        name='state'
+                        value={state}
+                        onChange={e => setState(e.target.value)}
+                        type='text'
+                        placeholder='e.g. Missouri'
+                    />
+                </div>
+                <div id='property-creation-item-containter'>
+
+                    <label>Zipcode:</label>
+                    <input
+                        name='zipcode'
+                        value={zipcode}
+                        onChange={e => setZipcode(e.target.value)}
+                        type='text'
+                        placeholder='e.g. 63128'
+                    />
+                </div>
+                <div id='property-creation-item-containter'>
+                    <label>Cost per Night:</label>
+                    <input
+                        name='price'
+                        value={price}
+                        onChange={e => setPrice(e.target.value)}
+                        type="number"
+                        min="0.01"
+                        step="0.01"
+                        placeholder='e.g. $100.50'
+                    />
+                </div>
+                <div id='property-creation-item-containter'>
+                    <label>Service Fee:</label>
+                    <input
+                        name='serviceFee'
+                        value={service_fee}
+                        onChange={e => setService_fee(e.target.value)}
+                        type="number"
+                        min="0.00"
+                        step="0.01"
+                        placeholder='e.g. $25.49'
+                    />
+                </div>
+                <div id='property-creation-item-containter'>
+                    <label>Bedrooms:</label>
+                <div id='bookings-guests-selection' className='property-creation-buttons'>
+                    <p id='bookings-guests-selection-selector' onClick={() => removeBedRooms()}>-</p>
+                    <p id='bookings-guests-selection-number'>{bedrooms}</p>
+                    <p id='bookings-guests-selection-selector' onClick={() => addBedRooms()}>+</p>
+                </div>
+                </div>
+                <div id='property-creation-item-containter' >
+                    <label>Bathrooms:</label>
+                    <div id='bookings-guests-selection' className='property-creation-buttons'>
+                    <p id='bookings-guests-selection-selector' onClick={() => removeBathrooms()}>-</p>
+                    <p id='bookings-guests-selection-number'>{bathrooms}</p>
+                    <p id='bookings-guests-selection-selector' onClick={() => addBathrooms()}>+</p>
+                </div>
+                </div>
+                <div id='property-creation-item-containter'>
+                    <label>Guests Allowed:</label>
+                    <div id='bookings-guests-selection' className='property-creation-buttons'>
+                    <p id='bookings-guests-selection-selector' onClick={() => removeGuests()}>-</p>
+                    <p id='bookings-guests-selection-number'>{guests}</p>
+                    <p id='bookings-guests-selection-selector' onClick={() => addGuests()}>+</p>
+                </div>
+                </div>
+                <label>Main Photo (required):</label>
+                <div className='custom-file-upload' id='cursor-pointer'>
+                <label>{!photo1_url ? 'Upload Main Property Photo (required)' : "Uploaded"}
                 <input
-                    name='title'
-                    value={title}
-                    onChange={e => setTitle(e.target.value)}
-                    type='text'
-                    placeholder='e.g. A cozy bungalo close to the stadium'
-                />
-                <label>Description</label>
-                <textarea
-                    resize='none'
-                    name='description'
-                    value={description}
-                    onChange={e => setDescription(e.target.value)}
-                    type='text'
-                    placeholder='Property Description'
-                />
-                <label>Address</label>
-                <input
-                    name='address'
-                    value={address}
-                    onChange={e => setAddress(e.target.value)}
-                    type='text'
-                    placeholder='e.g. 123 Main St.'
-                />
-                <label>City</label>
-                <input
-                    name='city'
-                    value={city}
-                    onChange={e => setCity(e.target.value)}
-                    type='text'
-                    placeholder='e.g. St. Louis'
-                />
-                <label>State</label>
-                <input
-                    name='state'
-                    value={state}
-                    onChange={e => setState(e.target.value)}
-                    type='text'
-                    placeholder='e.g. Missouri'
-                />
-                <label>Zipcode</label>
-                <input
-                    name='zipcode'
-                    value={zipcode}
-                    onChange={e => setZipcode(e.target.value)}
-                    type='text'
-                    placeholder='e.g. 63128'
-                />
-                <label>Cost per Night</label>
-                <input
-                    name='price'
-                    value={price}
-                    onChange={e => setPrice(e.target.value)}
-                    type="number"
-                    min="0.01"
-                    step="0.01"
-                    placeholder='e.g. $100.50'
-                />
-                <label>Service Fee</label>
-                <input
-                    name='serviceFee'
-                    value={service_fee}
-                    onChange={e => setService_fee(e.target.value)}
-                    type="number"
-                    min="0.00"
-                    step="0.01"
-                    placeholder='e.g. $25.49'
-                />
-                <label>Bedrooms</label>
-                <input
-                    name='bedrooms'
-                    value={bedrooms}
-                    onChange={e => setBedrooms(e.target.value)}
-                    type="number"
-                    min="0"
-                    step="1"
-                    placeholder='e.g. 4'
-                />
-                <label>Bathrooms</label>
-                <input
-                    name='bathrooms'
-                    value={bathrooms}
-                    onChange={e => setBathrooms(e.target.value)}
-                    type="number"
-                    min="0"
-                    step="1"
-                    placeholder='e.g. 2'
-                />
-                <label>Guests Allowed</label>
-                <input
-                    name='guests'
-                    value={guests}
-                    onChange={e => setGuests(e.target.value)}
-                    type="number"
-                    min="0"
-                    step="1"
-                    placeholder='e.g. 7'
-                />
-                <label>Main Property Photo</label>
-                <input
+                    className='pfp'
                     name='photo1_url'
                     accept="image/*"
                     onChange={updateImage1}
                     type='file'
                 ></input>
-                <label>Second Property Photo</label>
+                </label>
+                </div>
+                <label>Second Photo:</label>
+                <div className='custom-file-upload' id='cursor-pointer'>
+                <label>{!photo2_url ? 'Second Property Photo' : "Uploaded"}
                 <input
+                    className='pfp'
                     name='photo2_url'
                     accept="image/*"
                     onChange={updateImage2}
                     type='file'
                 ></input>
-                <label>Third Property Photo</label>
+                </label>
+                </div>
+                <label>Third Photo:</label>
+                <div className='custom-file-upload' id='cursor-pointer'>
+                <label>{!photo3_url ? 'Third Property Photo' : "Uploaded"}
                 <input
+                    className='pfp'
                     name='photo3_url'
                     accept="image/*"
                     onChange={updateImage3}
                     type='file'
                 ></input>
-                <label>Select Property Types</label>
-                <Multiselect
-                    selectedValues={thisProperty?.types}
-                    id="property-creation-multi"
-                    options={types}
-                    onSelect={onSelectTypes}
-                    onRemove={onSelectTypes}
-                    displayValue="type"
-                    showCheckbox={true}
-                    placeholder={'Click Here to Select Property Types'}
-                />
-                <label>Select Property Amenities</label>
-                <Multiselect
-                    selectedValues={thisProperty?.amenities}
-                    id="property-creation-multi"
-                    options={amenities}
-                    onSelect={onSelectAmenities}
-                    onRemove={onSelectAmenities}
-                    displayValue="type"
-                    showCheckbox={true}
-                    placeholder={'Click Here to Select Property Amenities'}
-                />
-                <div id='new-property-form-button-container'>
-                <button id="new-property-form-submit" type="submit">Submit</button>
-                <button id="new-property-form-submit" type="cancel" onClick={(e)=> {
-                    e.preventDefault()
-                    history.push(`/properties/${propertyId}`)
-                    }}>Cancel</button>
-                <button id="new-property-form-submit" onClick={(e)=>handleDeleteOpen(e)}>Delete Property</button>
+                </label>
                 </div>
-                {deleteOpen && <div id='new-property-delete-confirm-container'>
-                    <p>Are you sure you want to delete this property?</p>
-                    <div id='new-property-delete-buttons-container'>
-                    <button onClick={(e)=>handleDelete(e)} id="new-property-form-submit">Delete Property</button>
-                    <button onClick={e=> handleDeleteCancel(e)} id="new-property-form-submit">Cancel</button>
-                    </div>
-                    </div>}
+                <div id='property-creation-item-containter'>
+                    <label>Select Property Types:</label>
+                    <Multiselect
+                        selectedValues={thisProperty?.types}
+                        id="property-creation-multi"
+                        options={types}
+                        onSelect={onSelectTypes}
+                        onRemove={onSelectTypes}
+                        displayValue="type"
+                        showCheckbox={true}
+                        placeholder={'Property Types'}
+                    />
+                </div>
+                <div id='property-creation-item-containter'>
+
+                    <label>Select Property Amenities:</label>
+                    <Multiselect
+                        id="property-creation-multi"
+                        options={amenities}
+                        onSelect={onSelectAmenities}
+                        onRemove={onSelectAmenities}
+                        displayValue="type"
+                        showCheckbox={true}
+                        placeholder={'Property Amenities'}
+                        selectedValues={thisProperty?.amenities}
+                    />
+                </div>
+                <div id='property-creation-button-container'>
+                <button  id="new-property-form-submit" type="submit">{errors?.length > 0 ? 'Fix Errors and try again': "Submit"}</button>
+                    <button id="new-property-form-submit" type="cancel" onClick={(e) => {
+                        e.preventDefault()
+                        history.push('/home')
+                    }}>Cancel</button>
+                    <button id="new-property-form-submit" onClick={(e)=>handleDeleteOpen(e)}>Delete Property</button>
+                </div>
+            {deleteOpen && <div id='new-property-delete-confirm-container'>
+                 <p>Are you sure you want to delete this property?</p>
+                 <div id='new-property-delete-buttons-container'>
+                 <button onClick={(e)=>handleDelete(e)} id="new-property-form-submit">Confirm Delete</button>
+                 <button onClick={e=> handleDeleteCancel(e)} id="new-property-form-submit">Cancel</button>
+                 </div>
+                 </div>}
             </form>
         </div>
     )

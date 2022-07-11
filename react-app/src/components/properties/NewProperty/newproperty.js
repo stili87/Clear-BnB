@@ -33,6 +33,13 @@ const NewProperty = () => {
     const handleOnSubmit = async e => {
         e.preventDefault()
 
+        if (!photo1_url) {
+            setErrors(['Main Property Photo Required'])
+            return
+        }else {
+            setErrors([])
+        }
+
         //Generating Lat and Lng based on address
         const longLat = await fetch(`https://api.opencagedata.com/geocode/v1/json?q=${address} ${city} ${state} ${zipcode}&key=f76162da63df4d15a25fcdc22b5b35a4&language=en&pretty=1&abbrv=1&limit=1`)
         const res = await longLat.json()
@@ -78,6 +85,7 @@ const NewProperty = () => {
     const updateImage1 = (e) => {
         const file = e.target.files[0];
         setPhoto1_url(file);
+
     }
 
     const updateImage2 = (e) => {
@@ -141,7 +149,7 @@ const NewProperty = () => {
             <h1 id='property-creation-header'> Add Your Property to Clear BnB </h1>
             <form id='property-new-form' onSubmit={e => handleOnSubmit(e)}>
                 {errors?.length > 0 &&
-                    <ul>
+                    <ul id='property-creation-errors-container'>
                         <p id="property-creation-errors-header">Please fix the following errors:</p>
                         {errors?.map((error, idx) => <li key={idx}>{error}</li>)}
                     </ul>
@@ -235,7 +243,7 @@ const NewProperty = () => {
                         min="0.00"
                         step="0.01"
                         placeholder='e.g. $25.49'
-                    />
+                    ></input>
                 </div>
                 <div id='property-creation-item-containter'>
                     <label>Bedrooms:</label>
@@ -254,7 +262,6 @@ const NewProperty = () => {
                 </div>
                 </div>
                 <div id='property-creation-item-containter'>
-
                     <label>Guests Allowed:</label>
                     <div id='bookings-guests-selection' className='property-creation-buttons'>
                     <p id='bookings-guests-selection-selector' onClick={() => removeGuests()}>-</p>
@@ -262,28 +269,43 @@ const NewProperty = () => {
                     <p id='bookings-guests-selection-selector' onClick={() => addGuests()}>+</p>
                 </div>
                 </div>
-
-                <label>Main Property Photo:</label>
+                <label>Main Photo (required):</label>
+                <div className='custom-file-upload' id='cursor-pointer'>
+                <label>{!photo1_url ? 'Upload Main Property Photo (required)' : "Uploaded"}
+                
                 <input
+                    className='pfp'
                     name='photo1_url'
                     accept="image/*"
                     onChange={updateImage1}
                     type='file'
                 ></input>
-                <label>Second Property Photo:</label>
+                </label>
+                </div>
+                <label>Second Photo:</label>
+                <div className='custom-file-upload' id='cursor-pointer'>
+                <label>{!photo2_url ? 'Second Property Photo' : "Uploaded"}
                 <input
+                    className='pfp'
                     name='photo2_url'
                     accept="image/*"
                     onChange={updateImage2}
                     type='file'
                 ></input>
-                <label>Third Property Photo:</label>
+                </label>
+                </div>
+                <label>Third Photo:</label>
+                <div className='custom-file-upload' id='cursor-pointer'>
+                <label>{!photo3_url ? 'Third Property Photo' : "Uploaded"}
                 <input
+                    className='pfp'
                     name='photo3_url'
                     accept="image/*"
                     onChange={updateImage3}
                     type='file'
                 ></input>
+                </label>
+                </div>
                 <div id='property-creation-item-containter'>
 
                     <label>Select Property Types:</label>
@@ -294,7 +316,7 @@ const NewProperty = () => {
                         onRemove={onSelectTypes}
                         displayValue="type"
                         showCheckbox={true}
-                        placeholder={'Click Here to Select Property Types'}
+                        placeholder={'Property Types'}
                     />
                 </div>
                 <div id='property-creation-item-containter'>
@@ -307,11 +329,11 @@ const NewProperty = () => {
                         onRemove={onSelectAmenities}
                         displayValue="type"
                         showCheckbox={true}
-                        placeholder={'Click Here to Select Property Amenities'}
+                        placeholder={'Property Amenities'}
                     />
                 </div>
                 <div id='property-creation-button-container'>
-                    <button id="new-property-form-submit" type="submit">Submit</button>
+                    <button  id="new-property-form-submit" type="submit">{errors?.length > 0 ? 'Fix Errors and try again': "Submit"}</button>
                     <button id="new-property-form-submit" type="cancel" onClick={(e) => {
                         e.preventDefault()
                         history.push('/home')

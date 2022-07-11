@@ -30,7 +30,7 @@ function BookingsEdit() {
         currency: 'USD'
     })
 
-    if (sessionUser?.id != thisBooking?.user_id){
+    if (sessionUser?.id !== thisBooking?.user_id){
         history.push('/')
     }
 

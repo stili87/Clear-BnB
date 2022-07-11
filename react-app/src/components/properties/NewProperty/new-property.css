@@ -5,6 +5,26 @@
     align-items: center;
     justify-content: center;
     gap: 25px;
+    border: 1px solid lightgray;
+    width: 800px;
+    border-radius: 25px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin-bottom: 180px;
+}
+
+#property-creation-errors-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: red;
+    margin-bottom: 25px;
+}
+
+#property-creation-header {
+    margin-top: 20px;
+    color: rgb(227, 28, 95);
+    font-weight: 600;
+    font-size: 25px;
 }
 
 #property-new-form{
@@ -26,11 +46,22 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+    margin-top: 25px;
     gap: 15px
+}
+
+
+#new-property-delete-confirm-container > p {
+    color: red;
+    font-size: 20px;
+    font-weight: 600;
+
 }
 
 #new-property-delete-buttons-container {
     display: flex;
+    gap: 50px;
     justify-content: space-around;
 }
 
@@ -39,24 +70,51 @@
     justify-content: space-between;
     width: 500px;
     gap: 25px;
-    
 }
+
+
 #property-new-form > div > textarea{
     resize: none;
     width: 303px;
     height: 70px;
+    padding-left: 10px ;
+    border-radius: 10px;
+    border: 1px solid lightgray;
 }
 
 #property-new-form > div > input{
     width: 300px;
+    height: 25px;
+    padding-left: 10px;
+    border-radius: 10px;
+    border: 1px solid lightgray;
 }
 
 #property-creation-button-container {
     display: flex;
     gap: 25px;
+    margin-top: 30px;
 }
 
 .property-creation-buttons {
     justify-self: center;
     margin-right: 85px;
+}
+
+#new-property-form-submit {
+    background-color: rgb(227, 28, 95);
+    color: white;
+    border: none;
+    padding: 7px 80px;
+    border-radius: 10px;
+    font-weight: 900;
+}
+
+#new-property-form-submit:hover {
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+#cursor-pointer {
+    cursor: pointer;
 }

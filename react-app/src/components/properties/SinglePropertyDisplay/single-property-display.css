@@ -6,6 +6,7 @@
     margin-right: 45px;
     margin-bottom: 300px;
     gap: 20px;
+    width: 100vw;
 }
 
 #single-property-display-header {
@@ -61,19 +62,19 @@
 #single-property-edit-button {
     width: 150px;
     padding: 6px;
-    align-self: center;
+    /* align-self: center; */
     border-radius: 25px;
     cursor: pointer;
     background-color: bisque;
     font-weight: 600;
+    margin-left: 200px;
 }
 
 #single-property-under-photos {
     display: flex;
     gap: 30px;
-    width: 78%;
-    align-self: center;
-    /* margin-left: 200px; */
+    width: 60%;
+    margin-left: 200px;
 }
 
 #single-property-information {
@@ -132,6 +133,7 @@
     margin-top: 15px;
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
 }
 
 #single-property-description {

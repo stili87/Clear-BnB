@@ -29,6 +29,10 @@
 
   #content-wrap {
     padding-bottom: 10.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
   }
 
   
