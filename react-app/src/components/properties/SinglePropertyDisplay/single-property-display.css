@@ -61,13 +61,14 @@
 }
 
 #single-property-edit-button {
-    width: 150px;
-    padding: 6px;
-    /* align-self: center; */
-    border-radius: 25px;
+    background-color: rgb(227, 28, 95);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: 900;
     cursor: pointer;
-    background-color: bisque;
-    font-weight: 600;
+    width: 200px;
+    padding: 5px;
     margin-left: 200px;
 }
 
@@ -151,7 +152,7 @@
     flex-direction: column;
     align-items: center;
     gap: 20px;
-    min-height: 800px;
+    min-height: 1950px;
     overflow: hidden;
 }
 
@@ -176,5 +177,8 @@
     width: 65%;
     height: 5px;
     gap: 50px;
+}
 
+#single-property-review-no {
+    font-size: 18px;
 }

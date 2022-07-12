@@ -12,7 +12,7 @@ function ProfileReview ({review}) {
     return (
         <div id='profile-reivew-full'>
             <div id='profile-review-property-info'>
-            <img src={thisProperty.photo1_url} id='profile-review-property-picture'/>
+            <img alt='profile' src={thisProperty.photo1_url} id='profile-review-property-picture'/>
             <p>{thisProperty.title}</p>
             </div>
             <Rating readonly={true} ratingValue={review?.rating * 20} size={15}></Rating>

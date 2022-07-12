@@ -27,6 +27,8 @@ function Profile() {
                 </div>
                 <div id='profile-user-info-right'>
                     <h1 id='profile-page-name'>Hi, I'm {thisUser?.name}</h1>
+                    <h2 id='profile-page-location'>{thisUser?.location}</h2>
+                    <h1 id='profile-page-bio'>{thisUser?.bio}</h1>
                     <div id='profile-reviews-by-user'>
                         <p id='profile-reviews-header'>Reviews by {thisUser?.name}</p>
                         {userReviews?.length < 1 && <p>No Reviews by this user yet.</p>}

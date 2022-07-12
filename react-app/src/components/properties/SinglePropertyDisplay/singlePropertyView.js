@@ -90,7 +90,7 @@ function SinglePropertyDisplay() {
                 <h2 id='single-property-reviews-header'>Latest Reviews</h2>
                 <div id='single-property-create-review-container'>
                     <button id='booking-submit-button' onClick={() => setReviewOpen(!reviewOpen)}>Click Here to leave a review</button>
-                    {reviewOpen && <CreateReview setReviewOpen={setReviewOpen} property={thisProperty} />}
+                    {reviewOpen ? <CreateReview setReviewOpen={setReviewOpen} property={thisProperty} /> : <p id='single-property-review-no'>No reivews for this property yet</p>}
                 </div>
                 <div id='single-property-reviews-all'>
                     {thisReivews.map(review => <SingleReivewDisplay key={review.id} review={review} />)}

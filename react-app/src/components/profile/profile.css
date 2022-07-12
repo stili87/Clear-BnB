@@ -16,6 +16,7 @@
     display: flex;
     flex-direction: column;
     gap: 25px;
+    height: 300px;
 }
 
 #profile-img {
@@ -31,10 +32,24 @@
 
 #profile-page-name {
     font-size: 45px;
-    font-weight: 500;
+    font-weight: 600;
+    width: 100%;
+    padding-bottom: 10px;
+}
+
+#profile-page-location {
     padding-bottom: 25px;
     border-bottom: 1px solid lightgray;
     width: 100%;
+    font-weight: 600;
+}
+
+#profile-page-bio {
+    padding-top: 15px;
+    word-wrap: break-word;
+    border-bottom: 1px solid lightgray;
+    width: 100%;
+    padding-bottom: 25px;
 }
 
 #profile-reviews-by-user {
@@ -60,7 +75,7 @@
 #profile-link {
     text-decoration: none;
     font-weight: 600;
-    color: darkgreen;
+    color: rgb(227, 28, 95);
 }
 
 #profile-link:hover {
