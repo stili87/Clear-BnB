@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import BookingsMain from '../../bookings/bookingsMain';
+import CreateReview from '../../reivews/createReview';
 import './single-property-display.css'
 
 function SinglePropertyDisplay() {
@@ -10,6 +11,7 @@ function SinglePropertyDisplay() {
     const sessionUser = useSelector(state => state.session.user)
     const history = useHistory()
     const owner = useSelector(state => state.users)[thisProperty?.user_id]
+    const [reviewOpen, setReviewOpen] = useState(false)
 
 
 
@@ -71,6 +73,13 @@ function SinglePropertyDisplay() {
                     </div>
                 </div>
                 <BookingsMain thisProperty={thisProperty} />
+            </div>
+            <div id='single-property-reviews-full'>
+                <h2 id='single-property-reviews-header'>Reviews</h2>
+                <div id='single-property-create-review-container'>
+                    <button id='booking-submit-button' onClick={()=> setReviewOpen(!reviewOpen)}>Click Here to leave a review</button>
+                    {reviewOpen && <CreateReview setReviewOpen={setReviewOpen} property={thisProperty}/>}
+                </div>
             </div>
         </div>
     )

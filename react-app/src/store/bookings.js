@@ -51,6 +51,8 @@ export const editBookingThunk = editBooking => async dispatch => {
         method: 'PUT',
         body: formData
     })
+
+    
     const data = await response.json()
 
     if(response.ok) {

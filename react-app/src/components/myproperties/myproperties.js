@@ -13,7 +13,7 @@ function MyProperties() {
             <h1 id='my-trips-header'>All of {sessionUser.name}'s Properties</h1>
             <div id='my-trips-multiple-container'>
             {myProperties?.length < 1 && <p>{sessionUser.name} has no Properties</p>}
-            {myProperties?.map(property => <MyProperty property={property} />)}
+            {myProperties?.map(property => <MyProperty key={property.id} property={property} />)}
 
             </div>
         </div>

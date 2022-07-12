@@ -153,7 +153,7 @@ const SignUpForm = () => {
         ></input>
       </div>
       <div id='signup-form-entry' className="custom-file-upload">
-        <label >Profile Picture Upload
+        <label >Profile Picture Upload (optional)
           <input
             className="pfp"
             accept="image/*"

@@ -1,0 +1,40 @@
+#create-review-full {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid lightgrey;
+    border-radius: 25px;
+    padding: 10px;
+    width: 800px;
+    gap: 10px;
+    }
+
+#create-review-header {
+    font-size: 20px;
+    color: rgb(227, 28, 95);
+}
+
+#create-review-rating-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+#create-review-sub-heads {
+    font-size: 18px;
+}
+
+#create-review-profile-pic {
+    object-fit: cover;
+    height: 40px;
+    border-radius: 50%;
+}
+
+#create-review-text-area{
+    resize: none;
+    width: 600px;
+    height: 100px;
+    border-radius: 25px;
+    padding: 25px;
+}

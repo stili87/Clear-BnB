@@ -1,9 +1,11 @@
 import React from 'react'
 import { Link, useHistory } from 'react-router-dom'
+import { useSelector} from 'react-redux'
 
 
 function MyProperty({property}) {
     const history = useHistory()
+    const sessionUser = useSelector(state => state.session.user)
 
     const formatter = new Intl.NumberFormat('en-US', {
         style: 'currency',
@@ -21,7 +23,7 @@ function MyProperty({property}) {
             <p id='my-trips-single-booking-dates'>{property?.address}</p>
             <p id='my-trips-single-booking-dates'>{property?.city}, {property?.state} {property?.zipcode}</p>
             <p id='my-trips-single-booking-cost'>Total Cost: {formatter.format(property.price)} per night</p>
-            <button onClick={()=>handleEditButton()} id='my-trips-single-booking-edit-button'>Edit this Propery</button>
+            {sessionUser?.id === property.user_id && <button onClick={()=>handleEditButton()} id='my-trips-single-booking-edit-button'>Edit this Propery</button>}
         </div>
         )
         

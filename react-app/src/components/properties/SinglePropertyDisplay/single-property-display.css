@@ -142,3 +142,27 @@
     gap: 10px;
     flex-wrap: wrap;
 }
+
+
+#single-property-reviews-full {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+#single-property-reviews-header {
+    font-size: 25px;
+    font-weight: 600;
+}
+
+#single-property-create-review-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    border-bottom: 1px solid lightgray;
+    width: 75vw;
+    padding-bottom: 50px;
+}
