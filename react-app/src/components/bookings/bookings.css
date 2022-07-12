@@ -121,6 +121,12 @@
     padding: 7px 80px;
     border-radius: 10px;
     font-weight: 900;
+    cursor: pointer;
+}
+
+#booking-submit-button:hover {
+    text-decoration: underline;
+    background-color: rgb(231, 109, 150);
 }
 
 
@@ -135,4 +141,96 @@
 
 #bookings-errors-header {
     font-weight: 600;
+}
+
+
+#bookings-edit-full {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    align-items: center;
+    padding-bottom: 200px;
+}
+
+#bookings-edit-header {
+    color: rgb(227, 28, 95);
+    font-weight: 600;
+    font-size: 25px;
+}
+
+#bookings-edit-property-img {
+    object-fit: cover;
+    border-radius: 25px;
+    height: 200px;
+}
+
+#bookings-edit-inner-container {
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+    
+}
+
+#bookings-edit-left{
+    width: 300px;
+    border: 1px solid lightgrey;
+    border-radius: 25px;
+    padding: 25px;
+    gap: 30px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+#bookings-edit-current-header {
+    color: rgb(227, 28, 95);
+    font-weight: 600;
+    font-size: 18px;
+}
+
+#bookings-edit-current-dates-contianer {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    
+}
+
+#bookings-edit-current-dates {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+#bookings-edit-current-dates > p {
+    font-size: 12;
+    font-weight: 600;
+}
+
+#booking-edit-confirm-delete {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#booking-edit-confirm-delete-buttons-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+#booking-delete-button {
+    align-self: center;
+    background-color: rgb(227, 28, 95);
+    padding: 20px;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+#booking-delete-button:hover {
+    text-decoration: underline;
+    background-color: rgb(231, 109, 150);
 }

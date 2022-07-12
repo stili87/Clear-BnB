@@ -17,6 +17,7 @@ import BookingsEdit from './components/bookings/bookingsEdit';
 import SplashPage from './components/splashPage/splashPage';
 import { getUsersThunk } from './store/users';
 import { getReviewsThunk } from './store/reviews';
+import MyTrips from './components/mytrips/myTrips';
 
 
 
@@ -67,6 +68,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/bookings/:id/edit' exact={true} >
           <BookingsEdit />
+        </ProtectedRoute>
+        <ProtectedRoute path='/mytrips' exact={true}>
+          <MyTrips />
         </ProtectedRoute>
         <Route>
           <h1>Page Not found</h1>

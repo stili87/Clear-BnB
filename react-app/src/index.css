@@ -25,6 +25,7 @@
       background-color: #fff;
       min-height: 100vh;
       font-family: 'Ubuntu', sans-serif;
+      overflow: hidden;
   }
 
   #content-wrap {

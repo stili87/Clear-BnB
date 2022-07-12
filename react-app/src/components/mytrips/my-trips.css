@@ -1,0 +1,80 @@
+#my-trips-full-container {
+    align-self: flex-start;
+    margin-top: 75px;
+    margin-left: 200px;
+    padding-bottom: 200px;
+    display: flex;
+    flex-direction: column;
+    width: 70vw;
+}
+
+#my-trips-header {
+    font-size: 25px;
+    border-bottom: 1px solid grey;
+    padding-bottom: 25px;
+}
+
+#my-trips-multiple-container {
+    display: flex;
+    margin-top: 25px;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+#my-trips-single-booking-full {
+    height: 375px;
+    border: 1px solid grey;
+    width: 300px;
+    border-radius: 25px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+#my-trips-single-booking-prop-img {
+    width: 300px;
+    object-fit: cover;
+}
+
+#my-trips-single-booking-prop-title{
+    margin-left: 15px;
+    font-size: 18px;
+    font-weight: 600;
+    color: black;
+    text-decoration: none;
+}
+#my-trips-single-booking-prop-title:hover {
+    text-decoration: underline;
+}
+
+#my-trips-single-booking-dates {
+    margin-left: 15px;
+}
+
+#my-trips-single-booking-edit-button {
+    align-self: center;
+    background-color: rgb(227, 28, 95);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: 900;
+    width: 200px;
+    height: 25px;
+    cursor: pointer;
+    font-size: 12px;
+    text-align: center;
+    text-decoration: none;
+}
+
+#my-trips-single-booking-cost {
+    font-weight: 600;
+    margin-left: 15px;
+}
+
+#my-trips-single-booking-edit-button:hover {
+    text-decoration: underline  ;
+    background-color: rgb(231, 109, 150);
+
+}
