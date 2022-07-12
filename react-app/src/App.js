@@ -18,6 +18,7 @@ import SplashPage from './components/splashPage/splashPage';
 import { getUsersThunk } from './store/users';
 import { getReviewsThunk } from './store/reviews';
 import MyTrips from './components/mytrips/myTrips';
+import MyProperties from './components/myproperties/myproperties';
 
 
 
@@ -71,6 +72,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/mytrips' exact={true}>
           <MyTrips />
+        </ProtectedRoute>
+        <ProtectedRoute path='/myproperties' exact={true}>
+          <MyProperties />
         </ProtectedRoute>
         <Route>
           <h1>Page Not found</h1>

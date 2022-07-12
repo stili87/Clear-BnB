@@ -75,7 +75,7 @@ const EditProperty = () => {
         if (data) {
             setErrors(data)
         }else {
-            history.push('/home')
+            history.push('/myproperties')
         }
     }
 
@@ -119,7 +119,7 @@ const EditProperty = () => {
     const handleDelete = async e => {
         e.preventDefault()
         await dispatch(deletePropertyThunk(propertyId))
-        history.push('/')
+        history.push('/myproperties')
     }
 
     const addBedRooms = () => {

@@ -189,7 +189,7 @@ function BookingsEdit() {
                         <p>Total Cost</p>
                         <p>{formatter.format(cost)}</p>
                     </div>
-                    <button id='booking-submit-button' disabled={disabled}>{disabled ? 'Fix Dates before reserving' : 'Reserve'}</button>
+                    <button id='booking-submit-button' disabled={disabled}>{disabled ? 'Fix Dates before reserving' : 'Update Trip'}</button>
 
                 </form>
             </div>
