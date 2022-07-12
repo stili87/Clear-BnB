@@ -10,6 +10,7 @@
 #home-page-property-display-container {
     display: flex;
     flex-wrap: wrap;
+
 }
 
 #home-single-property-container {

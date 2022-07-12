@@ -7,6 +7,7 @@
     margin-bottom: 300px;
     gap: 20px;
     width: 100vw;
+
 }
 
 #single-property-display-header {
@@ -150,6 +151,8 @@
     flex-direction: column;
     align-items: center;
     gap: 20px;
+    min-height: 800px;
+    overflow: hidden;
 }
 
 #single-property-reviews-header {
@@ -165,4 +168,13 @@
     border-bottom: 1px solid lightgray;
     width: 75vw;
     padding-bottom: 50px;
+}
+
+#single-property-reviews-all {
+    display: flex;
+    flex-wrap: wrap;
+    width: 65%;
+    height: 5px;
+    gap: 50px;
+
 }

@@ -148,6 +148,7 @@ const NewProperty = () => {
         <div id='property-creation-container'>
             <h1 id='property-creation-header'> Add Your Property to Clear BnB </h1>
             <form id='property-new-form' onSubmit={e => handleOnSubmit(e)}>
+                <p>*required</p>
                 {errors?.length > 0 &&
                     <ul id='property-creation-errors-container'>
                         <p id="property-creation-errors-header">Please fix the following errors:</p>
@@ -156,7 +157,7 @@ const NewProperty = () => {
                 }
                 <div id='property-creation-item-containter'>
 
-                    <label>Property Title:</label>
+                    <label>Property Title*:</label>
                     <input
                         name='title'
                         value={title}
@@ -167,7 +168,7 @@ const NewProperty = () => {
                 </div>
                 <div id='property-creation-item-containter'>
 
-                    <label>Description:</label>
+                    <label>Description*:</label>
                     <textarea
                         resize='none'
                         name='description'
@@ -179,7 +180,7 @@ const NewProperty = () => {
                 </div>
                 <div id='property-creation-item-containter'>
 
-                    <label>Address:</label>
+                    <label>Address*:</label>
                     <input
                         name='address'
                         value={address}
@@ -190,7 +191,7 @@ const NewProperty = () => {
                 </div>
                 <div id='property-creation-item-containter'>
 
-                    <label>City:</label>
+                    <label>City*:</label>
                     <input
                         name='city'
                         value={city}
@@ -201,7 +202,7 @@ const NewProperty = () => {
                 </div>
                 <div id='property-creation-item-containter'>
 
-                    <label>State:</label>
+                    <label>State*:</label>
                     <input
                         name='state'
                         value={state}
@@ -212,7 +213,7 @@ const NewProperty = () => {
                 </div>
                 <div id='property-creation-item-containter'>
 
-                    <label>Zipcode:</label>
+                    <label>Zipcode*:</label>
                     <input
                         name='zipcode'
                         value={zipcode}
@@ -222,7 +223,7 @@ const NewProperty = () => {
                     />
                 </div>
                 <div id='property-creation-item-containter'>
-                    <label>Cost per Night:</label>
+                    <label>Cost per Night*:</label>
                     <input
                         name='price'
                         value={price}
@@ -234,7 +235,7 @@ const NewProperty = () => {
                     />
                 </div>
                 <div id='property-creation-item-containter'>
-                    <label>Service Fee:</label>
+                    <label>Service Fee*:</label>
                     <input
                         name='serviceFee'
                         value={service_fee}
@@ -246,7 +247,7 @@ const NewProperty = () => {
                     ></input>
                 </div>
                 <div id='property-creation-item-containter'>
-                    <label>Bedrooms:</label>
+                    <label>Bedrooms*:</label>
                 <div id='bookings-guests-selection' className='property-creation-buttons'>
                     <p id='bookings-guests-selection-selector' onClick={() => removeBedRooms()}>-</p>
                     <p id='bookings-guests-selection-number'>{bedrooms}</p>
@@ -254,7 +255,7 @@ const NewProperty = () => {
                 </div>
                 </div>
                 <div id='property-creation-item-containter' >
-                    <label>Bathrooms:</label>
+                    <label>Bathrooms*:</label>
                     <div id='bookings-guests-selection' className='property-creation-buttons'>
                     <p id='bookings-guests-selection-selector' onClick={() => removeBathrooms()}>-</p>
                     <p id='bookings-guests-selection-number'>{bathrooms}</p>
@@ -262,7 +263,7 @@ const NewProperty = () => {
                 </div>
                 </div>
                 <div id='property-creation-item-containter'>
-                    <label>Guests Allowed:</label>
+                    <label>Guests Allowed*:</label>
                     <div id='bookings-guests-selection' className='property-creation-buttons'>
                     <p id='bookings-guests-selection-selector' onClick={() => removeGuests()}>-</p>
                     <p id='bookings-guests-selection-number'>{guests}</p>
@@ -308,7 +309,7 @@ const NewProperty = () => {
                 </div>
                 <div id='property-creation-item-containter'>
 
-                    <label>Select Property Types:</label>
+                    <label>Select Property Types*:</label>
                     <Multiselect
                         id="property-creation-multi"
                         options={types}
@@ -321,7 +322,7 @@ const NewProperty = () => {
                 </div>
                 <div id='property-creation-item-containter'>
 
-                    <label>Select Property Amenities:</label>
+                    <label>Select Property Amenities*:</label>
                     <Multiselect
                         id="property-creation-multi"
                         options={amenities}

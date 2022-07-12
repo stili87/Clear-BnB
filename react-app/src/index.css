@@ -11,29 +11,28 @@
     display: block;
   }
 
-/*   
+  html, body {
+    min-height: 100vh;
+  }
+  
   body {
+      display: flex;
+      flex-direction: column;
       position: relative;
-      min-height: 100vh;
-      min-width: 100vw;
       font-family: 'Ubuntu', sans-serif;
       background-color: #fff;
-  } */
+      
+      
+  }
   
   #root {
-      position: relative;
+      display: flex;
+      flex-direction: column;
       background-color: #fff;
       min-height: 100vh;
       font-family: 'Ubuntu', sans-serif;
-      overflow: hidden;
-  }
-
-  #content-wrap {
-    padding-bottom: 10.5rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    overflow: hidden;
+      margin-bottom: 200px;
+      align-items:center;
   }
 
   

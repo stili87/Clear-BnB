@@ -19,6 +19,7 @@ import { getUsersThunk } from './store/users';
 import { getReviewsThunk } from './store/reviews';
 import MyTrips from './components/mytrips/myTrips';
 import MyProperties from './components/myproperties/myproperties';
+import Footer from './components/footer/footer';
 
 
 
@@ -45,7 +46,7 @@ function App() {
   }
 
   return (
-    <div id='content-wrap'>
+    <>
     <BrowserRouter>
       {sessionUser && <NavBar />}
       <Switch>
@@ -81,7 +82,8 @@ function App() {
         </Route>
       </Switch>
     </BrowserRouter>
-      </div>
+    <Footer />
+      </>
   );
 }
 

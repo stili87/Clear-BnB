@@ -4,9 +4,8 @@ from wtforms.validators import DataRequired, ValidationError
 
 def check_content_len(form, field):
     content = field.data
-    print(len(content), '!'*50)
-    if len(content) > 10000:
-        raise ValidationError('Content cannot be more than 10,000 characters')
+    if len(content) > 1024:
+        raise ValidationError('Content cannot be more than 1,024 characters')
 
 
 class ReviewForm(FlaskForm):

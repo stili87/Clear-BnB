@@ -1,0 +1,21 @@
+#single-review-display-full {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 45%;
+    word-wrap: break-word;
+}
+
+
+
+#single-review-profile-picture {
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+}
+
+#single-reivew-display-user-info-container {
+    display:  flex;
+    align-items: center;
+    gap: 25px;
+}

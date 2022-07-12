@@ -3,6 +3,8 @@ import { useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import BookingsMain from '../../bookings/bookingsMain';
 import CreateReview from '../../reivews/createReview';
+import SingleReivewDisplay from '../../reivews/singleReview';
+import { Rating } from 'react-simple-star-rating';
 import './single-property-display.css'
 
 function SinglePropertyDisplay() {
@@ -11,8 +13,18 @@ function SinglePropertyDisplay() {
     const sessionUser = useSelector(state => state.session.user)
     const history = useHistory()
     const owner = useSelector(state => state.users)[thisProperty?.user_id]
+    const allReviews = Object.values(useSelector(state => state.reviews))
     const [reviewOpen, setReviewOpen] = useState(false)
+    const allThisReviews = allReviews?.filter(review => review.property_id === propertyId)
+    const thisReivews = allThisReviews?.reverse().slice(0,4)
 
+    const findAvgRating = () => {
+        let sum = 0
+        allThisReviews?.forEach(review => sum+= review?.rating)
+        return Math.floor(sum / allThisReviews?.length)
+    }
+
+    let avgRating = findAvgRating()
 
 
     if (!thisProperty) {
@@ -29,8 +41,8 @@ function SinglePropertyDisplay() {
                 <h1 id='single-property-title'>{thisProperty?.title}</h1>
                 <div id='single-property-2nd'>
                     <h2 id='single-property-location'>{thisProperty?.city}, {thisProperty?.state}</h2>
-
                 </div>
+                    {allThisReviews.length > 0 ? <p>Rated: <Rating readonly={true} size={20} ratingValue={avgRating*20}></Rating></p>  : <p>New Property</p>}
             </div>
             <div id='single-property-display-photos'>
                 <img alt='main' id='single-property-main-img' src={thisProperty?.photo1_url} />
@@ -75,10 +87,13 @@ function SinglePropertyDisplay() {
                 <BookingsMain thisProperty={thisProperty} />
             </div>
             <div id='single-property-reviews-full'>
-                <h2 id='single-property-reviews-header'>Reviews</h2>
+                <h2 id='single-property-reviews-header'>Latest Reviews</h2>
                 <div id='single-property-create-review-container'>
-                    <button id='booking-submit-button' onClick={()=> setReviewOpen(!reviewOpen)}>Click Here to leave a review</button>
-                    {reviewOpen && <CreateReview setReviewOpen={setReviewOpen} property={thisProperty}/>}
+                    <button id='booking-submit-button' onClick={() => setReviewOpen(!reviewOpen)}>Click Here to leave a review</button>
+                    {reviewOpen && <CreateReview setReviewOpen={setReviewOpen} property={thisProperty} />}
+                </div>
+                <div id='single-property-reviews-all'>
+                    {thisReivews.map(review => <SingleReivewDisplay key={review.id} review={review} />)}
                 </div>
             </div>
         </div>

@@ -66,3 +66,37 @@
 #profile-link:hover {
     text-decoration: underline;
 }
+
+#profile-review-property-picture {
+    object-fit: cover;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+
+#profile-review-property-info {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+#profile-reivew-full {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid lightgrey;
+    padding: 20px;
+    border-radius: 25px;
+    gap: 5px;
+    
+    
+}
+
+#profile-review-content {
+    word-wrap: break-word;
+}
+
+
+.profile-edit-review-button {
+    width: 240px;
+    padding: 5px;
+    }
