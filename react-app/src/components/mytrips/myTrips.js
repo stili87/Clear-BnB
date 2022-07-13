@@ -15,7 +15,7 @@ function MyTrips() {
             <h1 id='my-trips-header'>All of {sessionUser.name}'s Trips</h1>
             <div id='my-trips-multiple-container'>
             {myBookings?.length < 1 && <p>{sessionUser.name} has no trips</p>}
-            {myBookings?.map(booking => <MyTripBooking booking={booking} />)}
+            {myBookings?.map(booking => <MyTripBooking key={booking.id} booking={booking} />)}
 
             </div>
         </div>

@@ -28,6 +28,11 @@ def check_length(form, field):
     if len(checking) > 255:
         raise ValidationError(f'{field.name.capitalize()} is too long. (Maximum length is 255).')
 
+def check_bio_length(form, field):
+    checking = field.data
+    if len(checking) > 1024:
+        raise ValidationError(f'{field.name.capitalize()} is too long. (Maximum length is 1024).')
+
 def check_password(form, field):
     checking = field.data
     if len(checking) < 7:
@@ -39,6 +44,6 @@ class SignUpForm(FlaskForm):
     email = StringField('email', validators=[DataRequired(), Email("Please enter a proper email address."), user_exists, check_length, ])
     password = StringField('password', validators=[DataRequired(), check_length, check_password])
     name = StringField('name', validators=[DataRequired(), check_length])
-    bio = TextAreaField('bio')
+    bio = TextAreaField('bio', validators=[check_bio_length])
     picture_url = StringField('photo_url')
     location = StringField('location', validators=[DataRequired(), check_length])

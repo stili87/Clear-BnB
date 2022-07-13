@@ -6,7 +6,7 @@ from wtforms.validators import DataRequired, ValidationError
 def check_title_len(form, field):
     title = field.data
     if len(title) > 255:
-        raise ValidationError('Field cannot be more than 200 characters')
+        raise ValidationError('Field cannot be more than 200 characters.')
 
 class ListField(Field):
     def process_formdata(self, valuelist):
@@ -15,22 +15,26 @@ class ListField(Field):
 def check_types(form, field):
     types_list = field.data
     if types_list[0] == '':
-        raise ValidationError('Type of Property is Required')
+        raise ValidationError('Type of Property is Required.')
 
 def check_amenities(form, field):
     amenities_list = field.data
     if amenities_list[0] == '':
-        raise ValidationError('Amenities of Property is Required')
+        raise ValidationError('Amenities of Property is Required.')
 
 def check_lat_lng(form, field):
     coordinate = field.data
     if coordinate == 0:
-        raise ValidationError('Address not found')
-
+        raise ValidationError('Address not found.')
+        
+def check_description_len(form, field):
+    description = field.data
+    if len(description) > 1024:
+        raise ValidationError('Description cannot be more than 1,024 characters.')
 
 class PropertyForm(FlaskForm):
             title = StringField('title', validators=[DataRequired(), check_title_len])
-            description = TextAreaField('description', validators=[DataRequired()])
+            description = TextAreaField('description', validators=[DataRequired(), ])
             address = StringField('address', validators=[DataRequired()])
             city = StringField('city', validators=[DataRequired()])
             state = StringField('state', validators=[DataRequired()])

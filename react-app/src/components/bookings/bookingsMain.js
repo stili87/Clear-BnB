@@ -28,13 +28,21 @@ function BookingsMain({ thisProperty }) {
 
 
     useEffect(() => {
+
+        const diffTime = Math.abs(new Date(start_date) - new Date(end_date))
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
         if (end_date <= start_date) {
-            setErrors(['End Date Cannot be prior or the same as start date'])
+            setErrors(['End Date Cannot be prior to or the same as start date'])
             setDisabled(true)
         } else if (start_date < today) {
             setErrors(['Start Date Cannot be today or prior'])
             setDisabled(true)
-        } else {
+        }else if(diffDays < 1 ){
+            setErrors(['You cannot check-in and checkout on the same day'])
+            setDisabled(true)
+        }
+        else {
             setErrors([])
             setDisabled(false)
         }
@@ -43,8 +51,6 @@ function BookingsMain({ thisProperty }) {
             setCost(thisProperty?.price + thisProperty?.service_fee)
             setTotalDays(1)
         } else {
-            const diffTime = Math.abs(new Date(start_date) - new Date(end_date))
-            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
             setTotalDays(diffDays)
             setCost((diffDays * thisProperty?.price) + thisProperty?.service_fee)
         }

@@ -78,7 +78,7 @@ function App() {
           <MyProperties />
         </ProtectedRoute>
         <Route>
-          <h1>Page Not found</h1>
+          <h1 id='page-not-found'>Page Not found</h1>
         </Route>
       </Switch>
     </BrowserRouter>

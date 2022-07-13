@@ -300,9 +300,9 @@ const EditProperty = () => {
                 ></input>
                 </label>
                 </div>
-                <label>Second Photo:</label>
+                <label>Second Photo (optional):</label>
                 <div className='custom-file-upload' id='cursor-pointer'>
-                <label>{!photo2_url ? 'Second Property Photo' : "Uploaded"}
+                <label>{!photo2_url ? 'Second Property Photo (optional)' : "Uploaded"}
                 <input
                     className='pfp'
                     name='photo2_url'
@@ -312,9 +312,9 @@ const EditProperty = () => {
                 ></input>
                 </label>
                 </div>
-                <label>Third Photo:</label>
+                <label>Third Photo (optional):</label>
                 <div className='custom-file-upload' id='cursor-pointer'>
-                <label>{!photo3_url ? 'Third Property Photo' : "Uploaded"}
+                <label>{!photo3_url ? 'Third Property Photo (optional)' : "Uploaded"}
                 <input
                     className='pfp'
                     name='photo3_url'

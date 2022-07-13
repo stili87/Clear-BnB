@@ -1,3 +1,5 @@
+import { getUsersThunk } from "./users";
+
 // constants
 const SET_USER = 'session/SET_USER';
 const REMOVE_USER = 'session/REMOVE_USER';
@@ -87,7 +89,8 @@ export const signUp = (username, email, password, picture_url, name, bio, locati
   
   if (response.ok) {
     const data = await response.json();
-    dispatch(setUser(data))
+    await dispatch(setUser(data))
+    await dispatch(getUsersThunk())
     return null;
   } else if (response.status < 500) {
     const data = await response.json();
