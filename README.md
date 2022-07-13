@@ -112,6 +112,9 @@ To be more effective, Clear Bnb needs to achive Google Maps integration so users
 ## Developer Contact
 
 Andrew Stilinovic
+
 <a href='https://www.linkedin.com/in/andrew-stilinovic-94277180/'>Linked-in</a>
+
 <a href='https://github.com/stili87'>Github</a>
+
 stili87@gmail.com
