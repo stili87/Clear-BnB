@@ -32,7 +32,14 @@ const EditProperty = () => {
     const [deleteOpen, setDeleteOpen] = useState(false)
     const dispatch = useDispatch()
 
+    if(thisProperty?.user_id !== sessionUser.id){
+        history.push('/')
+    }
 
+    if(!thisProperty){
+        history.push('/')
+    }
+    
     const handleOnSubmit = async e => {
         e.preventDefault()
 
