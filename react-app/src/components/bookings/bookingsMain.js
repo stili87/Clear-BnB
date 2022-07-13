@@ -28,8 +28,8 @@ function BookingsMain({ thisProperty }) {
 
 
     useEffect(() => {
-        if (end_date < start_date) {
-            setErrors(['End Date Cannot be prior to start date'])
+        if (end_date <= start_date) {
+            setErrors(['End Date Cannot be prior or the same as start date'])
             setDisabled(true)
         } else if (start_date < today) {
             setErrors(['Start Date Cannot be today or prior'])

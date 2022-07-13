@@ -36,8 +36,8 @@ function BookingsEdit() {
     }
 
     useEffect(() => {
-        if (end_date < start_date) {
-            setErrors(['End Date cannot be prior to start date'])
+        if (end_date <= start_date) {
+            setErrors(['End Date cannot be prior to or the same as start date'])
             setDisabled(true)
         } else if (start_date < today) {
             setErrors(['Start Date cannot be today or prior'])
