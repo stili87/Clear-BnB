@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import BookingsMain from '../../bookings/bookingsMain';
@@ -17,6 +17,10 @@ function SinglePropertyDisplay() {
     const [reviewOpen, setReviewOpen] = useState(false)
     const allThisReviews = allReviews?.filter(review => review.property_id === propertyId)
     const thisReivews = allThisReviews?.reverse().slice(0,4)
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+      }, [])
 
     const findAvgRating = () => {
         let sum = 0
@@ -42,7 +46,7 @@ function SinglePropertyDisplay() {
                 <div id='single-property-2nd'>
                     <h2 id='single-property-location'>{thisProperty?.city}, {thisProperty?.state}</h2>
                 </div>
-                    {allThisReviews.length > 0 ? <p>Rated: <Rating readonly={true} size={20} ratingValue={avgRating*20}></Rating></p>  : <p>New Property</p>}
+                    {allThisReviews.length > 0 ? <p>Rated: <Rating readonly={true} size={20} ratingValue={avgRating*20} fillColor={'rgb(227,28,95)'}></Rating></p>  : <p>New Property</p>}
             </div>
             <div id='single-property-display-photos'>
                 <img alt='main' id='single-property-main-img' src={thisProperty?.photo1_url} />

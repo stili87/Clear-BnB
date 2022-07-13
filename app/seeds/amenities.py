@@ -28,6 +28,15 @@ def seed_amenities():
     amenity9 = Amenity(
         type = 'Breakfast'
     )
+    amenity10 = Amenity(
+        type = 'Private Patio'
+    )
+    amenity11 = Amenity(
+        type = 'TV'
+    )
+    amenity12 = Amenity(
+        type = 'Free Parking'
+    )
 
     db.session.add(amenity1)
     db.session.add(amenity2)
@@ -38,6 +47,9 @@ def seed_amenities():
     db.session.add(amenity7)
     db.session.add(amenity8)
     db.session.add(amenity9)
+    db.session.add(amenity10)
+    db.session.add(amenity11)
+    db.session.add(amenity12)
     db.session.commit()
 
 def undo_amenities():

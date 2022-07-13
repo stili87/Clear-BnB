@@ -15,7 +15,7 @@ function SingleReivewDisplay({ review }) {
                 <img alt='profile' id='single-review-profile-picture' src={reviewUser?.picture_url}></img>
                 <p>{reviewUser.name}</p>
             </div>
-            <Rating ratingValue={review?.rating * 20} size={20} readonly={true}></Rating>
+            <Rating fillColor={'rgb(227,28,95)'} ratingValue={review?.rating * 20} size={20} readonly={true}></Rating>
             <p>{thisContent}</p>
 
         </div>

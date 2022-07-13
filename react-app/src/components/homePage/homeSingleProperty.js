@@ -29,7 +29,7 @@ const HomeSingleProperty = ({property}) => {
             <img id="single-home-property-image" alt='property-front' src={property?.photo1_url} />
             <p id="single-home-property-location">{property?.city}, {property?.state}</p>
             <p id="single-home-property-title">{property?.title}</p>
-            {allThisReviews?.length > 0 ?<Rating readonly={true} size={15} ratingValue={avgRating*20}></Rating> : <p id="single-home-property-title">New Property</p>}
+            {allThisReviews?.length > 0 ?<Rating fillColor={'rgb(227,28,95)'} readonly={true} size={15} ratingValue={avgRating*20}></Rating> : <p id="single-home-property-title">New Property</p>}
             <p id="single-home-property-cost">{cost} <span>night</span></p>
         </Link>
     )

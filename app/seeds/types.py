@@ -10,7 +10,7 @@ def seed_types():
         type='City'
     )
     type3 = Type(
-        type='Lake'
+        type='Lakefront'
     )
     type4 = Type(
         type='House'
@@ -30,6 +30,15 @@ def seed_types():
     type9 = Type(
         type='Pets Not Allowed'
     )
+    type10 = Type(
+        type='Tiny Homes'
+    )
+    type11 = Type(
+        type='Condo'
+    )
+    type12 = Type(
+        type='Golfing'
+    )
 
     db.session.add(type1)
     db.session.add(type2)
@@ -40,6 +49,9 @@ def seed_types():
     db.session.add(type7)
     db.session.add(type8)
     db.session.add(type9)
+    db.session.add(type10)
+    db.session.add(type11)
+    db.session.add(type12)
     db.session.commit()
 
 def undo_types():

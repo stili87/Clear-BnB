@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { useSelector } from 'react-redux';
 import MyTripBooking from './indivdiualBooking';
 import './my-trips.css'
@@ -8,7 +8,9 @@ function MyTrips() {
     const allBookings = Object.values(useSelector(state => state.bookings))
     const myBookings = allBookings?.filter(booking => booking?.user_id === sessionUser?.id)
     
-
+    useEffect(() => {
+        window.scrollTo(0, 0)
+      }, [])
 
     return (
         <div id='my-trips-full-container'>

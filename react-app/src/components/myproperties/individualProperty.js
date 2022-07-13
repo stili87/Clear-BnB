@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { useSelector} from 'react-redux'
 
@@ -15,6 +15,10 @@ function MyProperty({property}) {
     const handleEditButton = () => {
         history.push(`/properties/${property.id}/edit`)
     }
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+      }, [])
 
     return (
         <div id='my-trips-single-booking-full'>

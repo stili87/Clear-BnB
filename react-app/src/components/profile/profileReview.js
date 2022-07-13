@@ -15,7 +15,7 @@ function ProfileReview ({review}) {
             <img alt='profile' src={thisProperty.photo1_url} id='profile-review-property-picture'/>
             <p>{thisProperty.title}</p>
             </div>
-            <Rating readonly={true} ratingValue={review?.rating * 20} size={15}></Rating>
+            <Rating fillColor={'rgb(227,28,95)'} readonly={true} ratingValue={review?.rating * 20} size={15}></Rating>
             <p id='profile-review-content'>{review?.content}</p>
             {sessionUser.id === review.user_id && 
                 <button onClick={()=> setEditOpen(!editOpen)} className='profile-edit-review-button' id='new-property-form-submit'>Edit Review</button>

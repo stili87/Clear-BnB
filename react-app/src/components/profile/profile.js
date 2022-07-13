@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { useSelector } from 'react-redux';
 import './profile.css'
 import { Link, useParams } from 'react-router-dom';
@@ -13,7 +13,9 @@ function Profile() {
     const allReviews = Object.values(useSelector(state => state.reviews))
     const userReviews = allReviews.filter(review => review.user_id === Number(userId))
 
-
+    useEffect(() => {
+        window.scrollTo(0, 0)
+      }, [])
 
     return (
         <div id='profile-full-container'>

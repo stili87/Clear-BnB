@@ -5,8 +5,8 @@ from wtforms.validators import DataRequired, ValidationError
 
 def check_title_len(form, field):
     title = field.data
-    if len(title) > 255:
-        raise ValidationError('Field cannot be more than 200 characters.')
+    if len(title) > 40:
+        raise ValidationError('Field cannot be more than 40 characters.')
 
 class ListField(Field):
     def process_formdata(self, valuelist):
@@ -34,8 +34,8 @@ def check_description_len(form, field):
 
 class PropertyForm(FlaskForm):
             title = StringField('title', validators=[DataRequired(), check_title_len])
-            description = TextAreaField('description', validators=[DataRequired(), ])
-            address = StringField('address', validators=[DataRequired()])
+            description = TextAreaField('description', validators=[DataRequired(), check_description_len])
+            address = StringField('address', validators=[DataRequired(), ])
             city = StringField('city', validators=[DataRequired()])
             state = StringField('state', validators=[DataRequired()])
             zipcode = StringField('zipcode', validators=[DataRequired()])

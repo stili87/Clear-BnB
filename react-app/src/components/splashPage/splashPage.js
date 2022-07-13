@@ -1,11 +1,16 @@
 import './splash-page.css'
-import React from 'react';
+import React, {useEffect} from 'react';
 import LoginForm from '../auth/LoginForm';
 import SignUpForm from '../auth/SignUpForm';
 import splashImg from "../images/clearbnb-logos_white.png"
 
 
 function SplashPage() {
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+      }, [])
+
     return (
         <div id='splash-page-full-container'>
             <img alt='logo' src={splashImg} id='splash-page-header'></img>

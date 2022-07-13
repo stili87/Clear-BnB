@@ -10,7 +10,7 @@
 #home-page-property-display-container {
     display: flex;
     flex-wrap: wrap;
-    width: 1500px;
+    width: 50%;
     display: flex;
     gap: 35px;
     justify-content: center;
