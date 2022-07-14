@@ -6,7 +6,7 @@ import './my-trips.css'
 function MyTrips() {
     const sessionUser = useSelector(state => state.session.user)
     const allBookings = Object.values(useSelector(state => state.bookings))
-    const myBookings = allBookings?.filter(booking => booking?.user_id === sessionUser?.id)
+    const myBookings = allBookings?.filter(booking => booking?.user_id === sessionUser?.id).reverse()
     
     useEffect(() => {
         window.scrollTo(0, 0)

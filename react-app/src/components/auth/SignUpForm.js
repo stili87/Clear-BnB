@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
@@ -15,6 +15,7 @@ const SignUpForm = () => {
   let [picture_url, setPicture_url] = useState(null)
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
+
 
   const onSignUp = async (e) => {
     e.preventDefault();
@@ -152,8 +153,7 @@ const SignUpForm = () => {
           value={repeatPassword}
         ></input>
       </div>
-      <div id='signup-form-entry' className="custom-file-upload">
-        <label >Profile Picture Upload (optional)
+        <label id='signup-form-entry' className="custom-file-upload">{!picture_url ? 'Profile Picture Upload (optional)' : 'UPLOADED!' }
           <input
             className="pfp"
             accept="image/*"
@@ -161,7 +161,6 @@ const SignUpForm = () => {
             type="file"
           ></input>
         </label>
-      </div>
       <button id='login-form-button' type="submit">Sign Up</button>
     </form>
 

@@ -93,6 +93,12 @@
     display: flex;
     gap: 20px;
     align-items: center;
+    text-decoration: none;
+    color: black;
+}
+#profile-review-property-info:hover {
+    text-decoration: underline;
+
 }
 
 #profile-reivew-full {

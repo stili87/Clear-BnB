@@ -2,6 +2,8 @@
 
 <h3 align='center'> The clear place to find your next vacation rental </h3>
 
+## [Link to Live Site](https://clear-bnb.herokuapp.com/)</h2>
+
 ### Splash Page
 You can sign up for an account or just use the demo user's creditials.
 

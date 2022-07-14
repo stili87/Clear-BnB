@@ -21,8 +21,8 @@
 
 #splash-page-sub-header {
     color: white;
-    font-size: 30px;
-    font-weight: 600;
+    font-size: 50px;
+    font-weight: 800;
     -webkit-text-stroke-width: .5px;
     -webkit-text-stroke-color: black;
 }
@@ -47,10 +47,8 @@
     color: white;
     -webkit-text-stroke-width: .5px;
     -webkit-text-stroke-color: black;
-    font-size: 25px;
+    font-size: 40px;
     font-weight:900;
-
-
 }
 
 #login-signup-div-left {
@@ -66,7 +64,7 @@
 }
 
 #login-form {
-    font-size: 22px;
+    font-size: 28px;
     padding-left: 10px;
     display: flex;
     flex-direction: column;
@@ -100,8 +98,7 @@
 
 #login-form-demo-header {
     align-self: center;
-
-    font-size: 18px;
+    font-size: 25px;
 }
 
 #login-form-button-demo {
@@ -130,7 +127,8 @@
     display: flex;
     justify-content: space-between;
     gap: 10px;
-    font-size: 15px;
+    font-size: 25px;
+    font-weight: 600;
 }
 
 .custom-file-upload {

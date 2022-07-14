@@ -4,7 +4,7 @@ import HomeSingleProperty from "./homeSingleProperty";
 import './home-page.css'
 
 const HomePage = () => {
-    const properties = Object.values(useSelector(state => state.properties))
+    const properties = Object.values(useSelector(state => state.properties)).reverse()
 
     useEffect(() => {
         window.scrollTo(0, 0)

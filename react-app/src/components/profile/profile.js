@@ -11,7 +11,7 @@ function Profile() {
     const thisUser = useSelector(state => state.users)[userId]
     const sessionUser = useSelector(state => state.session.user)
     const allReviews = Object.values(useSelector(state => state.reviews))
-    const userReviews = allReviews.filter(review => review.user_id === Number(userId))
+    const userReviews = allReviews.filter(review => review.user_id === Number(userId))?.reverse()
 
     useEffect(() => {
         window.scrollTo(0, 0)

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { Rating } from 'react-simple-star-rating'
 import EditReview from '../reivews/editReview';
 
@@ -11,10 +12,10 @@ function ProfileReview ({review}) {
 
     return (
         <div id='profile-reivew-full'>
-            <div id='profile-review-property-info'>
+            <Link id='profile-review-property-info'>
             <img alt='profile' src={thisProperty.photo1_url} id='profile-review-property-picture'/>
             <p>{thisProperty.title}</p>
-            </div>
+            </Link>
             <Rating fillColor={'rgb(227,28,95)'} readonly={true} ratingValue={review?.rating * 20} size={15}></Rating>
             <p id='profile-review-content'>{review?.content}</p>
             {sessionUser.id === review.user_id && 

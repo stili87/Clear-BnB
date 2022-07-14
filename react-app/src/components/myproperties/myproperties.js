@@ -5,7 +5,7 @@ import MyProperty from './individualProperty';
 function MyProperties() {
     const sessionUser = useSelector(state => state.session.user)
     const allProperties = Object.values(useSelector(state => state.properties))
-    const myProperties = allProperties?.filter(property => property?.user_id === sessionUser?.id)
+    const myProperties = allProperties?.filter(property => property?.user_id === sessionUser?.id).reverse()
 
 
     return (
