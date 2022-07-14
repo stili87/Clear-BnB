@@ -23,32 +23,29 @@
     color: white;
     font-size: 50px;
     font-weight: 800;
-    -webkit-text-stroke-width: .5px;
-    -webkit-text-stroke-color: black;
 }
 
 #splash-page-login-signup-div {
     display: flex;
     border: 1px white solid;
     width: 900px;
-    height: 550px;
+
     background-color: rgb(44, 44, 44);
     opacity: .85;
     border-radius: 25px;
 }
 
 #login-signup-div-left, #login-signup-div-right {
-    height: 100%;
+    /* height: 100%; */
     width: 450px;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 25px;
     color: white;
-    -webkit-text-stroke-width: .5px;
-    -webkit-text-stroke-color: black;
-    font-size: 40px;
+    font-size: 25px;
     font-weight:900;
+    padding-bottom: 50px;
 }
 
 #login-signup-div-left {
@@ -64,7 +61,7 @@
 }
 
 #login-form {
-    font-size: 28px;
+    font-size: 20px;
     padding-left: 10px;
     display: flex;
     flex-direction: column;
@@ -127,7 +124,7 @@
     display: flex;
     justify-content: space-between;
     gap: 10px;
-    font-size: 25px;
+    font-size: 20px;
     font-weight: 600;
 }
 
