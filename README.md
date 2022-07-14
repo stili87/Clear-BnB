@@ -7,27 +7,32 @@
 ### Splash Page
 You can sign up for an account or just use the demo user's creditials.
 
-INSERT SPLASH PAGE IMAGE HERE
+![Splash](https://user-images.githubusercontent.com/59978288/178882630-af1c2b05-83a1-4f18-b182-56002fca04ca.png)
+
 
 ### Checkout Properties and Book a Trip
 You can look at properties on the site and book a property for a trip on particular dates.
 
-INSERT SINGLE PROPERTY VIEW HERE
+![Single Prop](https://user-images.githubusercontent.com/59978288/178882676-2f76d095-b4a2-4d39-bd80-83ebbdabeb89.png)
+
 
 ### MANGE PROPERTIES
 You can add a property to the site with picture uploads to display what your property looks like.  You can also update your property later. 
 
-INSERT PROPERTY CREATION FORM IMAGE HERE
+![edit prop](https://user-images.githubusercontent.com/59978288/178882834-2a42da98-ff41-44fa-b6b1-a83ba3335413.png)
+
 
 ### MANAGE TRIPS
 You can modify or cancel your trip as needed. 
 
-INSERTY EDIT TRIP PAGE HERE. 
+![Edit Booking](https://user-images.githubusercontent.com/59978288/178882926-a40ec16f-81a0-48b7-9277-4c6e48280c91.png)
+
 
 ### Review Properties
 You can review a property with ratings to let the owner and other users know about your experience.  You can also edit your review later if you changed your mind. 
 
-INSERT LEAVE REVIEW IMAGE HERE
+![review](https://user-images.githubusercontent.com/59978288/178883039-c8b577a4-4c49-4920-97ae-dfbe1efc70a8.png)
+
 
 
 ## Clear-Bnb Description
