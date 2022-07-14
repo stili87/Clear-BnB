@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react'
 import { useSelector } from 'react-redux';
 import './profile.css'
-import { Link, useParams } from 'react-router-dom';
+import { Link, useHistory, useParams } from 'react-router-dom';
 import ProfileReview from './profileReview';
 
 
@@ -12,10 +12,15 @@ function Profile() {
     const sessionUser = useSelector(state => state.session.user)
     const allReviews = Object.values(useSelector(state => state.reviews))
     const userReviews = allReviews.filter(review => review.user_id === Number(userId))?.reverse()
+    const history = useHistory()
 
     useEffect(() => {
         window.scrollTo(0, 0)
       }, [])
+
+    if (!thisUser){
+        history.push('/404')
+    }
 
     return (
         <div id='profile-full-container'>

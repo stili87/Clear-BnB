@@ -33,11 +33,11 @@ const EditProperty = () => {
     const dispatch = useDispatch()
 
     if(thisProperty?.user_id !== sessionUser.id){
-        history.push('/')
+        history.push('/404')
     }
 
     if(!thisProperty){
-        history.push('/')
+        history.push('/404')
     }
     
     const handleOnSubmit = async e => {

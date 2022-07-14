@@ -8,6 +8,11 @@ function BookingsEdit() {
     const bookingId = Number(useParams().id)
     const thisBooking = useSelector(state => state.bookings)[bookingId]
     const thisProperty = useSelector(state => state.properties)[thisBooking?.property_id]
+    const history = useHistory()
+
+    if (!thisBooking) {
+        history.push('/404')
+    }
 
     const today = new Date()
     const day = 60 * 60 * 24 * 1000
@@ -24,7 +29,6 @@ function BookingsEdit() {
     const [totalDays, setTotalDays] = useState(1)
     const [openDelete, setOpenDelete] = useState(false)
     const dispatch = useDispatch()
-    const history = useHistory()
 
     const formatter = new Intl.NumberFormat('en-US', {
         style: 'currency',
@@ -32,7 +36,7 @@ function BookingsEdit() {
     })
 
     if (sessionUser?.id !== thisBooking?.user_id) {
-        history.push('/')
+        history.push('/404')
     }
 
     useEffect(() => {
@@ -103,6 +107,8 @@ function BookingsEdit() {
     }
 
     return (
+        <>
+        {thisBooking && 
         <div id='bookings-edit-full'>
             <p id='bookings-edit-header'>Edit Your Trip at {thisProperty?.title}</p>
             <img id='bookings-edit-property-img' alt='property' src={thisProperty?.photo1_url}></img>
@@ -194,6 +200,8 @@ function BookingsEdit() {
                 </form>
             </div>
         </div>
+                }
+                </>
     )
 }
 
