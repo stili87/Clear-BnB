@@ -168,7 +168,7 @@ const EditProperty = () => {
             <form id='property-new-form' onSubmit={e => handleOnSubmit(e)}>
                 <p>*required</p>
                 {errors?.length > 0 &&
-                    <ul>
+                    <ul id='property-creation-errors-container'>
                         <p id="property-creation-errors-header">Please fix the following errors:</p>
                         {errors?.map((error, idx) => <li key={idx}>{error}</li>)}
                     </ul>
@@ -290,7 +290,7 @@ const EditProperty = () => {
                 </div>
                 <label>Main Photo (required):</label>
                 <div className='custom-file-upload' id='cursor-pointer'>
-                <label>{!photo1_url ? 'Upload Main Property Photo (required)' : "Uploaded"}
+                <label id='cursor-pointer'>{!photo1_url ? 'Upload Main Property Photo (required)' : "Uploaded"}
                 <input
                     className='pfp'
                     name='photo1_url'
@@ -300,9 +300,9 @@ const EditProperty = () => {
                 ></input>
                 </label>
                 </div>
-                <label>Second Photo (optional):</label>
+                <label >Second Photo (optional):</label>
                 <div className='custom-file-upload' id='cursor-pointer'>
-                <label>{!photo2_url ? 'Second Property Photo (optional)' : "Uploaded"}
+                <label id='cursor-pointer'>{!photo2_url ? 'Second Property Photo (optional)' : "Uploaded"}
                 <input
                     className='pfp'
                     name='photo2_url'
@@ -314,7 +314,7 @@ const EditProperty = () => {
                 </div>
                 <label>Third Photo (optional):</label>
                 <div className='custom-file-upload' id='cursor-pointer'>
-                <label>{!photo3_url ? 'Third Property Photo (optional)' : "Uploaded"}
+                <label id='cursor-pointer'>{!photo3_url ? 'Third Property Photo (optional)' : "Uploaded"}
                 <input
                     className='pfp'
                     name='photo3_url'

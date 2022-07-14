@@ -272,8 +272,7 @@ const NewProperty = () => {
                 </div>
                 <label>Main Photo (required):</label>
                 <div className='custom-file-upload' id='cursor-pointer'>
-                <label>{!photo1_url ? 'Upload Main Property Photo (required)' : "Uploaded"}
-                
+                <label id='cursor-pointer'>{!photo1_url ? 'Upload Main Property Photo (required)' : "Uploaded"}
                 <input
                     className='pfp'
                     name='photo1_url'
@@ -285,7 +284,7 @@ const NewProperty = () => {
                 </div>
                 <label>Second Photo (optional):</label>
                 <div className='custom-file-upload' id='cursor-pointer'>
-                <label>{!photo2_url ? 'Second Property Photo (optional)' : "Uploaded"}
+                <label id='cursor-pointer'>{!photo2_url ? 'Second Property Photo (optional)' : "Uploaded"}
                 <input
                     className='pfp'
                     name='photo2_url'
@@ -295,9 +294,9 @@ const NewProperty = () => {
                 ></input>
                 </label>
                 </div>
-                <label>Third Photo (optional):</label>
+                <label >Third Photo (optional):</label>
                 <div className='custom-file-upload' id='cursor-pointer'>
-                <label>{!photo3_url ? 'Third Property Photo (optional)' : "Uploaded"}
+                <label id='cursor-pointer'>{!photo3_url ? 'Third Property Photo (optional)' : "Uploaded"}
                 <input
                     className='pfp'
                     name='photo3_url'
