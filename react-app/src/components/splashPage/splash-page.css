@@ -8,12 +8,11 @@
     align-items: center;
     gap: 25px;
     width: 100vw;
-
-
+    padding-bottom: 60px;
 }
 
 #splash-page-header {
-    margin-top: 75px;
+    margin-top: 30px;
     color: white;
     height: 200px;
 
@@ -36,7 +35,6 @@
 }
 
 #login-signup-div-left, #login-signup-div-right {
-    /* height: 100%; */
     width: 450px;
     display: flex;
     flex-direction: column;
