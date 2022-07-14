@@ -16,7 +16,7 @@ function SinglePropertyDisplay() {
     const allReviews = Object.values(useSelector(state => state.reviews))
     const [reviewOpen, setReviewOpen] = useState(false)
     const allThisReviews = allReviews?.filter(review => review.property_id === propertyId)
-    const thisReivews = allThisReviews?.reverse().slice(0,4)
+    const thisReivews = allThisReviews?.reverse()
 
     useEffect(() => {
         window.scrollTo(0, 0)

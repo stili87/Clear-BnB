@@ -4,10 +4,10 @@
     margin-top: 25px;
     margin-left: 45px;
     margin-right: 45px;
-    margin-bottom: 300px;
     gap: 20px;
     width: 100vw;
-
+    height: auto;
+    
 }
 
 #single-property-display-header {
@@ -175,7 +175,6 @@
     display: flex;
     flex-wrap: wrap;
     width: 65%;
-    height: 5px;
     gap: 50px;
 }
 
