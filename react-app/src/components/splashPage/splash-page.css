@@ -1,6 +1,6 @@
 #splash-page-full-container {
     background-image: url('https://wallpaperaccess.com/full/4207573.jpg') ;
-    background-size: 100%;
+    background-size: cover;
     height: 100vh;
     overflow: hidden;
     display: flex;
@@ -8,8 +8,8 @@
     align-items: center;
     gap: 25px;
     width: 100vw;
-    /* padding-bottom: 200px; */
-    overflow: hidden;
+
+
 }
 
 #splash-page-header {
