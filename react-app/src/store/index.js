@@ -7,6 +7,7 @@ import typesReducer from './types';
 import bookingReducer from './bookings';
 import usersReducer from './users';
 import reviewsReducer from './reviews';
+import map from './maps';
 
 
 const rootReducer = combineReducers({
@@ -16,7 +17,8 @@ const rootReducer = combineReducers({
   types: typesReducer,
   bookings: bookingReducer,
   users: usersReducer,
-  reviews: reviewsReducer
+  reviews: reviewsReducer,
+  map
 });
 
 

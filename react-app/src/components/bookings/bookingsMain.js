@@ -93,7 +93,7 @@ function BookingsMain({ thisProperty }) {
             setGuests(guests - 1)
         }
     }
-
+    
     return (
         <form onSubmit={e => handleBookingSubmit(e)} id='bookings-form'>
             {errors?.length > 0 &&
@@ -108,11 +108,11 @@ function BookingsMain({ thisProperty }) {
             <div id='bookings-dates-selection'>
                 <div id='bookings-checkin-container'>
                     <label id='booking-checkinout-label'>CHECK-IN</label>
-                    <input value={start_date?.toISOString().split('T')[0]} onChange={e => setStart_date(new Date(e.target.value))} type='date'></input>
+                    <input min={tommorrow.toISOString().split('T')[0]} value={start_date?.toISOString().split('T')[0]} onChange={e => setStart_date(new Date(e.target.value))} type='date'></input>
                 </div>
                 <div id='bookings-checkin-container'>
                     <label id='booking-checkinout-label'>CHECK-OUT </label>
-                    <input value={end_date?.toISOString().split('T')[0]} onChange={e => setEnd_date(new Date(e.target.value))} type='date'></input>
+                    <input min={tommorrow.toISOString().split('T')[0]} value={end_date?.toISOString().split('T')[0]} onChange={e => setEnd_date(new Date(e.target.value))} type='date'></input>
                 </div>
             </div>
             <div id='booking-guests-container'>

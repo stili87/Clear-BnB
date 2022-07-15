@@ -51,5 +51,7 @@
     border-spacing: 0;
   }
   
-
+  textarea, input {
+    font-family: 'Ubuntu', sans-serif;
+  }
   
