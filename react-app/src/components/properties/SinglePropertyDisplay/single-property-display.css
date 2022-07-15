@@ -34,12 +34,12 @@
 
 #single-property-display-photos {
     display: flex;
-    overflow: hidden;
+    /* overflow: hidden; */
     border-radius: 20px;
     gap: 10px;
-    justify-content: center;
-    width: 630px;
+    width: 90vw;
     margin-left: 200px;
+    justify-self: flex-start;
 }
 
 #single-property-main-img {
@@ -179,4 +179,27 @@
 
 #single-property-review-no {
     font-size: 18px;
+}
+
+#single-property-maps {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 415px;
+    margin-left: 25px;
+}
+
+#single-property-maps-header {
+    margin-left: 675px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+#single-property-map-marker-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }

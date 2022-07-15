@@ -20,6 +20,7 @@ import { getReviewsThunk } from './store/reviews';
 import MyTrips from './components/mytrips/myTrips';
 import MyProperties from './components/myproperties/myproperties';
 import Footer from './components/footer/footer';
+import { getKey } from './store/maps';
 
 
 
@@ -37,6 +38,7 @@ function App() {
       await dispatch(getBookingsThunk())
       await dispatch(getUsersThunk())
       await dispatch(getReviewsThunk())
+      await dispatch(getKey())
       setLoaded(true);
     })();
   }, [dispatch]);
@@ -77,9 +79,9 @@ function App() {
         <ProtectedRoute path='/myproperties' exact={true}>
           <MyProperties />
         </ProtectedRoute>
-        <Route>
+        <ProtectedRoute>
           <h1 id='page-not-found'>Page Not found</h1>
-        </Route>
+        </ProtectedRoute>
       </Switch>
     </BrowserRouter>
     <Footer />
