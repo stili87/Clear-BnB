@@ -35,8 +35,6 @@ const Maps = ({ apiKey, property }) => {
                     zoom={15}
                 >
                     <Marker
-
-                        label={{ fontWeight: 'bold', fontSize: '10px'}}
                         position={{ lat: parseFloat(property?.lat), lng: parseFloat(property?.lng) }}
                         onClick={() => setSelectedMarker(!selectedMarker)}
                     >
