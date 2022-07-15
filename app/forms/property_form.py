@@ -44,7 +44,6 @@ def check_max_service(form, field):
 
 def check_zip_code_numeric(form, field):
     zipcode = field.data
-    print(re.match(r'\d{5}$', zipcode), '!'*50)
     if not re.match(r'\d{5}$', zipcode):
         raise ValidationError('Zipcode must be 5 digits exactly.')
 

@@ -16,14 +16,12 @@ def validation_errors_to_error_messages(validation_errors):
 @review_routes.route('')
 def all_reviews():
     reviews = Review.query.all()
-    print(reviews)
     return {'reviews': [review.to_dict() for review in reviews]}
 
 @review_routes.route('', methods=["POST"])
 @login_required
 def post_review():
     form = ReviewForm()
-    print(form.data, '!'*50)
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
 
