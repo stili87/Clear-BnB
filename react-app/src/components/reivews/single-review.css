@@ -18,4 +18,11 @@
     display:  flex;
     align-items: center;
     gap: 25px;
+    word-wrap: break-word;
+    width: 100%;
+}
+
+#single-reivew-display-user-info-container > p {
+    word-wrap: break-word;
+    width: 80%;
 }

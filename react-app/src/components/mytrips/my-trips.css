@@ -21,6 +21,11 @@
     flex-wrap: wrap;
 }
 
+#my-trips-multiple-container > p, h1 {
+    word-wrap:break-word;
+    width: 100%;
+}
+
 #my-trips-single-booking-full {
     height: 375px;
     border: 1px solid grey;
@@ -41,10 +46,13 @@
 
 #my-trips-single-booking-prop-title{
     margin-left: 15px;
+    margin-right: 15px;
     font-size: 18px;
     font-weight: 600;
     color: black;
     text-decoration: none;
+    word-wrap: break-word;
+
 }
 #my-trips-single-booking-prop-title:hover {
     text-decoration: underline;

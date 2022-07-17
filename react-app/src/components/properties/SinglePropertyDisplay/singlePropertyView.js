@@ -83,7 +83,7 @@ function SinglePropertyDisplay() {
                         <p id='single-property-owner-name'>
                             Property Description
                         </p>
-                        <p>
+                        <p id='single-property-description-content'> 
                             {thisProperty?.description}
                         </p>
                     </div>

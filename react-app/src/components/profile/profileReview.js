@@ -12,7 +12,7 @@ function ProfileReview ({review}) {
 
     return (
         <div id='profile-reivew-full'>
-            <Link id='profile-review-property-info'>
+            <Link id='profile-review-property-info' to={`/properties/${thisProperty?.id}`}>
             <img alt='profile' src={thisProperty.photo1_url} id='profile-review-property-picture'/>
             <p>{thisProperty.title}</p>
             </Link>

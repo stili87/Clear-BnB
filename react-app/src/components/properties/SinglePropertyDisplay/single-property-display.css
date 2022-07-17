@@ -100,6 +100,8 @@
 #single-property-owner-name {
     font-weight: 600;
     font-size: 15px;
+    word-wrap: break-word;
+    width: 700px;
 }
 
 #single-property-info-host-left {
@@ -118,6 +120,12 @@
     padding-bottom: 15px;
     border-bottom: 1px solid lightgrey;
 }
+
+#single-property-description-content {
+    word-wrap: break-word;
+    width: 700px;
+}
+
 
 #single-property-type-list {
     display: flex;
