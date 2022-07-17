@@ -21,9 +21,11 @@
       position: relative;
       font-family: 'Ubuntu', sans-serif;
       background-color: #fff;
-  }
-  
-  #root {
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    
+    #root {
       display: flex;
       flex-direction: column;
       background-color: #fff;
