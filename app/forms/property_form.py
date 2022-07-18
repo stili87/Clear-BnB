@@ -7,7 +7,7 @@ import re
 def check_title_len(form, field):
     title = field.data
     if len(title) > 40:
-        raise ValidationError('Field cannot be more than 40 characters.')
+        raise ValidationError('Title cannot be more than 40 characters.')
 
 class ListField(Field):
     def process_formdata(self, valuelist):

@@ -23,11 +23,10 @@ const SignUpForm = () => {
     if (picture_url &&
       !picture_url.name.endsWith("png") &&
       !picture_url.name.endsWith("jpg") &&
-      !picture_url.name.endsWith("pdf") &&
       !picture_url.name.endsWith("jpeg") &&
       !picture_url.name.endsWith("gif")
     ) {
-      setErrors(['File type not allowed'])
+      setErrors(['Only .png, .jpg, .jpeg, .gif file types allowed for pictures.'])
       return
     }
 

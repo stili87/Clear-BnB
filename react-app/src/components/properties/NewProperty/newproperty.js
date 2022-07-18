@@ -53,7 +53,7 @@ const NewProperty = () => {
             !photo1_url.name.endsWith("jpeg") &&
             !photo1_url.name.endsWith("gif")
         ) {
-            setErrors(['File type not allowed for main photo.'])
+            setErrors(['Only .png, .jpg, .jpeg, .gif file types allowed for main picture.'])
             setShowModal(false)
             return
         }
@@ -65,7 +65,7 @@ const NewProperty = () => {
             !photo2_url.name.endsWith("jpeg") &&
             !photo2_url.name.endsWith("gif")
         ) {
-            setErrors(['File type not allowed for second photo.'])
+            setErrors(['Only .png, .jpg, .jpeg, .gif file types allowed for second picture.'])
             setShowModal(false)
             return
         }
@@ -77,7 +77,7 @@ const NewProperty = () => {
             !photo3_url.name.endsWith("jpeg") &&
             !photo3_url.name.endsWith("gif")
         ) {
-            setErrors(['File type not allowed for third photo.'])
+            setErrors(['Only .png, .jpg, .jpeg, .gif file types allowed for third picture.'])
             setShowModal(false)
             return
         }
