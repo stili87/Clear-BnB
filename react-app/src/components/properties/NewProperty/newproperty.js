@@ -49,7 +49,6 @@ const NewProperty = () => {
         if (photo1_url &&
             !photo1_url.name.endsWith("png") &&
             !photo1_url.name.endsWith("jpg") &&
-            !photo1_url.name.endsWith("pdf") &&
             !photo1_url.name.endsWith("jpeg") &&
             !photo1_url.name.endsWith("gif")
         ) {
@@ -61,7 +60,6 @@ const NewProperty = () => {
         if (photo2_url &&
             !photo2_url.name.endsWith("png") &&
             !photo2_url.name.endsWith("jpg") &&
-            !photo2_url.name.endsWith("pdf") &&
             !photo2_url.name.endsWith("jpeg") &&
             !photo2_url.name.endsWith("gif")
         ) {
@@ -73,7 +71,6 @@ const NewProperty = () => {
         if (photo3_url &&
             !photo3_url.name.endsWith("png") &&
             !photo3_url.name.endsWith("jpg") &&
-            !photo3_url.name.endsWith("pdf") &&
             !photo3_url.name.endsWith("jpeg") &&
             !photo3_url.name.endsWith("gif")
         ) {
