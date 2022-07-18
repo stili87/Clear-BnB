@@ -44,7 +44,7 @@ function Footer() {
                 <p id='footer-info-contact'>PostgreSQL,</p>
                 <p id='footer-info-contact'>Python,</p>
                 <p id='footer-info-contact'>JavaScript,</p>
-                <p id='footer-info-contact'>Google API</p>
+                <p id='footer-info-contact'>Google Maps API</p>
 
                 </div>
             </div>

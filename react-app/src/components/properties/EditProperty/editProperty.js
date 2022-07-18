@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom';
 import Multiselect from "multiselect-react-dropdown";
 import { deletePropertyThunk, editPropertyThunk } from '../../../store/properties';
+import { Modal } from '../../../context/Modal';
+import LoadingModal from '../../loadingModal/loadingModal';
 
 const EditProperty = () => {
     const propertyId = useParams().id
@@ -31,6 +33,7 @@ const EditProperty = () => {
     const history = useHistory()
     const [deleteOpen, setDeleteOpen] = useState(false)
     const dispatch = useDispatch()
+    const [showModal, setShowModal] = useState(false);
 
     if(thisProperty?.user_id !== sessionUser.id){
         history.push('/404')
@@ -42,6 +45,7 @@ const EditProperty = () => {
     
     const handleOnSubmit = async e => {
         e.preventDefault()
+        setShowModal(true)
 
 
         //Generating Lat and Lng based on address using api
@@ -80,8 +84,10 @@ const EditProperty = () => {
 
         const data = await dispatch(editPropertyThunk(editProperty))
         if (data) {
+            setShowModal(false)
             setErrors(data)
         }else {
+            setShowModal(false)
             history.push('/myproperties')
         }
     }
@@ -367,6 +373,11 @@ const EditProperty = () => {
                  </div>
                  </div>}
             </form>
+            {showModal && (
+                <Modal onClose={() => setShowModal(false)}>
+                    <LoadingModal />
+                </Modal>
+            )}
         </div>
     )
 }

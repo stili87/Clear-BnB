@@ -4,6 +4,8 @@ import { useHistory } from 'react-router-dom';
 import Multiselect from "multiselect-react-dropdown";
 import './new-property.css'
 import { addPropertyThunk } from '../../../store/properties';
+import { Modal } from '../../../context/Modal';
+import LoadingModal from '../../loadingModal/loadingModal';
 
 const NewProperty = () => {
     const types = Object.values(useSelector(state => state.types))
@@ -28,50 +30,57 @@ const NewProperty = () => {
     const [property_amenities, setProerty_amenities] = useState([])
     const history = useHistory()
     const dispatch = useDispatch()
+    const [showModal, setShowModal] = useState(false);
 
 
     const handleOnSubmit = async e => {
         e.preventDefault()
 
+        setShowModal(true)
+
         if (!photo1_url) {
             setErrors(['Main Property Photo Required'])
+            setShowModal(false)
             return
-        }else {
+        } else {
             setErrors([])
         }
 
-        if(photo1_url &&
-        !photo1_url.name.endsWith("png") &&
-        !photo1_url.name.endsWith("jpg") &&
-        !photo1_url.name.endsWith( "pdf") &&
-        !photo1_url.name.endsWith("jpeg") &&
-        !photo1_url.name.endsWith("gif")
-        ){
-        setErrors(['File type not allowed for main photo.'])
-        return
-      }
+        if (photo1_url &&
+            !photo1_url.name.endsWith("png") &&
+            !photo1_url.name.endsWith("jpg") &&
+            !photo1_url.name.endsWith("pdf") &&
+            !photo1_url.name.endsWith("jpeg") &&
+            !photo1_url.name.endsWith("gif")
+        ) {
+            setErrors(['File type not allowed for main photo.'])
+            setShowModal(false)
+            return
+        }
 
-      if(photo2_url &&
-      !photo2_url.name.endsWith("png") &&
-      !photo2_url.name.endsWith("jpg") &&
-      !photo2_url.name.endsWith( "pdf") &&
-      !photo2_url.name.endsWith("jpeg") &&
-      !photo2_url.name.endsWith("gif")
-      ){
-      setErrors(['File type not allowed for second photo.'])
-      return
-    }
+        if (photo2_url &&
+            !photo2_url.name.endsWith("png") &&
+            !photo2_url.name.endsWith("jpg") &&
+            !photo2_url.name.endsWith("pdf") &&
+            !photo2_url.name.endsWith("jpeg") &&
+            !photo2_url.name.endsWith("gif")
+        ) {
+            setErrors(['File type not allowed for second photo.'])
+            setShowModal(false)
+            return
+        }
 
-    if(photo3_url &&
-    !photo3_url.name.endsWith("png") &&
-    !photo3_url.name.endsWith("jpg") &&
-    !photo3_url.name.endsWith( "pdf") &&
-    !photo3_url.name.endsWith("jpeg") &&
-    !photo3_url.name.endsWith("gif")
-    ){
-    setErrors(['File type not allowed for third photo.'])
-    return
-  }
+        if (photo3_url &&
+            !photo3_url.name.endsWith("png") &&
+            !photo3_url.name.endsWith("jpg") &&
+            !photo3_url.name.endsWith("pdf") &&
+            !photo3_url.name.endsWith("jpeg") &&
+            !photo3_url.name.endsWith("gif")
+        ) {
+            setErrors(['File type not allowed for third photo.'])
+            setShowModal(false)
+            return
+        }
 
         //Generating Lat and Lng based on address
         const longLat = await fetch(`https://api.opencagedata.com/geocode/v1/json?q=${address} ${city} ${state} ${zipcode}&key=f76162da63df4d15a25fcdc22b5b35a4&language=en&pretty=1&abbrv=1&limit=1`)
@@ -109,7 +118,9 @@ const NewProperty = () => {
         const data = await dispatch(addPropertyThunk(newProperty))
         if (data) {
             setErrors(data)
+            setShowModal(false)
         } else {
+            setShowModal(false)
             history.push('/myproperties')
         }
     }
@@ -149,7 +160,7 @@ const NewProperty = () => {
     }
 
     const removeBedRooms = () => {
-        if(bedrooms === 1 ){
+        if (bedrooms === 1) {
             return
         }
         setBedrooms(bedrooms - 1)
@@ -160,7 +171,7 @@ const NewProperty = () => {
     }
 
     const removeBathrooms = () => {
-        if(bathrooms === 1 ){
+        if (bathrooms === 1) {
             return
         }
         setBathrooms(bathrooms - 1)
@@ -171,7 +182,7 @@ const NewProperty = () => {
     }
 
     const removeGuests = () => {
-        if(guests === 1 ){
+        if (guests === 1) {
             return
         }
         setGuests(guests - 1)
@@ -281,63 +292,63 @@ const NewProperty = () => {
                 </div>
                 <div id='property-creation-item-containter'>
                     <label>Bedrooms*:</label>
-                <div id='bookings-guests-selection' className='property-creation-buttons'>
-                    <p id='bookings-guests-selection-selector' onClick={() => removeBedRooms()}>-</p>
-                    <p id='bookings-guests-selection-number'>{bedrooms}</p>
-                    <p id='bookings-guests-selection-selector' onClick={() => addBedRooms()}>+</p>
-                </div>
+                    <div id='bookings-guests-selection' className='property-creation-buttons'>
+                        <p id='bookings-guests-selection-selector' onClick={() => removeBedRooms()}>-</p>
+                        <p id='bookings-guests-selection-number'>{bedrooms}</p>
+                        <p id='bookings-guests-selection-selector' onClick={() => addBedRooms()}>+</p>
+                    </div>
                 </div>
                 <div id='property-creation-item-containter' >
                     <label>Bathrooms*:</label>
                     <div id='bookings-guests-selection' className='property-creation-buttons'>
-                    <p id='bookings-guests-selection-selector' onClick={() => removeBathrooms()}>-</p>
-                    <p id='bookings-guests-selection-number'>{bathrooms}</p>
-                    <p id='bookings-guests-selection-selector' onClick={() => addBathrooms()}>+</p>
-                </div>
+                        <p id='bookings-guests-selection-selector' onClick={() => removeBathrooms()}>-</p>
+                        <p id='bookings-guests-selection-number'>{bathrooms}</p>
+                        <p id='bookings-guests-selection-selector' onClick={() => addBathrooms()}>+</p>
+                    </div>
                 </div>
                 <div id='property-creation-item-containter'>
                     <label>Guests Allowed*:</label>
                     <div id='bookings-guests-selection' className='property-creation-buttons'>
-                    <p id='bookings-guests-selection-selector' onClick={() => removeGuests()}>-</p>
-                    <p id='bookings-guests-selection-number'>{guests}</p>
-                    <p id='bookings-guests-selection-selector' onClick={() => addGuests()}>+</p>
-                </div>
+                        <p id='bookings-guests-selection-selector' onClick={() => removeGuests()}>-</p>
+                        <p id='bookings-guests-selection-number'>{guests}</p>
+                        <p id='bookings-guests-selection-selector' onClick={() => addGuests()}>+</p>
+                    </div>
                 </div>
                 <label>Main Photo (required):</label>
                 <div className='custom-file-upload' id='cursor-pointer'>
-                <label id='cursor-pointer'>{!photo1_url ? 'Upload Main Property Photo (required)' : "Uploaded"}
-                <input
-                    className='pfp'
-                    name='photo1_url'
-                    accept="image/*"
-                    onChange={updateImage1}
-                    type='file'
-                ></input>
-                </label>
+                    <label id='cursor-pointer'>{!photo1_url ? 'Upload Main Property Photo (required)' : "Uploaded"}
+                        <input
+                            className='pfp'
+                            name='photo1_url'
+                            accept="image/*"
+                            onChange={updateImage1}
+                            type='file'
+                        ></input>
+                    </label>
                 </div>
                 <label>Second Photo (optional):</label>
                 <div className='custom-file-upload' id='cursor-pointer'>
-                <label id='cursor-pointer'>{!photo2_url ? 'Second Property Photo (optional)' : "Uploaded"}
-                <input
-                    className='pfp'
-                    name='photo2_url'
-                    accept="image/*"
-                    onChange={updateImage2}
-                    type='file'
-                ></input>
-                </label>
+                    <label id='cursor-pointer'>{!photo2_url ? 'Second Property Photo (optional)' : "Uploaded"}
+                        <input
+                            className='pfp'
+                            name='photo2_url'
+                            accept="image/*"
+                            onChange={updateImage2}
+                            type='file'
+                        ></input>
+                    </label>
                 </div>
                 <label >Third Photo (optional):</label>
                 <div className='custom-file-upload' id='cursor-pointer'>
-                <label id='cursor-pointer'>{!photo3_url ? 'Third Property Photo (optional)' : "Uploaded"}
-                <input
-                    className='pfp'
-                    name='photo3_url'
-                    accept="image/*"
-                    onChange={updateImage3}
-                    type='file'
-                ></input>
-                </label>
+                    <label id='cursor-pointer'>{!photo3_url ? 'Third Property Photo (optional)' : "Uploaded"}
+                        <input
+                            className='pfp'
+                            name='photo3_url'
+                            accept="image/*"
+                            onChange={updateImage3}
+                            type='file'
+                        ></input>
+                    </label>
                 </div>
                 <div id='property-creation-item-containter'>
 
@@ -366,13 +377,18 @@ const NewProperty = () => {
                     />
                 </div>
                 <div id='property-creation-button-container'>
-                    <button  id="new-property-form-submit" type="submit">{errors?.length > 0 ? 'Fix Errors and try again': "Submit"}</button>
+                    <button id="new-property-form-submit" type="submit">{errors?.length > 0 ? 'Fix Errors and try again' : "Submit"}</button>
                     <button id="new-property-form-submit" type="cancel" onClick={(e) => {
                         e.preventDefault()
                         history.push('/home')
                     }}>Cancel</button>
                 </div>
             </form>
+            {showModal && (
+                <Modal onClose={() => setShowModal(false)}>
+                    <LoadingModal />
+                </Modal>
+            )}
         </div>
     )
 }
