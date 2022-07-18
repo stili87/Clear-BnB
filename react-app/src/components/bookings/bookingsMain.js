@@ -38,7 +38,7 @@ function BookingsMain({ thisProperty }) {
         } else if (start_date < today) {
             setErrors(['Start Date Cannot be today or prior'])
             setDisabled(true)
-        }else if(diffDays < 1 ){
+        } else if (diffDays < 1) {
             setErrors(['You cannot check-in and checkout on the same day'])
             setDisabled(true)
         }
@@ -93,7 +93,20 @@ function BookingsMain({ thisProperty }) {
             setGuests(guests - 1)
         }
     }
-    
+
+    const setEnd_dateF = (e) => {
+        if(e.target.value){
+            setEnd_date(new Date(e.target.value))
+        }
+
+    }
+
+    const setStart_dateF = e => {
+        if(e.target.value){
+            setStart_date(new Date(e.target.value))
+        }
+    }
+
     return (
         <form onSubmit={e => handleBookingSubmit(e)} id='bookings-form'>
             {errors?.length > 0 &&
@@ -108,11 +121,11 @@ function BookingsMain({ thisProperty }) {
             <div id='bookings-dates-selection'>
                 <div id='bookings-checkin-container'>
                     <label id='booking-checkinout-label'>CHECK-IN</label>
-                    <input min={tommorrow.toISOString().split('T')[0]} value={start_date?.toISOString().split('T')[0]} onChange={e => setStart_date(new Date(e.target.value))} type='date'></input>
+                    <input min={tommorrow.toISOString().split('T')[0]} value={start_date?.toISOString().split('T')[0]} onChange={e => setStart_dateF(e)} type='date'></input>
                 </div>
                 <div id='bookings-checkin-container'>
                     <label id='booking-checkinout-label'>CHECK-OUT </label>
-                    <input min={tommorrow.toISOString().split('T')[0]} value={end_date?.toISOString().split('T')[0]} onChange={e => setEnd_date(new Date(e.target.value))} type='date'></input>
+                    <input min={tommorrow.toISOString().split('T')[0]} value={end_date?.toISOString().split('T')[0]} onChange={e => setEnd_dateF(e)} type='date'></input>
                 </div>
             </div>
             <div id='booking-guests-container'>
