@@ -33,13 +33,16 @@ function BookingsMain({ thisProperty }) {
         const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
         if (end_date <= start_date) {
-            setErrors(['End Date Cannot be prior to or the same as start date'])
+            setErrors(['End Date Cannot be prior to or the same as start date.'])
             setDisabled(true)
         } else if (start_date < today) {
-            setErrors(['Start Date Cannot be today or prior'])
+            setErrors(['Start Date Cannot be today or prior.'])
             setDisabled(true)
         } else if (diffDays < 1) {
-            setErrors(['You cannot check-in and checkout on the same day'])
+            setErrors(['You cannot check-in and checkout on the same day.'])
+            setDisabled(true)
+        } else if (diffDays > 100) {
+            setErrors(['You cannot rent for more than 100 days.'])
             setDisabled(true)
         }
         else {
