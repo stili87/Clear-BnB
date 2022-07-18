@@ -40,6 +40,39 @@ const NewProperty = () => {
             setErrors([])
         }
 
+        if(photo1_url &&
+        !photo1_url.name.endsWith("png") &&
+        !photo1_url.name.endsWith("jpg") &&
+        !photo1_url.name.endsWith( "pdf") &&
+        !photo1_url.name.endsWith("jpeg") &&
+        !photo1_url.name.endsWith("gif")
+        ){
+        setErrors(['File type not allowed for main photo.'])
+        return
+      }
+
+      if(photo2_url &&
+      !photo2_url.name.endsWith("png") &&
+      !photo2_url.name.endsWith("jpg") &&
+      !photo2_url.name.endsWith( "pdf") &&
+      !photo2_url.name.endsWith("jpeg") &&
+      !photo2_url.name.endsWith("gif")
+      ){
+      setErrors(['File type not allowed for second photo.'])
+      return
+    }
+
+    if(photo3_url &&
+    !photo3_url.name.endsWith("png") &&
+    !photo3_url.name.endsWith("jpg") &&
+    !photo3_url.name.endsWith( "pdf") &&
+    !photo3_url.name.endsWith("jpeg") &&
+    !photo3_url.name.endsWith("gif")
+    ){
+    setErrors(['File type not allowed for third photo.'])
+    return
+  }
+
         //Generating Lat and Lng based on address
         const longLat = await fetch(`https://api.opencagedata.com/geocode/v1/json?q=${address} ${city} ${state} ${zipcode}&key=f76162da63df4d15a25fcdc22b5b35a4&language=en&pretty=1&abbrv=1&limit=1`)
         const res = await longLat.json()

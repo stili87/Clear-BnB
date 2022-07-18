@@ -9,7 +9,7 @@ def check_content_len(form, field):
 
 
 class ReviewForm(FlaskForm):
-    content= TextAreaField('content', validators=[DataRequired(), check_content_len])
+    content= TextAreaField('content', validators=[DataRequired('Content of review is Required'), check_content_len])
     rating= IntegerField('rating', validators=[DataRequired()])
     user_id= IntegerField('user_id', validators=[DataRequired()])
     property_id= IntegerField('property_id', validators=[DataRequired()])

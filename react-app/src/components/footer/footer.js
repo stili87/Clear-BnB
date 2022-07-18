@@ -19,7 +19,7 @@ function Footer() {
                     About the Developer
                 </div>
                 <a id='footer-info-item' rel="noreferrer" target='_blank' href='https://github.com/stili87'>Github</a>
-                <a id='footer-info-item' rel="noreferrer" target='_blank' href='www.linkedin.com/in/andrew-stilinovic'>LinkedIn</a>
+                <a id='footer-info-item' rel="noreferrer" target='_blank' href='https://www.linkedin.com/in/andrew-stilinovic'>LinkedIn</a>
             </div>
             <div id='footer-info-container'>
                 <div id='footer-info-header'>
@@ -43,7 +43,8 @@ function Footer() {
                 <p id='footer-info-contact'>HTML,</p>
                 <p id='footer-info-contact'>PostgreSQL,</p>
                 <p id='footer-info-contact'>Python,</p>
-                <p id='footer-info-contact'>JavaScript</p>
+                <p id='footer-info-contact'>JavaScript,</p>
+                <p id='footer-info-contact'>Google API</p>
 
                 </div>
             </div>

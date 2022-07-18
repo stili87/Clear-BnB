@@ -2,6 +2,7 @@
     margin-top: 75px;
     display: flex;
     flex-direction: column;
+    margin-bottom: 50px;
 }
 
 #profile-user-info-container {

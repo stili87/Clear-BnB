@@ -1,7 +1,7 @@
 #footer-container {
     display: flex;
     justify-content: space-around;
-    height: 10.5rem;
+    height: 200px;
     width: 100vw;
     overflow: hidden;
     background-color: bisque;

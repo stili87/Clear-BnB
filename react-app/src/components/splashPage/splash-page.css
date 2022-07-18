@@ -1,7 +1,7 @@
 #splash-page-full-container {
     background-image: url('https://wallpaperaccess.com/full/4207573.jpg') ;
     background-size: cover;
-    height: 100vh;
+    min-height: 100vh;
     overflow: hidden;
     display: flex;
     flex-direction: column;

@@ -67,7 +67,7 @@ function EditReview({property, setReviewOpen, review}) {
             <Rating onClick={handleRating} fillColor={'rgb(227,28,95)'} ratingValue={rating} size={30} initialValue={20} />
             </div>
             <p id='create-review-sub-heads'>Review:</p>
-            <textarea required onChange={e=> setContent(e.target.value)} value={content} id='create-review-text-area'></textarea>
+            <textarea onChange={e=> setContent(e.target.value)} value={content} id='create-review-text-area'></textarea>
             <button id='booking-submit-button'>Submit Review</button>
             <button onClick={e=> handleCancel(e)} id='booking-submit-button'>Cancel</button>
             <button onClick={e=> handleOpenDelete(e)} id='booking-submit-button'>Delete Review</button>

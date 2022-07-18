@@ -85,7 +85,7 @@ const SignUpForm = () => {
       <div id='signup-form-entry'>
         <label>User Name:</label>
         <input
-          required
+
           type="text"
           name="username"
           onChange={updateUsername}
@@ -95,7 +95,7 @@ const SignUpForm = () => {
       <div id='signup-form-entry'>
         <label>Email:</label>
         <input
-          required
+
           type="text"
           name="email"
           onChange={updateEmail}
@@ -105,7 +105,7 @@ const SignUpForm = () => {
       <div id='signup-form-entry'>
         <label>Name:</label>
         <input
-          required
+
           type="text"
           name="name"
           onChange={e => setName(e.target.value)}
@@ -116,7 +116,7 @@ const SignUpForm = () => {
       <div id='signup-form-entry'>
         <label>Location:</label>
         <input
-          required
+
           type="text"
           name="location"
           onChange={e => setLocation(e.target.value)}
@@ -136,7 +136,7 @@ const SignUpForm = () => {
       <div id='signup-form-entry'>
         <label>Password:</label>
         <input
-          required
+
           type="password"
           name="password"
           onChange={updatePassword}
@@ -146,7 +146,7 @@ const SignUpForm = () => {
       <div id='signup-form-entry'>
         <label>Repeat Password:</label>
         <input
-          required
+
           type="password"
           name="repeat_password"
           onChange={updateRepeatPassword}

@@ -6,7 +6,7 @@ from app.models import User
 def username_length(form, field):
     username = field.data
     if len(username) > 40:
-        raise ValidationError('Username is too long. (Maximum length is 40)')
+        raise ValidationError('Username is too long. (Maximum length is 40).')
 
 def user_exists(form, field):
     # Checking if user exists
@@ -40,10 +40,10 @@ def check_password(form, field):
 
 class SignUpForm(FlaskForm):
     username = StringField(
-        'username', validators=[DataRequired(), username_exists, username_length])
-    email = StringField('email', validators=[DataRequired(), Email("Please enter a proper email address."), user_exists, check_length, ])
-    password = StringField('password', validators=[DataRequired(), check_length, check_password])
-    name = StringField('name', validators=[DataRequired(), check_length])
+        'username', validators=[DataRequired('User Name is required.'), username_exists, username_length])
+    email = StringField('email', validators=[DataRequired('Email is required.'), Email("Please enter a proper email address."), user_exists, check_length, ])
+    password = StringField('password', validators=[DataRequired('Password is required.'), check_length, check_password])
+    name = StringField('name', validators=[DataRequired('Name is required.'), check_length])
     bio = TextAreaField('bio', validators=[check_bio_length])
     picture_url = StringField('photo_url')
-    location = StringField('location', validators=[DataRequired(), check_length])
+    location = StringField('location', validators=[DataRequired('Location is required.'), check_length])
