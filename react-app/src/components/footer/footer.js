@@ -36,7 +36,7 @@ function Footer() {
                 <p id='footer-info-contact'>React,</p>
                 <p id='footer-info-contact'>Redux,</p>
                 <p id='footer-info-contact'>Flask,</p>
-                <p id='footer-info-contact'>Flask Alembic,</p>
+                <p id='footer-info-contact'>SQLAlchemy,</p>
                 <p id='footer-info-contact'>Docker,</p>
                 <p id='footer-info-contact'>AWS S3 Buckets,</p>
                 <p id='footer-info-contact'>CSS,</p>

@@ -18,7 +18,7 @@
     display: flex;
     align-items: center;
     justify-content:space-between;
-    width: 200px;
+    width: 325px;
     margin-right: 200px;
 }
 
@@ -72,4 +72,16 @@
 
 .nav-bar-link:hover {
     text-decoration: underline;
+}
+
+
+#nav-bar-profile-button-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border: 1px lightgray solid;
+    border-radius: 25px;
+    padding: 3px;
+    cursor: pointer;
 }

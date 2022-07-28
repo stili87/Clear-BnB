@@ -28,7 +28,11 @@ const NavBar = () => {
       </NavLink>
       <div id='nav-bar-right-container'>
       <Link onClick={() => setDisplayDropDown(false)} className='nav-bar-link' to='/properties/new'>Host Your Home</Link>
-        <img onClick={() => setDisplayDropDown(!displayDropDown)} alt='head shot' className='dont-close' id='nav-bar-profile-button' src={sessionUser.picture_url}></img>
+      <Link onClick={() => setDisplayDropDown(false)} className='nav-bar-link' to='/about'>About Clear-Bnb</Link>
+        <div onClick={() => setDisplayDropDown(!displayDropDown)} id='nav-bar-profile-button-container' className='dont-close'>
+        <i class="fa-solid fa-bars"></i>
+        <img  alt='head shot' className='dont-close' id='nav-bar-profile-button' src={sessionUser.picture_url}></img>
+        </div>
         {displayDropDown &&
           <div id='nav-bar-drop-down'>
             <Link onClick={() => setDisplayDropDown(false)} className='nav-bar-drop-down-link' to='/home'>Home</Link>

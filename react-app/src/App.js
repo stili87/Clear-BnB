@@ -21,6 +21,9 @@ import MyTrips from './components/mytrips/myTrips';
 import MyProperties from './components/myproperties/myproperties';
 import Footer from './components/footer/footer';
 import { getKey } from './store/maps';
+import LoadingModal from './components/loadingModal/loadingModal';
+import { Modal } from './context/Modal';
+import About from './components/about/about';
 
 
 
@@ -28,6 +31,7 @@ function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user)
+  const [showModal] = useState(true)
 
   useEffect(() => {
     (async () => {
@@ -44,7 +48,15 @@ function App() {
   }, [dispatch]);
 
   if (!loaded) {
-    return null;
+    return (
+      <>
+      {showModal && 
+        <Modal>
+          <LoadingModal />
+        </Modal>
+      }
+      </>
+      )
   }
 
   return (
@@ -78,6 +90,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/myproperties' exact={true}>
           <MyProperties />
+        </ProtectedRoute>
+        <ProtectedRoute path='/about'>
+          <About />
         </ProtectedRoute>
         <ProtectedRoute>
           <h1 id='page-not-found'>Page Not found</h1>

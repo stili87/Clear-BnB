@@ -1,0 +1,92 @@
+.about-outer-container {
+    display: flex;
+    min-width: 1000px;
+    max-width: 1000px;
+    align-self: center;
+    justify-self: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 25px;
+    padding-bottom: 50px;
+}
+.about-developer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px grey solid;
+    padding-bottom: 25px;
+}
+
+.about-header {
+    font-size: 50px;
+    font-weight: 700;
+    color: rgb(227, 28, 95);
+    text-align: center;
+}
+
+.about-image {
+    height: 150px;
+    margin-top: 25px;
+    border-radius: 50%;
+    margin-bottom: 25px;
+    box-shadow: 3px 3px 3px grey;
+}
+
+.developer-info {
+    font-size: 25px;
+    font-weight: 600;
+    padding-bottom: 25px;
+}
+
+.developer-link {
+    color: rgb(227, 28, 95);
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 900;
+}
+.developer-link:hover {
+   
+    text-decoration: underline;
+  
+}
+
+.tech-header {
+    margin-top: 25px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.tech-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.developer-info-sub{
+    word-wrap: break-word;
+    width: 75%;
+    margin-top: 5px;
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.my-links {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 25px;
+    gap: 15px;
+
+}
+
+.my-links-header {
+    font-size: 25px;
+    font-weight: 600;
+
+}
