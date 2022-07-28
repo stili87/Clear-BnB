@@ -66,9 +66,9 @@ const LoginForm = () => {
           />
         </div>
         <button id='login-form-button' type='submit'>Login</button>
-        <p id='login-form-demo-header'>Try without signup?</p>
+
+      <button id='login-form-button-demo' onClick={(e) => handleDemoClick(e)} >Demo Login</button>
       </form>
-      <button id='login-form-button-demo' onClick={(e) => handleDemoClick(e)} >Demo User</button>
     </>
   );
 };

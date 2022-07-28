@@ -41,8 +41,6 @@ function Profile() {
                         {userReviews?.length < 1 && <p>No Reviews by this user yet.</p>}
                         {userReviews?.map(review => <ProfileReview key={review.id} review={review}></ProfileReview>)}
                     </div>
-                    {}
-
                 </div>
             </div>
 

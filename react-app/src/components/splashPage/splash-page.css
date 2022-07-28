@@ -27,36 +27,59 @@
 #splash-page-login-signup-div {
     display: flex;
     border: 1px white solid;
-    width: 900px;
-
     background-color: rgb(44, 44, 44);
     opacity: .85;
     border-radius: 25px;
 }
 
-#login-signup-div-left, #login-signup-div-right {
+#login-signup-div-right {
     width: 450px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 25px;
     color: white;
     font-size: 25px;
     font-weight:900;
     padding-bottom: 50px;
+    margin-top: 25px;
+    gap: 15px;
+    
+}
+
+#login-signup-div-left{
+    width: 450px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    font-size: 25px;
+    font-weight:900;
+    padding-bottom: 50px;
+    padding-top: 50px;
+}
+
+#login-signup-subheader {
+    font-size: 17px;
+}
+
+#login-signup-modal-click {
+    color: rgb(245, 158, 52);
+    cursor: pointer;
+    font-size: 18px;
+}
+
+#login-signup-modal-click:hover {
+    text-decoration: underline;
 }
 
 #login-signup-div-left {
-    border-right: 1px solid white;
+    background-color: rgb(44, 44, 44);
+    opacity: .85;
+    border-radius: 25px;
+    border: 1px solid white;
 }
 
-#login-signup-header {
-    margin-top: 40px;
-}
-
-.login-signup-header-rightaa {
-    margin-bottom: 45px;
-}
 
 #login-form {
     font-size: 20px;

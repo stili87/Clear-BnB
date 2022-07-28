@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
 
-const SignUpForm = () => {
+const SignUpForm = ({setShowModal}) => {
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -15,6 +15,11 @@ const SignUpForm = () => {
   let [picture_url, setPicture_url] = useState(null)
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
+
+  const handleCancel = e => {
+    e.preventDefault()
+    setShowModal(false)
+  }
 
 
   const onSignUp = async (e) => {
@@ -82,7 +87,7 @@ const SignUpForm = () => {
         ))}
       </div>
       <div id='signup-form-entry'>
-        <label>User Name:</label>
+        <label>User Name*:</label>
         <input
 
           type="text"
@@ -92,7 +97,7 @@ const SignUpForm = () => {
         ></input>
       </div>
       <div id='signup-form-entry'>
-        <label>Email:</label>
+        <label>Email*:</label>
         <input
 
           type="text"
@@ -102,7 +107,7 @@ const SignUpForm = () => {
         ></input>
       </div>
       <div id='signup-form-entry'>
-        <label>Name:</label>
+        <label>Name*:</label>
         <input
 
           type="text"
@@ -113,7 +118,7 @@ const SignUpForm = () => {
         </input>
       </div>
       <div id='signup-form-entry'>
-        <label>Location:</label>
+        <label>Location*:</label>
         <input
 
           type="text"
@@ -133,7 +138,7 @@ const SignUpForm = () => {
         ></textarea>
       </div>
       <div id='signup-form-entry'>
-        <label>Password:</label>
+        <label>Password*:</label>
         <input
 
           type="password"
@@ -143,7 +148,7 @@ const SignUpForm = () => {
         ></input>
       </div>
       <div id='signup-form-entry'>
-        <label>Repeat Password:</label>
+        <label>Repeat Password*:</label>
         <input
 
           type="password"
@@ -152,15 +157,16 @@ const SignUpForm = () => {
           value={repeatPassword}
         ></input>
       </div>
-        <label id='signup-form-entry' className="custom-file-upload">{!picture_url ? 'Profile Picture Upload (optional)' : 'UPLOADED!' }
-          <input
-            className="pfp"
-            accept="image/*"
-            onChange={updateImage}
-            type="file"
-          ></input>
-        </label>
+      <label id='signup-form-entry' className="custom-file-upload">{!picture_url ? 'Profile Picture Upload (optional)' : 'UPLOADED!'}
+        <input
+          className="pfp"
+          accept="image/*"
+          onChange={updateImage}
+          type="file"
+        ></input>
+      </label>
       <button id='login-form-button' type="submit">Sign Up</button>
+      <button id='login-form-button' onClick={e => handleCancel(e)} type="submit">Cancel</button>
     </form>
 
   );
