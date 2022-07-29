@@ -9,9 +9,9 @@ const About = () => {
             <img className='about-image' alt="about-profile" src={profilePic}></img>
             <div className='about-developer'>
             <h2 className='developer-info'>Developed by Andrew Stilinovic</h2>
-            <p className='developer-info-sub'>Clear-Bnb is an Air-Bnb clone that allows users to simulate listing their properties for rentals.  Users can also book and review properties to allow others to see what they think about the rental.</p>
-            <p className='developer-info-sub'>This was my last project while learning the basics of web development at App Academy, built from scratch using the a large variety of technologies.</p>
-            <p className='developer-info-sub'>If you are looking for a passionate, hardworking web developer please checkout my resume or other sites listed below. Thank you for stopping by!</p>
+            <p className='developer-info-sub'>Clear-Bnb is an Air-Bnb clone that allows users to simulate listing their properties for rentals.  Users can also book and review properties to allow users to see what others think about the rental.</p>
+            <p className='developer-info-sub'>This was my last project while learning the basics of web development at App Academy; built from scratch using a large variety of technologies.</p>
+            <p className='developer-info-sub'>If you are looking for a passionate, hardworking web developer please checkout my portfolio site or other sites listed below. Thank you for stopping by!</p>
             <div className='my-links'>
                 <p className='my-links-header'>Links To My Information</p>
                 <a rel="noreferrer" href='https://github.com/stili87/Clear-BnB' target='_blank' className='developer-link'>Github</a>
