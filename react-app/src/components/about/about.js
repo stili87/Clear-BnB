@@ -14,7 +14,7 @@ const About = () => {
             <p className='developer-info-sub'>If you are looking for a passionate, hardworking web developer please checkout my resume or other sites listed below. Thank you for stopping by!</p>
             <div className='my-links'>
                 <p className='my-links-header'>Links To My Information</p>
-                <a rel="noreferrer" href='https://github.com/stili87/Felp' target='_blank' className='developer-link'>Github</a>
+                <a rel="noreferrer" href='https://github.com/stili87/Clear-BnB' target='_blank' className='developer-link'>Github</a>
                 <a rel="noreferrer" href='https://www.linkedin.com/in/andrew-stilinovic-94277180/' target='_blank' className='developer-link'>LinkedIn</a>
                 <a rel="noreferrer" href='http://www.andrew-stilinovic.com/' target='_blank' className='developer-link'>My Portfolio</a>
                 <a rel="noreferrer" href='https://better-reads-aa.herokuapp.com/' target='_blank' className='developer-link'>Better Reads - A Good Reads Clone</a>

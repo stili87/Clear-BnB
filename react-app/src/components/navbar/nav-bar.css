@@ -20,6 +20,7 @@
     justify-content:space-between;
     width: 325px;
     margin-right: 200px;
+    gap: 10px;
 }
 
 #nav-bar-profile-button {
@@ -68,6 +69,8 @@
     font-size: 15px;
     padding: 10px;
     cursor: pointer;
+    min-width: 110px;
+    text-align: center;
 }
 
 .nav-bar-link:hover {
