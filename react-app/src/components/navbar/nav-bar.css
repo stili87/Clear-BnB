@@ -36,8 +36,8 @@
 
 #nav-bar-drop-down {
     position: absolute;
-    margin-top: 300px;
-    right: 225px;
+    top: 63px;
+    right: 205px;
     width: 200px;
     display: flex;
     flex-direction: column;

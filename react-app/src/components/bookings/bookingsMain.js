@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { useHistory } from 'react-router-dom'
 import { addBookingThunk } from '../../store/bookings'
 import './bookings.css'
+import BookingsModal from './bookingsModal'
+import {Modal} from '../../context/Modal'
 
 function BookingsMain({ thisProperty }) {
     const today = new Date()
@@ -18,8 +19,9 @@ function BookingsMain({ thisProperty }) {
     const [cost, setCost] = useState(thisProperty?.price * 2 || 0)
     const [disabled, setDisabled] = useState(false)
     const [totalDays, setTotalDays] = useState(1)
+    const [showModal, setShowModal] = useState(false)
     const dispatch = useDispatch()
-    const history = useHistory()
+
 
     const formatter = new Intl.NumberFormat('en-US', {
         style: 'currency',
@@ -77,7 +79,7 @@ function BookingsMain({ thisProperty }) {
         if (data) {
             setErrors(data)
         } else {
-            history.push('/mytrips')
+            setShowModal(true)
         }
     }
 
@@ -159,6 +161,11 @@ function BookingsMain({ thisProperty }) {
                 <p>{formatter.format(cost)}</p>
             </div>
             <button id='booking-submit-button' disabled={disabled}>{disabled ? 'Fix Dates before reserving' : 'Reserve'}</button>
+            {showModal && 
+               <Modal >
+                   <BookingsModal picture={thisProperty?.photo1_url} start_date={start_date} end_date={end_date} cost={cost} guests={guests} title={thisProperty?.title} setShowModal={setShowModal}/>
+               </Modal >
+            }
         </form>
 
     )

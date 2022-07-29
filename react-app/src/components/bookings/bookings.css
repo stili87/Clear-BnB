@@ -235,3 +235,51 @@
     text-decoration: underline;
     background-color: rgb(231, 109, 150);
 }
+
+#bookings-confirmed-modal {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    min-height: 500px;
+    width: 350px;
+    word-wrap: break-word;
+    border-radius: 25px;
+    border: 1px solid white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    overflow: hidden;
+    gap: 10px;
+    align-items: center;
+    padding-bottom: 10px;
+}
+
+#bookings-modal-picture {
+    min-height: 250px;
+    max-height: 250px;
+    width: 100%;
+}
+
+#bookings-modal-sub {
+    padding-left: 10px;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+#bookings-modal-dates-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+}
+
+#bookings-modal-check-dates{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+
+}
+
+#bookings-modal-date-head{
+    font-weight: 600;
+    font-size: 18px;
+}
