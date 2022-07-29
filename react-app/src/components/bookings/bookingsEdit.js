@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom'
 import { deleteBookingThunk, editBookingThunk } from '../../store/bookings'
 import './bookings.css'
+import {Modal} from '../../context/Modal'
+import BookingsEditModal from './bookingsEditModal'
 
 function BookingsEdit() {
     const bookingId = Number(useParams().id)
@@ -28,6 +30,7 @@ function BookingsEdit() {
     const [disabled, setDisabled] = useState(false)
     const [totalDays, setTotalDays] = useState(1)
     const [openDelete, setOpenDelete] = useState(false)
+    const [showModal, setShowModal] = useState(false)
     const dispatch = useDispatch()
 
     const formatter = new Intl.NumberFormat('en-US', {
@@ -88,7 +91,7 @@ function BookingsEdit() {
         if (data) {
             setErrors(data)
         } else {
-            history.push('/mytrips')
+            setShowModal(true)
         }
     }
 
@@ -218,7 +221,11 @@ function BookingsEdit() {
                         <p>{formatter.format(cost)}</p>
                     </div>
                     <button id='booking-submit-button' disabled={disabled}>{disabled ? 'Fix Dates before reserving' : 'Update Trip'}</button>
-
+                    {showModal && 
+               <Modal >
+                   <BookingsEditModal picture={thisProperty?.photo1_url} start_date={start_date} end_date={end_date} cost={cost} guests={guests} title={thisProperty?.title} setShowModal={setShowModal}/>
+               </Modal >
+            }
                 </form>
             </div>
         </div>
