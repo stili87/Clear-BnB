@@ -11,12 +11,17 @@ function BookingsEdit() {
     const thisBooking = useSelector(state => state.bookings)[bookingId]
     const thisProperty = useSelector(state => state.properties)[thisBooking?.property_id]
     const history = useHistory()
+    
+    const today = new Date()
 
     if (!thisBooking) {
         history.push('/404')
     }
 
-    const today = new Date()
+    if (new Date(thisBooking?.start_date).getTime() < today.getTime()) {
+        history.push('/404')
+    }
+
     const day = 60 * 60 * 24 * 1000
     const tommorrow = new Date(today.getTime() + day)
     const nextDay = new Date(tommorrow.getTime() + day)

@@ -2,10 +2,9 @@
     align-self: flex-start;
     margin-top: 75px;
     margin-left: 200px;
-    padding-bottom: 200px;
     display: flex;
     flex-direction: column;
-    width: 70vw;
+    width: 75vw;
     margin-bottom: 50px;
 }
 
@@ -13,6 +12,12 @@
     font-size: 25px;
     border-bottom: 1px solid grey;
     padding-bottom: 25px;
+    font-weight: 600;
+}
+
+#my-trips-sub-header {
+    font-size: 20px;
+
 }
 
 #my-trips-multiple-container {
@@ -20,11 +25,14 @@
     margin-top: 25px;
     gap: 25px;
     flex-wrap: wrap;
+    border-bottom: 1px solid grey;
+    padding-bottom: 25px;
 }
 
 #my-trips-multiple-container > p, h1 {
     word-wrap:break-word;
     width: 100%;
+
 }
 
 #my-trips-single-booking-full {

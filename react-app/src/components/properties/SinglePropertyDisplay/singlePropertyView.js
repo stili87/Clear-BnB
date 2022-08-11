@@ -7,6 +7,7 @@ import SingleReivewDisplay from '../../reivews/singleReview';
 import { Rating } from 'react-simple-star-rating';
 import './single-property-display.css'
 import Maps from '../../map/maps';
+import { Modal } from '../../../context/Modal';
 
 function SinglePropertyDisplay() {
     const propertyId = Number(useParams().id)
@@ -18,6 +19,7 @@ function SinglePropertyDisplay() {
     const [reviewOpen, setReviewOpen] = useState(false)
     const allThisReviews = allReviews?.filter(review => review.property_id === propertyId)
     const thisReivews = allThisReviews?.reverse()
+
 
     const key = useSelector((state) => state.map.key);
 
@@ -50,7 +52,7 @@ function SinglePropertyDisplay() {
                     <h2 id='single-property-location'>{thisProperty?.city}, {thisProperty?.state}</h2>
                 </div>
                 {allThisReviews.length > 0 ? <p>Rated: <Rating readonly={true} size={20} ratingValue={avgRating * 20} fillColor={'rgb(227,28,95)'}></Rating></p> : <p>New Property</p>}
-            <p id='single-property-maps-header'>Where you will be:</p>
+                <p id='single-property-maps-header'>Where you will be:</p>
             </div>
             <div id='single-property-display-photos'>
                 <img alt='main' id='single-property-main-img' src={thisProperty?.photo1_url} />
@@ -83,7 +85,7 @@ function SinglePropertyDisplay() {
                         <p id='single-property-owner-name'>
                             Property Description
                         </p>
-                        <p id='single-property-description-content'> 
+                        <p id='single-property-description-content'>
                             {thisProperty?.description}
                         </p>
                     </div>
@@ -100,7 +102,11 @@ function SinglePropertyDisplay() {
                 <h2 id='single-property-reviews-header'>Latest Reviews</h2>
                 <div id='single-property-create-review-container'>
                     <button id='booking-submit-button' onClick={() => setReviewOpen(!reviewOpen)}>Click Here to leave a review</button>
-                    {reviewOpen && <CreateReview setReviewOpen={setReviewOpen} property={thisProperty} />}
+                    {reviewOpen &&
+                        <Modal>
+                            <CreateReview setReviewOpen={setReviewOpen} property={thisProperty} />
+                        </Modal>
+                    }
                     {thisReivews?.length < 1 && <p id='single-property-review-no'>No reivews for this property yet</p>}
                 </div>
                 <div id='single-property-reviews-all'>
