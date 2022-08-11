@@ -165,8 +165,8 @@ const SignUpForm = ({setShowModal}) => {
           type="file"
         ></input>
       </label>
-      <button id='login-form-button' type="submit">Sign Up</button>
-      <button id='login-form-button' onClick={e => handleCancel(e)} type="submit">Cancel</button>
+      <button id='booking-submit-button' type="submit">Sign Up</button>
+      <button id='booking-submit-button' onClick={e => handleCancel(e)} type="submit">Cancel</button>
     </form>
 
   );

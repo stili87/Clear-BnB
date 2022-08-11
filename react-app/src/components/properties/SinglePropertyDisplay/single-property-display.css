@@ -62,12 +62,17 @@
     background-color: rgb(227, 28, 95);
     color: white;
     border: none;
+    padding: 7px 0px;
+    width: 250px;
     border-radius: 10px;
     font-weight: 900;
     cursor: pointer;
-    width: 200px;
-    padding: 5px;
-    margin-left: 200px;
+    margin-left: 15%;
+}
+
+#single-property-edit-button:hover{
+    text-decoration: underline;
+    background-color: rgb(231, 109, 150);
 }
 
 #single-property-under-photos {

@@ -45,15 +45,14 @@ function CreateReview({property, setReviewOpen}) {
     return(
 
         <form id='create-review-full' onSubmit={e=>handleOnSubmit(e)}>
+            <p id='create-review-header'>Leave a Review for {property?.title}</p>
             {errors?.length > 0 &&
                     <ul id='property-creation-errors-container'>
                         <p id="property-creation-errors-header">Please fix the following errors:</p>
                         {errors?.map((error, idx) => <li key={idx}>{error}</li>)}
                     </ul>
                 }
-            <p id='create-review-header'>Leave a Review for {property?.title}</p>
             <div id='create-review-rating-container'>
-
             <img src={sessionUser.picture_url} alt='profile' id='create-review-profile-pic'></img>
             <p id='create-review-sub-heads'>Rating:</p>
             <Rating onClick={handleRating} fillColor={'rgb(227,28,95)'} ratingValue={rating} size={30} initialValue={20} />

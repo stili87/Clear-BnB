@@ -13,6 +13,7 @@
 
   html, body {
     min-height: 100vh;
+    overflow-x: hidden;
   }
   
   body {
@@ -33,6 +34,7 @@
       font-family: 'Ubuntu', sans-serif;
       margin-bottom: 200px;
       align-items:center;
+      overflow-x: hidden;
   }
 
   
