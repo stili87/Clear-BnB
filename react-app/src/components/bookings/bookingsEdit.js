@@ -163,8 +163,8 @@ function BookingsEdit() {
                         <div id='booking-edit-confirm-delete'>
                             <p>Are you sure you want to cancel this trip?</p>
                             <div id='booking-edit-confirm-delete-buttons-container'>
-                                <button id='booking-delete-button' onClick={()=>handleDeleteBooking()}>Confirm</button>
-                                <button id='booking-delete-button' onClick={()=>setOpenDelete(!openDelete)}>Keep Trip</button>
+                                <button id='booking-submit-button' onClick={()=>handleDeleteBooking()}>Confirm</button>
+                                <button id='booking-submit-button' onClick={()=>setOpenDelete(!openDelete)}>Keep Trip</button>
 
                             </div>
 

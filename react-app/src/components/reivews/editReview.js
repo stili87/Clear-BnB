@@ -68,14 +68,14 @@ function EditReview({property, setReviewOpen, review}) {
             </div>
             <p id='create-review-sub-heads'>Review:</p>
             <textarea onChange={e=> setContent(e.target.value)} value={content} id='create-review-text-area'></textarea>
-            <button id='booking-submit-button'>Submit Review</button>
+            <button id='booking-submit-button'>Submit Edited Review</button>
             <button onClick={e=> handleCancel(e)} id='booking-submit-button'>Cancel</button>
             <button onClick={e=> handleOpenDelete(e)} id='booking-submit-button'>Delete Review</button>
             {openDelete && 
             <div id='review-delete-confirm-container'>
                 <p>Are you sure you want to delete this review?</p>
                 <div id='review-delete-confirm-buttons'>
-                    <button onClick={e => handleDelete(e)} id='booking-submit-button'>Confirm Delete</button>
+                    <button onClick={e => handleDelete(e)} className='edit-review-buttons' id='booking-submit-button'>Confirm Delete</button>
                     <button onClick={e=> handleOpenDelete(e)} id='booking-submit-button'>Cancel</button>
 
                 </div>

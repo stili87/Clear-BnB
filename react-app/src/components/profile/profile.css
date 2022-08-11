@@ -3,6 +3,8 @@
     display: flex;
     flex-direction: column;
     margin-bottom: 50px;
+    margin-left: 25px;
+    margin-right: 25px;
 }
 
 #profile-user-info-container {
@@ -13,7 +15,7 @@
 #profile-img-container{
     border: 1px solid lightgray;
     border-radius: 20px;
-    padding: 20px 75px;
+    padding: 20px 50px;
     display: flex;
     flex-direction: column;
     gap: 25px;
@@ -74,12 +76,15 @@
 #profile-links-container {
     display: flex;
     gap: 15px;
+    
 }
 
 #profile-link {
     text-decoration: none;
     font-weight: 600;
     color: rgb(227, 28, 95);
+    width: 100px;
+    text-align: center;
 }
 
 #profile-link:hover {

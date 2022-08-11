@@ -2,18 +2,16 @@
     display: flex;
     flex-direction: column;
     margin-top: 25px;
-    margin-left: 45px;
-    margin-right: 45px;
     gap: 20px;
     width: 100vw;
     height: auto;
-    margin-bottom: 50px;
+    margin-bottom: 75px;
 }
 
 #single-property-display-header {
     display: flex;
     flex-direction: column;
-    margin-left: 200px;
+    margin-left: 15%;
     gap: 8px;
 }
 
@@ -38,7 +36,7 @@
     border-radius: 20px;
     gap: 10px;
     width: 90vw;
-    margin-left: 200px;
+    margin-left: 15%;
     justify-self: flex-start;
 }
 
@@ -76,7 +74,7 @@
     display: flex;
     gap: 30px;
     width: 60%;
-    margin-left: 200px;
+    margin-left: 15%;
     width: 1100px;
     
 }

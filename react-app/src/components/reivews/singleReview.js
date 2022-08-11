@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import { Rating } from 'react-simple-star-rating'
 import './single-review.css'
 import EditReview from './editReview'
+import { Modal } from '../../context/Modal'
 
 
 
@@ -23,7 +24,13 @@ function SingleReivewDisplay({ review }) {
             {sessionUser?.id === review?.user_id && 
                 <button onClick={()=> setEditOpen(!editOpen)} className='profile-edit-review-button' id='new-property-form-submit'>Edit Review</button>
             }
-            {editOpen && <EditReview property={thisProperty} setReviewOpen={setEditOpen} review={review}/>}
+            
+            {editOpen &&
+            <Modal>
+
+                <EditReview property={thisProperty} setReviewOpen={setEditOpen} review={review}/>
+            </Modal>
+}
         </div>
     )
 }
