@@ -330,7 +330,7 @@ const EditProperty = () => {
                 ></input>
                 </label>
                 </div>
-                <div id='property-creation-item-containter'>
+                <div id='property-creation-item-containter-multi'>
                     <label>Select Property Types*:</label>
                     <Multiselect
                         selectedValues={thisProperty?.types}
@@ -343,8 +343,7 @@ const EditProperty = () => {
                         placeholder={'Property Types'}
                     />
                 </div>
-                <div id='property-creation-item-containter'>
-
+                <div id='property-creation-item-containter-multi'>
                     <label>Select Property Amenities*:</label>
                     <Multiselect
                         id="property-creation-multi"

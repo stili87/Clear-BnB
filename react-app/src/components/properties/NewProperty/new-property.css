@@ -72,6 +72,19 @@
     width: 500px;
     gap: 25px;
 }
+#property-creation-item-containter-multi {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    gap: 15px;
+    font-weight: 600;
+}
+
+#property-creation-multi {
+    min-width: 500px;
+}
 
 
 #property-new-form > div > textarea{

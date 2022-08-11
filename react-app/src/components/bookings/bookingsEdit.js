@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom'
 import { deleteBookingThunk, editBookingThunk } from '../../store/bookings'
 import './bookings.css'
-import {Modal} from '../../context/Modal'
+import { Modal } from '../../context/Modal'
 import BookingsEditModal from './bookingsEditModal'
 
 function BookingsEdit() {
@@ -11,16 +11,9 @@ function BookingsEdit() {
     const thisBooking = useSelector(state => state.bookings)[bookingId]
     const thisProperty = useSelector(state => state.properties)[thisBooking?.property_id]
     const history = useHistory()
-    
+
     const today = new Date()
 
-    if (!thisBooking) {
-        history.push('/404')
-    }
-
-    if (new Date(thisBooking?.start_date).getTime() < today.getTime()) {
-        history.push('/404')
-    }
 
     const day = 60 * 60 * 24 * 1000
     const tommorrow = new Date(today.getTime() + day)
@@ -43,7 +36,15 @@ function BookingsEdit() {
         currency: 'USD'
     })
 
-    if (sessionUser?.id !== thisBooking?.user_id) {
+    if (!thisBooking) {
+        history.push('/404')
+    }
+
+    if (new Date(thisBooking?.start_date).getTime() < today.getTime()) {
+        history.push('/404')
+    }
+
+    if (thisBooking?.user_id && (sessionUser?.id !== thisBooking?.user_id)) {
         history.push('/404')
     }
 
@@ -63,7 +64,7 @@ function BookingsEdit() {
             setErrors(['You cannot rent for more than 100 days.'])
             setDisabled(true)
         }
-         else {
+        else {
             setErrors([])
             setDisabled(false)
         }
@@ -122,14 +123,14 @@ function BookingsEdit() {
     }
 
     const setEnd_dateF = (e) => {
-        if(e.target.value){
+        if (e.target.value) {
             setEnd_date(new Date(e.target.value))
         }
 
     }
 
     const setStart_dateF = e => {
-        if(e.target.value){
+        if (e.target.value) {
             setStart_date(new Date(e.target.value))
         }
     }
@@ -138,104 +139,104 @@ function BookingsEdit() {
 
     return (
         <>
-        {thisBooking && 
-        <div id='bookings-edit-full'>
-            <p id='bookings-edit-header'>Edit Your Trip at {thisProperty?.title}</p>
-            <img id='bookings-edit-property-img' alt='property' src={thisProperty?.photo1_url}></img>
-            <div id='bookings-edit-inner-container'>
-                <div id='bookings-edit-left'>
-                    <p id='bookings-edit-current-header'>Current Trip Information</p>
-                    <div id='bookings-edit-current-dates-contianer'>
-                        <div id='bookings-edit-current-dates'>
-                            <p>CURRENT CHECK-IN</p>
-                            <p>{thisBooking?.start_date}</p>
+            {thisBooking &&
+                <div id='bookings-edit-full'>
+                    <p id='bookings-edit-header'>Edit Your Trip at {thisProperty?.title}</p>
+                    <img id='bookings-edit-property-img' alt='property' src={thisProperty?.photo1_url}></img>
+                    <div id='bookings-edit-inner-container'>
+                        <div id='bookings-edit-left'>
+                            <p id='bookings-edit-current-header'>Current Trip Information</p>
+                            <div id='bookings-edit-current-dates-contianer'>
+                                <div id='bookings-edit-current-dates'>
+                                    <p>CURRENT CHECK-IN</p>
+                                    <p>{thisBooking?.start_date}</p>
+                                </div>
+                                <div id='bookings-edit-current-dates'>
+                                    <p>CURRENT CHECK-OUT</p>
+                                    <p>{thisBooking?.end_date}</p>
+                                </div>
+                            </div>
+                            <div id='bookings-edit-current-dates'>
+                                <p>CURRENT GUESTS</p>
+                                <p>{thisBooking?.guests}</p>
+                            </div>
+                            <div id='bookings-edit-current-dates'>
+                                <p>CURRENT COST</p>
+                                <p>{formatter.format(thisBooking?.cost)}</p>
+                            </div>
+                            <button onClick={() => setOpenDelete(!openDelete)} id='booking-submit-button'>Cancel this Trip</button>
+                            {openDelete &&
+                                <div id='booking-edit-confirm-delete'>
+                                    <p>Are you sure you want to cancel this trip?</p>
+                                    <div id='booking-edit-confirm-delete-buttons-container'>
+                                        <button id='booking-submit-button' onClick={() => handleDeleteBooking()}>Confirm</button>
+                                        <button id='booking-submit-button' onClick={() => setOpenDelete(!openDelete)}>Keep Trip</button>
+
+                                    </div>
+
+                                </div>
+                            }
                         </div>
-                        <div id='bookings-edit-current-dates'>
-                            <p>CURRENT CHECK-OUT</p>
-                            <p>{thisBooking?.end_date}</p>
-                        </div>
-                    </div>
-                    <div id='bookings-edit-current-dates'>
-                        <p>CURRENT GUESTS</p>
-                        <p>{thisBooking?.guests}</p>
-                    </div>
-                    <div id='bookings-edit-current-dates'>
-                        <p>CURRENT COST</p>
-                        <p>{formatter.format(thisBooking?.cost)}</p>
-                    </div>
-                    <button onClick={()=>setOpenDelete(!openDelete)} id='booking-submit-button'>Cancel this Trip</button>
-                    {openDelete &&
-                        <div id='booking-edit-confirm-delete'>
-                            <p>Are you sure you want to cancel this trip?</p>
-                            <div id='booking-edit-confirm-delete-buttons-container'>
-                                <button id='booking-submit-button' onClick={()=>handleDeleteBooking()}>Confirm</button>
-                                <button id='booking-submit-button' onClick={()=>setOpenDelete(!openDelete)}>Keep Trip</button>
+
+
+                        <form onSubmit={e => handleBookingSubmit(e)} id='bookings-form'>
+                            {errors?.length > 0 &&
+                                <div id='bookings-errors-container'>
+                                    <p id="bookings-errors-header">Please fix the following errors:</p>
+                                    {errors?.map((error, idx) => <p id='bookings-error' key={idx}>{error}</p>)}
+                                </div>
+                            }
+                            <div id='bookings-cost-div'>
+                                <p><span id='bookings-cost-per-night'>{formatter.format(thisProperty?.price)}</span> night</p>
+                            </div>
+                            <div id='bookings-dates-selection'>
+                                <div id='bookings-checkin-container'>
+                                    <label id='booking-checkinout-label'>CHECK-IN</label>
+                                    <input min={tommorrow.toISOString().split('T')[0]} value={start_date?.toISOString().split('T')[0]} onChange={e => setStart_dateF(e)} type='date'></input>
+                                </div>
+                                <div id='bookings-checkin-container'>
+                                    <label id='booking-checkinout-label'>CHECK-OUT </label>
+                                    <input min={tommorrow.toISOString().split('T')[0]} value={end_date?.toISOString().split('T')[0]} onChange={e => setEnd_dateF(e)} type='date'></input>
+                                </div>
+                            </div>
+                            <div id='booking-guests-container'>
+                                <label id='booking-checkinout-label'>GUESTS: ({thisProperty?.guests} MAX)</label>
+                                <div id='bookings-guests-selection'>
+                                    <p id='bookings-guests-selection-selector' onClick={() => setRemoveGuest()}>-</p>
+                                    <p id='bookings-guests-selection-number'>{guests}</p>
+                                    <p id='bookings-guests-selection-selector' onClick={() => setAddGuest()}>+</p>
+                                </div>
 
                             </div>
+                            <label id='booking-price-details-label'>Price Details</label>
+                            <div id='booking-price-details-container'>
+                                <div id='booking-price-details-containers'>
+                                    <p id='price-details-text'>{formatter.format(thisProperty?.price)} x {totalDays} nights</p>
+                                    <p id='price-details-text'>Service Fee</p>
 
-                        </div>
-                    }
+                                </div>
+                                <div id='booking-price-details-containers'>
+                                    <p id='price-details-text'>{formatter.format(thisProperty?.price * totalDays)}</p>
+                                    <p id='price-details-text'>{formatter.format(thisProperty?.service_fee)}</p>
+
+                                </div>
+
+                            </div>
+                            <div id='booking-total-cost-container'>
+                                <p>Total Cost</p>
+                                <p>{formatter.format(cost)}</p>
+                            </div>
+                            <button id='booking-submit-button' disabled={disabled}>{disabled ? 'Fix Dates before reserving' : 'Update Trip'}</button>
+                            {showModal &&
+                                <Modal >
+                                    <BookingsEditModal picture={thisProperty?.photo1_url} start_date={start_date} end_date={end_date} cost={cost} guests={guests} title={thisProperty?.title} setShowModal={setShowModal} />
+                                </Modal >
+                            }
+                        </form>
+                    </div>
                 </div>
-
-
-                <form onSubmit={e => handleBookingSubmit(e)} id='bookings-form'>
-                    {errors?.length > 0 &&
-                        <div id='bookings-errors-container'>
-                            <p id="bookings-errors-header">Please fix the following errors:</p>
-                            {errors?.map((error, idx) => <p id='bookings-error' key={idx}>{error}</p>)}
-                        </div>
-                    }
-                    <div id='bookings-cost-div'>
-                        <p><span id='bookings-cost-per-night'>{formatter.format(thisProperty?.price)}</span> night</p>
-                    </div>
-                    <div id='bookings-dates-selection'>
-                        <div id='bookings-checkin-container'>
-                            <label id='booking-checkinout-label'>CHECK-IN</label>
-                            <input min={tommorrow.toISOString().split('T')[0]} value={start_date?.toISOString().split('T')[0]} onChange={e => setStart_dateF(e)} type='date'></input>
-                        </div>
-                        <div id='bookings-checkin-container'>
-                            <label id='booking-checkinout-label'>CHECK-OUT </label>
-                            <input min={tommorrow.toISOString().split('T')[0]} value={end_date?.toISOString().split('T')[0]} onChange={e => setEnd_dateF(e)} type='date'></input>
-                        </div>
-                    </div>
-                    <div id='booking-guests-container'>
-                        <label id='booking-checkinout-label'>GUESTS: ({thisProperty?.guests} MAX)</label>
-                        <div id='bookings-guests-selection'>
-                            <p id='bookings-guests-selection-selector' onClick={() => setRemoveGuest()}>-</p>
-                            <p id='bookings-guests-selection-number'>{guests}</p>
-                            <p id='bookings-guests-selection-selector' onClick={() => setAddGuest()}>+</p>
-                        </div>
-
-                    </div>
-                    <label id='booking-price-details-label'>Price Details</label>
-                    <div id='booking-price-details-container'>
-                        <div id='booking-price-details-containers'>
-                            <p id='price-details-text'>{formatter.format(thisProperty?.price)} x {totalDays} nights</p>
-                            <p id='price-details-text'>Service Fee</p>
-
-                        </div>
-                        <div id='booking-price-details-containers'>
-                            <p id='price-details-text'>{formatter.format(thisProperty?.price * totalDays)}</p>
-                            <p id='price-details-text'>{formatter.format(thisProperty?.service_fee)}</p>
-
-                        </div>
-
-                    </div>
-                    <div id='booking-total-cost-container'>
-                        <p>Total Cost</p>
-                        <p>{formatter.format(cost)}</p>
-                    </div>
-                    <button id='booking-submit-button' disabled={disabled}>{disabled ? 'Fix Dates before reserving' : 'Update Trip'}</button>
-                    {showModal && 
-               <Modal >
-                   <BookingsEditModal picture={thisProperty?.photo1_url} start_date={start_date} end_date={end_date} cost={cost} guests={guests} title={thisProperty?.title} setShowModal={setShowModal}/>
-               </Modal >
             }
-                </form>
-            </div>
-        </div>
-                }
-                </>
+        </>
     )
 }
 

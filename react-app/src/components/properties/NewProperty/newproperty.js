@@ -347,8 +347,7 @@ const NewProperty = () => {
                         ></input>
                     </label>
                 </div>
-                <div id='property-creation-item-containter'>
-
+                <div id='property-creation-item-containter-multi'>
                     <label>Select Property Types*:</label>
                     <Multiselect
                         id="property-creation-multi"
@@ -357,11 +356,10 @@ const NewProperty = () => {
                         onRemove={onSelectTypes}
                         displayValue="type"
                         showCheckbox={true}
-                        placeholder={'Property Types'}
+                        placeholder={'Select Property Types'}
                     />
                 </div>
-                <div id='property-creation-item-containter'>
-
+                <div id='property-creation-item-containter-multi'>
                     <label>Select Property Amenities*:</label>
                     <Multiselect
                         id="property-creation-multi"
@@ -370,7 +368,7 @@ const NewProperty = () => {
                         onRemove={onSelectAmenities}
                         displayValue="type"
                         showCheckbox={true}
-                        placeholder={'Property Amenities'}
+                        placeholder={'Select Property Amenities'}
                     />
                 </div>
                 <div id='property-creation-button-container'>
