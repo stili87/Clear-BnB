@@ -6,6 +6,7 @@ import './new-property.css'
 import { addPropertyThunk } from '../../../store/properties';
 import { Modal } from '../../../context/Modal';
 import LoadingModal from '../../loadingModal/loadingModal';
+import mainLogo from '../../images/clearbnb-logos_transparent.png'
 
 const NewProperty = () => {
     const types = Object.values(useSelector(state => state.types))
@@ -31,10 +32,12 @@ const NewProperty = () => {
     const history = useHistory()
     const dispatch = useDispatch()
     const [showModal, setShowModal] = useState(false);
+    const [showCreatedModal, setShowCreatedModal] = useState(false)
 
 
     const handleOnSubmit = async e => {
         e.preventDefault()
+        window.scrollTo(0, 0)
 
         setShowModal(true)
 
@@ -116,9 +119,10 @@ const NewProperty = () => {
         if (data) {
             setErrors(data)
             setShowModal(false)
+            window.scrollTo(0, 0)
         } else {
             setShowModal(false)
-            history.push('/myproperties')
+            setShowCreatedModal(true)
         }
     }
 
@@ -270,8 +274,8 @@ const NewProperty = () => {
                         value={price}
                         onChange={e => setPrice(e.target.value)}
                         type="number"
-                        min="0.01"
-                        step="0.01"
+                        min="1.00"
+                        step="1.00"
                         placeholder='e.g. $100.50'
                     />
                 </div>
@@ -283,7 +287,7 @@ const NewProperty = () => {
                         onChange={e => setService_fee(e.target.value)}
                         type="number"
                         min="0.00"
-                        step="0.01"
+                        step="1.00"
                         placeholder='e.g. $25.49'
                     ></input>
                 </div>
@@ -372,8 +376,8 @@ const NewProperty = () => {
                     />
                 </div>
                 <div id='property-creation-button-container'>
-                    <button id="new-property-form-submit" type="submit">{errors?.length > 0 ? 'Fix Errors and try again' : "Submit"}</button>
-                    <button id="new-property-form-submit" type="cancel" onClick={(e) => {
+                    <button id="booking-submit-button" type="submit">{errors?.length > 0 ? 'Fix Errors and try again' : "Submit"}</button>
+                    <button id="booking-submit-button" type="cancel" onClick={(e) => {
                         e.preventDefault()
                         history.push('/home')
                     }}>Cancel</button>
@@ -384,6 +388,19 @@ const NewProperty = () => {
                     <LoadingModal />
                 </Modal>
             )}
+            {showCreatedModal && 
+            <Modal>
+                <div id='property-created-modal-container'> 
+                    <img alt='logo' src={mainLogo} id='created-modal-logo'></img>
+                    <p id='created-modal-title'> {title} Sucessfully Created!</p>
+                    <button id='booking-submit-button' onClick={() => {
+            
+                        history.push('/myproperties')
+                    }}>Continue to My Properties</button>
+                </div>
+            </Modal>
+
+            }
         </div>
     )
 }

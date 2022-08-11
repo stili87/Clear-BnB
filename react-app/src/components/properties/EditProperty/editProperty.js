@@ -5,6 +5,7 @@ import Multiselect from "multiselect-react-dropdown";
 import { deletePropertyThunk, editPropertyThunk } from '../../../store/properties';
 import { Modal } from '../../../context/Modal';
 import LoadingModal from '../../loadingModal/loadingModal';
+import mainLogo from '../../images/clearbnb-logos_transparent.png'
 
 const EditProperty = () => {
     const propertyId = useParams().id
@@ -34,15 +35,16 @@ const EditProperty = () => {
     const [deleteOpen, setDeleteOpen] = useState(false)
     const dispatch = useDispatch()
     const [showModal, setShowModal] = useState(false);
+    const [showCreatedModal, setShowCreatedModal] = useState(false)
 
-    if(thisProperty?.user_id !== sessionUser.id){
+    if (thisProperty?.user_id !== sessionUser.id) {
         history.push('/404')
     }
 
-    if(!thisProperty){
+    if (!thisProperty) {
         history.push('/404')
     }
-    
+
     const handleOnSubmit = async e => {
         e.preventDefault()
         setShowModal(true)
@@ -53,12 +55,12 @@ const EditProperty = () => {
         const res = await longLat.json()
         let lat = 0
         let lng = 0
-        if (res.results && res.results[0] && res.results[0].geometry){
+        if (res.results && res.results[0] && res.results[0].geometry) {
             lat = res.results[0].geometry.lat
             lng = res.results[0].geometry.lng
         }
         const user_id = sessionUser.id
-        
+
         const editProperty = {
             propertyId: thisProperty?.id,
             title,
@@ -86,9 +88,9 @@ const EditProperty = () => {
         if (data) {
             setShowModal(false)
             setErrors(data)
-        }else {
+        } else {
             setShowModal(false)
-            history.push('/myproperties')
+            setShowCreatedModal(true)
         }
     }
 
@@ -140,7 +142,7 @@ const EditProperty = () => {
     }
 
     const removeBedRooms = () => {
-        if(bedrooms === 1 ){
+        if (bedrooms === 1) {
             return
         }
         setBedrooms(bedrooms - 1)
@@ -151,7 +153,7 @@ const EditProperty = () => {
     }
 
     const removeBathrooms = () => {
-        if(bathrooms === 1 ){
+        if (bathrooms === 1) {
             return
         }
         setBathrooms(bathrooms - 1)
@@ -162,7 +164,7 @@ const EditProperty = () => {
     }
 
     const removeGuests = () => {
-        if(guests === 1 ){
+        if (guests === 1) {
             return
         }
         setGuests(guests - 1)
@@ -253,8 +255,8 @@ const EditProperty = () => {
                         value={price}
                         onChange={e => setPrice(e.target.value)}
                         type="number"
-                        min="0.01"
-                        step="0.01"
+                        min="1.00"
+                        step="1.00"
                         placeholder='e.g. $100.50'
                     />
                 </div>
@@ -266,69 +268,69 @@ const EditProperty = () => {
                         onChange={e => setService_fee(e.target.value)}
                         type="number"
                         min="0.00"
-                        step="0.01"
+                        step="1.00"
                         placeholder='e.g. $25.49'
                     />
                 </div>
                 <div id='property-creation-item-containter'>
                     <label>Bedrooms*:</label>
-                <div id='bookings-guests-selection' className='property-creation-buttons'>
-                    <p id='bookings-guests-selection-selector' onClick={() => removeBedRooms()}>-</p>
-                    <p id='bookings-guests-selection-number'>{bedrooms}</p>
-                    <p id='bookings-guests-selection-selector' onClick={() => addBedRooms()}>+</p>
-                </div>
+                    <div id='bookings-guests-selection' className='property-creation-buttons'>
+                        <p id='bookings-guests-selection-selector' onClick={() => removeBedRooms()}>-</p>
+                        <p id='bookings-guests-selection-number'>{bedrooms}</p>
+                        <p id='bookings-guests-selection-selector' onClick={() => addBedRooms()}>+</p>
+                    </div>
                 </div>
                 <div id='property-creation-item-containter' >
                     <label>Bathrooms*:</label>
                     <div id='bookings-guests-selection' className='property-creation-buttons'>
-                    <p id='bookings-guests-selection-selector' onClick={() => removeBathrooms()}>-</p>
-                    <p id='bookings-guests-selection-number'>{bathrooms}</p>
-                    <p id='bookings-guests-selection-selector' onClick={() => addBathrooms()}>+</p>
-                </div>
+                        <p id='bookings-guests-selection-selector' onClick={() => removeBathrooms()}>-</p>
+                        <p id='bookings-guests-selection-number'>{bathrooms}</p>
+                        <p id='bookings-guests-selection-selector' onClick={() => addBathrooms()}>+</p>
+                    </div>
                 </div>
                 <div id='property-creation-item-containter'>
                     <label>Guests Allowed*:</label>
                     <div id='bookings-guests-selection' className='property-creation-buttons'>
-                    <p id='bookings-guests-selection-selector' onClick={() => removeGuests()}>-</p>
-                    <p id='bookings-guests-selection-number'>{guests}</p>
-                    <p id='bookings-guests-selection-selector' onClick={() => addGuests()}>+</p>
-                </div>
+                        <p id='bookings-guests-selection-selector' onClick={() => removeGuests()}>-</p>
+                        <p id='bookings-guests-selection-number'>{guests}</p>
+                        <p id='bookings-guests-selection-selector' onClick={() => addGuests()}>+</p>
+                    </div>
                 </div>
                 <label>Main Photo (required):</label>
                 <div className='custom-file-upload' id='cursor-pointer'>
-                <label id='cursor-pointer'>{!photo1_url ? 'Upload Main Property Photo (required)' : "Uploaded"}
-                <input
-                    className='pfp'
-                    name='photo1_url'
-                    accept="image/*"
-                    onChange={updateImage1}
-                    type='file'
-                ></input>
-                </label>
+                    <label id='cursor-pointer'>{!photo1_url ? 'Upload Main Property Photo (required)' : "Uploaded"}
+                        <input
+                            className='pfp'
+                            name='photo1_url'
+                            accept="image/*"
+                            onChange={updateImage1}
+                            type='file'
+                        ></input>
+                    </label>
                 </div>
                 <label >Second Photo (optional):</label>
                 <div className='custom-file-upload' id='cursor-pointer'>
-                <label id='cursor-pointer'>{!photo2_url ? 'Second Property Photo (optional)' : "Uploaded"}
-                <input
-                    className='pfp'
-                    name='photo2_url'
-                    accept="image/*"
-                    onChange={updateImage2}
-                    type='file'
-                ></input>
-                </label>
+                    <label id='cursor-pointer'>{!photo2_url ? 'Second Property Photo (optional)' : "Uploaded"}
+                        <input
+                            className='pfp'
+                            name='photo2_url'
+                            accept="image/*"
+                            onChange={updateImage2}
+                            type='file'
+                        ></input>
+                    </label>
                 </div>
                 <label>Third Photo (optional):</label>
                 <div className='custom-file-upload' id='cursor-pointer'>
-                <label id='cursor-pointer'>{!photo3_url ? 'Third Property Photo (optional)' : "Uploaded"}
-                <input
-                    className='pfp'
-                    name='photo3_url'
-                    accept="image/*"
-                    onChange={updateImage3}
-                    type='file'
-                ></input>
-                </label>
+                    <label id='cursor-pointer'>{!photo3_url ? 'Third Property Photo (optional)' : "Uploaded"}
+                        <input
+                            className='pfp'
+                            name='photo3_url'
+                            accept="image/*"
+                            onChange={updateImage3}
+                            type='file'
+                        ></input>
+                    </label>
                 </div>
                 <div id='property-creation-item-containter-multi'>
                     <label>Select Property Types*:</label>
@@ -357,26 +359,44 @@ const EditProperty = () => {
                     />
                 </div>
                 <div id='property-creation-button-container'>
-                <button  id="new-property-form-submit" type="submit">{errors?.length > 0 ? 'Fix Errors and try again': "Submit"}</button>
-                    <button id="new-property-form-submit" type="cancel" onClick={(e) => {
+                    <button id="booking-submit-button" type="submit">{errors?.length > 0 ? 'Fix Errors and try again' : "Submit"}</button>
+                    <button id="booking-submit-button" type="cancel" onClick={(e) => {
                         e.preventDefault()
                         history.push('/home')
                     }}>Cancel</button>
-                    <button id="new-property-form-submit" onClick={(e)=>handleDeleteOpen(e)}>Delete Property</button>
+                    <button id="booking-submit-button" onClick={(e) => handleDeleteOpen(e)}>Delete Property</button>
                 </div>
-            {deleteOpen && <div id='new-property-delete-confirm-container'>
-                 <p>Are you sure you want to delete this property?</p>
-                 <div id='new-property-delete-buttons-container'>
-                 <button onClick={(e)=>handleDelete(e)} id="new-property-form-submit">Confirm Delete</button>
-                 <button onClick={e=> handleDeleteCancel(e)} id="new-property-form-submit">Cancel</button>
-                 </div>
-                 </div>}
+                {deleteOpen &&
+                    <Modal>
+                        <div id='new-property-delete-confirm-container'>
+                        <img alt='logo' src={mainLogo} id='created-modal-logo'></img>
+                            <p>Are you sure you want to delete this property?</p>
+                            <div id='new-property-delete-buttons-container'>
+                                <button onClick={(e) => handleDelete(e)} id="booking-submit-button">Confirm Delete</button>
+                                <button onClick={e => handleDeleteCancel(e)} id="booking-submit-button">Cancel</button>
+                            </div>
+                        </div>
+                    </Modal>
+                }
             </form>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                     <LoadingModal />
                 </Modal>
             )}
+            {showCreatedModal &&
+                <Modal>
+                    <div id='property-created-modal-container'>
+                        <img alt='logo' src={mainLogo} id='created-modal-logo'></img>
+                        <p id='created-modal-title'> {title} Sucessfully Updated!</p>
+                        <button id='booking-submit-button' onClick={() => {
+
+                            history.push('/myproperties')
+                        }}>Continue to My Properties</button>
+                    </div>
+                </Modal>
+
+            }
         </div>
     )
 }
