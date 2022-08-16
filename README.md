@@ -120,8 +120,6 @@ To be more effective, Clear Bnb needs to have search functionality which is a pr
 
 Andrew Stilinovic
 
-<a href='https://www.linkedin.com/in/andrew-stilinovic-94277180/'>Linked-in</a>
-
-<a href='https://github.com/stili87'>Github</a>
+[![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:andrew.stilinovic@gmail.com) [![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/andrew-stilinovic/)
 
 stili87@gmail.com
