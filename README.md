@@ -123,3 +123,10 @@ Andrew Stilinovic
 [![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:andrew.stilinovic@gmail.com) [![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/andrew-stilinovic/)
 
 stili87@gmail.com
+
+  ### My Other Projects
+  <a href="https://github.com/stili87/Felp">Felp/a>
+    - A clone of Yelp, allowing users to find, see all information, and rate businesses.
+
+  <a href="https://github.com/stili87/Better-Reads">Better Reads</a>
+    - A clone of Good Reads, allowing users find books that they may enjoy and track their progress on reading those books.
