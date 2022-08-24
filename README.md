@@ -7,13 +7,13 @@
 ### Splash Page
 You can sign up for an account or just use the demo user's creditials.
 
-![Splash](https://user-images.githubusercontent.com/59978288/178882630-af1c2b05-83a1-4f18-b182-56002fca04ca.png)
-
+![Splash Page](https://user-images.githubusercontent.com/59978288/184777534-5440b401-9921-43b3-9b45-926f6ee6b9cd.png)
 
 ### Checkout Properties and Book a Trip
 You can look at properties on the site and book a property for a trip on particular dates.
 
-![Single Prop](https://user-images.githubusercontent.com/59978288/178882676-2f76d095-b4a2-4d39-bd80-83ebbdabeb89.png)
+![Single Prop](https://user-images.githubusercontent.com/59978288/184778180-d7ddbfe9-8c05-4add-a190-938ecd10b750.png)
+
 
 
 ### MANGE PROPERTIES
@@ -114,14 +114,19 @@ Clear Bnb is built on React and Redux frontend with Python/Flask backend, using 
 - [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
 
 ## Later Improvements
-To be more effective, Clear Bnb needs to achive Google Maps integration so users can know exactly where thier property is located.  As a long term goal, chat with the owners of the properties would be great for users to be able to communicate with the hosts. 
+To be more effective, Clear Bnb needs to have search functionality which is a priority to add in.  As a long term goal, chat with the owners of the properties would be great for users to be able to communicate with the hosts. 
 
 ## Developer Contact
 
 Andrew Stilinovic
 
-<a href='https://www.linkedin.com/in/andrew-stilinovic-94277180/'>Linked-in</a>
-
-<a href='https://github.com/stili87'>Github</a>
+[![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:andrew.stilinovic@gmail.com) [![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/andrew-stilinovic/)
 
 stili87@gmail.com
+
+  ### My Other Projects
+  <a href="https://github.com/stili87/Felp">Felp/a>
+    - A clone of Yelp, allowing users to find, see all information, and rate businesses.
+
+  <a href="https://github.com/stili87/Better-Reads">Better Reads</a>
+    - A clone of Good Reads, allowing users find books that they may enjoy and track their progress on reading those books.
