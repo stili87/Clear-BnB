@@ -98,6 +98,9 @@ function App() {
         <ProtectedRoute path='/search/:terms'>
           <SearchPage />
         </ProtectedRoute>
+        <ProtectedRoute path='/search/'>
+          <SearchPage />
+        </ProtectedRoute>
         <ProtectedRoute>
           <h1 id='page-not-found'>Page Not Found</h1>
         </ProtectedRoute>

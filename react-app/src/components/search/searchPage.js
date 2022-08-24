@@ -7,7 +7,7 @@ import HomeSingleProperty from "../homePage/homeSingleProperty";
 const SearchPage = () => {
     const allProperties = Object.values(useSelector(state => state.properties)).reverse()
     const terms = useParams().terms
-
+    console.log(terms)
     const properties = allProperties.filter(prop => {
         const propTypes = Object.values(prop.types)
         for(let i = 0; i < propTypes.length; i++){
