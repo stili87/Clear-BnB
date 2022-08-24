@@ -1,0 +1,32 @@
+#filter-bar-full {
+    display: flex;
+    min-height: 75px;
+    align-items: center;
+    justify-content: space-around;
+    gap: 25px;
+}
+
+.active {
+    text-decoration: underline;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+#filter-text {
+    color: black;
+    
+}
+
+#filter-link-full {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    color: black;
+}
+
+#filter-link-full:hover {
+    text-decoration: underline;
+}

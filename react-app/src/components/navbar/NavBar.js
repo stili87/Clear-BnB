@@ -4,6 +4,7 @@ import LogoutButton from '../auth/LogoutButton';
 import './nav-bar.css'
 import mainLogo from '../images/clearbnb-logos_transparent.png'
 import { useSelector } from 'react-redux';
+import FilterBar from "../filterBar/filterBar"
 
 const NavBar = () => {
   const sessionUser = useSelector(state => state.session.user)
@@ -22,6 +23,7 @@ const NavBar = () => {
 	}, [])
 
   return (
+    <>
     <nav id='nav-bar-full-container'>
       <NavLink to='/home' exact={true} activeClassName='active' >
         <img alt='logo' src={mainLogo} id='nav-bar-logo'></img>
@@ -43,8 +45,9 @@ const NavBar = () => {
             <LogoutButton />
           </div>}
       </div>
-
     </nav>
+      <FilterBar />
+      </>
   );
 }
 

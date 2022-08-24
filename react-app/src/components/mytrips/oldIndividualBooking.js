@@ -1,11 +1,10 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { Link, useHistory } from 'react-router-dom'
+import { Link} from 'react-router-dom'
 import './my-trips.css'
 
 function MyOldTripBooking({booking}) {
     const thisProperty = useSelector(state => state.properties)[booking.property_id]
-    const history = useHistory()
 
     const formatter = new Intl.NumberFormat('en-US', {
         style: 'currency',
