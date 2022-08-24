@@ -24,6 +24,7 @@ import { getKey } from './store/maps';
 import LoadingModal from './components/loadingModal/loadingModal';
 import { Modal } from './context/Modal';
 import About from './components/about/about';
+import SearchPage from './components/search/searchPage';
 
 
 
@@ -94,8 +95,11 @@ function App() {
         <ProtectedRoute path='/about'>
           <About />
         </ProtectedRoute>
+        <ProtectedRoute path='/search/:terms'>
+          <SearchPage />
+        </ProtectedRoute>
         <ProtectedRoute>
-          <h1 id='page-not-found'>Page Not found</h1>
+          <h1 id='page-not-found'>Page Not Found</h1>
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>

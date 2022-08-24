@@ -65,6 +65,19 @@
     font-size: 50px;
     margin-top: 300px;
     text-align: center;
+}
 
+#search-header {
+    font-size: 20px;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+
+#search-not-found {
+    text-align: center;
+    width: 500px;
+    margin-top: 200px;
+    font-size: 25px;
 
 }
