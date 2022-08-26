@@ -11,7 +11,7 @@ function MyTrips() {
     const myBookings = allBookings?.filter(booking => booking?.user_id === sessionUser?.id).reverse()
 
     const upComingBookings = myBookings?.filter(booking => {
-        console.log(new Date(booking?.start_date).getTime() > today.getTime())
+
         if (new Date(booking?.start_date).getTime() > today.getTime()) {
             return true
         }
@@ -21,7 +21,7 @@ function MyTrips() {
     )
 
     const pastBookings = myBookings?.filter(booking => {
-        console.log(new Date(booking?.start_date).getTime() > today.getTime())
+        
         if (new Date(booking?.start_date).getTime() < today.getTime()) {
             return true
         }
