@@ -13,6 +13,7 @@ const NavBar = () => {
   const [terms, setTerms] = useState('')
   const history = useHistory()
 
+
   useEffect(() => {
     const closeDropdown = e => {
       if (e.path[1].className !== 'dont-close' && e.path[1].className !== 'dont-close' && e.path[0].className !== 'fa-solid fa-caret-down dont-close' && e.path[0].className !== 'dont-close') {
@@ -27,7 +28,12 @@ const NavBar = () => {
 
   const handleSearch = (e) =>{
     e.preventDefault()
-    history.push(`/search/${terms}`)
+    if(!terms){
+      history.push(`/home`)
+    }else{
+      history.push(`/search/${terms}`)
+    }
+    setTerms('')
   }
 
   return (
@@ -36,9 +42,9 @@ const NavBar = () => {
         <NavLink to='/home' exact={true} activeClassName='active' >
           <img alt='logo' src={mainLogo} id='nav-bar-logo'></img>
         </NavLink>
-        <form id='search-container'>
-          <input onChange={(e)=>setTerms(e.target.value)} id='search-input' placeholder='Start Your Search'></input>
-          <button id='search-submit-button' onClick={(e)=>handleSearch(e)}>
+        <form onSubmit={(e)=>handleSearch(e)}id='search-container'>
+          <input onChange={(e)=>setTerms(e.target.value)} value={terms} id='search-input' placeholder='Start Your Search'></input>
+          <button id='search-submit-button' >
           <GiMagnifyingGlass ></GiMagnifyingGlass>
           </button>
         </form>

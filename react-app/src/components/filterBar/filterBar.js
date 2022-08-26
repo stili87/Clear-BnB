@@ -38,7 +38,7 @@ const FilterBar = () => {
                 <GiFarmTractor />
                 <p id='filter-text'>Rural</p>
             </NavLink>
-            <NavLink id='filter-link-full' to='/search/tinyhomes'>
+            <NavLink id='filter-link-full' to='/search/tiny%20homes'>
                 <i className="fa fa-home" aria-hidden="true"></i>
                 <p id='filter-text'>Tiny Homes</p>
             </NavLink>

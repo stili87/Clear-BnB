@@ -6,15 +6,17 @@ import HomeSingleProperty from "../homePage/homeSingleProperty";
 
 const SearchPage = () => {
     const allProperties = Object.values(useSelector(state => state.properties)).reverse()
-    const terms = useParams().terms
+    const terms = useParams().terms.toLowerCase()
     console.log(terms)
     const properties = allProperties.filter(prop => {
         const propTypes = Object.values(prop.types)
         for(let i = 0; i < propTypes.length; i++){
             if(propTypes[i].type.toLowerCase() === terms) return true
-            if(terms === 'tinyhomes' && propTypes[i].type === 'Tiny Homes') return true
+            
         }
         if(prop.title.toLowerCase().includes(terms)) return true
+        if(prop.city.toLowerCase().includes(terms)) return true
+        if(prop.zipcode.toLowerCase().includes(terms)) return true
         return false
     })
 
